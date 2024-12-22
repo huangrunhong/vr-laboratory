@@ -11,7 +11,6 @@ import {
 } from "three";
 import { PerspectiveCamera as PerspectiveCameraComponent } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useLocation } from "react-router-dom";
 
 import collisionDetection from "../helpers/collisionDetection";
 
@@ -32,7 +31,6 @@ interface cameraProps {
 
 const Camera = ({ x, y, z }: cameraProps) => {
   const state = useThree();
-  const location = useLocation();
 
   const circle = useRef<Mesh>(null);
   const camera = useRef<PerspectiveCamera>(null);
@@ -43,17 +41,6 @@ const Camera = ({ x, y, z }: cameraProps) => {
   const raycaster = useMemo(() => new Raycaster(), []);
 
   const [teleport, setTeleport] = useState(false);
-
-  useEffect(() => {
-    if (!camera.current) return;
-
-    const origin: [number, number, number] =
-      location.pathname === "/" ? [-6, 1.6, -1] : [0, 1.6, 0];
-
-    euler.set(0, 0, 0);
-    position.set(...origin);
-    camera.current.quaternion.setFromEuler(euler);
-  }, [location.pathname]);
 
   useEffect(() => {
     const onPointerMove = (event: PointerEvent) => {

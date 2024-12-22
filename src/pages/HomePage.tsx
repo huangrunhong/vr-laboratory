@@ -1,17 +1,17 @@
-import { useAnimations, useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useXR } from "@react-three/xr";
-import { AnimationAction, Object3D, PlaneGeometry, Vector3 } from "three";
-
-import CircleButton from "../components/CircleButton";
-import collisionDetection from "../helpers/collisionDetection";
-import playOnce from "../helpers/playOnce";
 import { useState } from "react";
 import {
   EffectComposer,
   Outline,
   Selection,
 } from "@react-three/postprocessing";
+import { useAnimations, useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useXR } from "@react-three/xr";
+import { AnimationAction, Object3D, Vector3 } from "three";
+
+import CircleButton from "../components/CircleButton";
+import collisionDetection from "../helpers/collisionDetection";
+import playOnce from "../helpers/playOnce";
 import Selectable from "../components/Selectable";
 import SelectionContext from "../contexts/SelectionContext";
 import InteractiveObject from "../components/InteractiveObject";
@@ -23,11 +23,11 @@ const startButtonPosition = new Vector3(-1.7, 1.2, 0.5);
 const vppButtonPosition = new Vector3(2.95, 1.45, -6.1);
 const cameraBox = new Vector3(2, 0.25, 1.5);
 
-const modelPath = "/vr-labor/room.glb";
-const printerSkinPath = "/vr-labor/printerSkin.glb";
-const printerPath = "/vr-labor/printer.glb";
-const vppSkinPath = "/vr-labor/vppSkin.glb";
-const vppPath = "/vr-labor/vpp.glb";
+const modelPath = "/room.glb";
+const printerSkinPath = "/printerSkin.glb";
+const printerPath = "/printer.glb";
+const vppSkinPath = "/vppSkin.glb";
+const vppPath = "/vpp.glb";
 
 const play = (
   camera?: Object3D,
@@ -54,9 +54,6 @@ const HomePage = () => {
   const [selected, setSelected] = useState("");
   const printerActions = useAnimations(printer.animations, printer.scene);
   const vppActions = useAnimations(vpp.animations, vpp.scene);
-
-  console.log(printer.scene.position);
-  console.log(printer);
 
   useFrame((state) => {
     const playAction = (
@@ -123,7 +120,7 @@ const HomePage = () => {
                 />
               </mesh>
               <VideoMaterial
-                url={"/vr-labor/video.mp4"}
+                url="/video.mp4"
                 x={3.315}
                 y={1.259}
                 z={-0.569}
