@@ -1,9 +1,6 @@
 import { useState } from "react";
-import {
-  EffectComposer,
-  Outline,
-  Selection,
-} from "@react-three/postprocessing";
+import { Selection } from "@react-three/postprocessing";
+
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useXR } from "@react-three/xr";
@@ -23,11 +20,12 @@ const startButtonPosition = new Vector3(-1.7, 1.2, 0.5);
 const vppButtonPosition = new Vector3(2.95, 1.45, -6.1);
 const cameraBox = new Vector3(2, 0.25, 1.5);
 
-const modelPath = "/room.glb";
-const printerSkinPath = "/printerSkin.glb";
-const printerPath = "/printer.glb";
-const vppSkinPath = "/vppSkin.glb";
-const vppPath = "/vpp.glb";
+const modelPath = "/vr-laboratory/room.glb";
+const printerSkinPath = "/vr-laboratory/printerSkin.glb";
+const printerPath = "/vr-laboratory/printer.glb";
+const vppSkinPath = "/vr-laboratory/vppSkin.glb";
+const logoPath = "/vr-laboratory/logo.glb";
+const vppPath = "/vr-laboratory/vpp.glb";
 
 const play = (
   camera?: Object3D,
@@ -50,6 +48,7 @@ const HomePage = () => {
   const vppSkin = useGLTF(vppSkinPath);
   const vpp = useGLTF(vppPath);
   const printer = useGLTF(printerPath);
+  const logo = useGLTF(logoPath);
   const roomActions = useAnimations(room.animations, room.scene);
   const [selected, setSelected] = useState("");
   const printerActions = useAnimations(printer.animations, printer.scene);
@@ -92,35 +91,36 @@ const HomePage = () => {
   return (
     <SelectionContext.Provider value={[selected, setSelected]}>
       <primitive object={room.scene} />
+      <primitive object={logo.scene} />
       <Walls />
       <Selection>
-        <EffectComposer multisampling={8} autoClear={false}>
+        {/* <EffectComposer multisampling={8} autoClear={false}>
           <Outline
             blur
             visibleEdgeColor={0xffffff}
             edgeStrength={100}
             width={800}
           />
-        </EffectComposer>
+        </EffectComposer> */}
         <InteractiveObject
           id="printer"
           activeObject={
             <>
               <group>
-                <primitive object={printer.scene} />
+                <primitive object={printer.scene} />{" "}
               </group>
               <mesh rotation-y={Math.PI}>
                 <CircleButton
-                  onClick={onClick}
                   position={openDoorButtonPosition}
+                  onClick={onClick}
                 />
                 <CircleButton
-                  onClick={startPrinter}
                   position={startButtonPosition}
+                  onClick={startPrinter}
                 />
               </mesh>
               <VideoMaterial
-                url="/video.mp4"
+                url="/vr-laboratory/video.mp4"
                 x={3.315}
                 y={1.259}
                 z={-0.569}
