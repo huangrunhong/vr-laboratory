@@ -23,11 +23,11 @@ const startButtonPosition = new Vector3(-1.7, 1.2, 0.5);
 const vppButtonPosition = new Vector3(2.95, 1.45, -6.1);
 const cameraBox = new Vector3(2, 0.25, 1.5);
 
-const modelPath = "/room.glb";
-const printerSkinPath = "/printerSkin.glb";
-const printerPath = "/printer.glb";
-const vppSkinPath = "/vppSkin.glb";
-const vppPath = "/vpp.glb";
+const modelPath = "/vr-laboratory/room.glb";
+const printerSkinPath = "/vr-laboratory/printerSkin.glb";
+const printerPath = "/vr-laboratory/printer.glb";
+const vppSkinPath = "/vr-laboratory/vppSkin.glb";
+const vppPath = "/vr-laboratory/vpp.glb";
 
 const play = (
   camera?: Object3D,
@@ -120,7 +120,7 @@ const HomePage = () => {
                 />
               </mesh>
               <VideoMaterial
-                url="/video.mp4"
+                url="/vr-laboratory/video.mp4"
                 x={3.315}
                 y={1.259}
                 z={-0.569}
