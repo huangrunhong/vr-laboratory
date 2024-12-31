@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Selection } from "@react-three/postprocessing";
-
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useXR } from "@react-three/xr";
@@ -12,7 +10,7 @@ import playOnce from "../helpers/playOnce";
 import Selectable from "../components/Selectable";
 import SelectionContext from "../contexts/SelectionContext";
 import InteractiveObject from "../components/InteractiveObject";
-import VideoMaterial from "../components/VideoMaterial";
+// import VideoMaterial from "../components/VideoMaterial";
 import Walls from "../components/Walls";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, 0.5);
@@ -93,63 +91,49 @@ const HomePage = () => {
       <primitive object={room.scene} />
       <primitive object={logo.scene} />
       <Walls />
-      <Selection>
-        {/* <EffectComposer multisampling={8} autoClear={false}>
-          <Outline
-            blur
-            visibleEdgeColor={0xffffff}
-            edgeStrength={100}
-            width={800}
-          />
-        </EffectComposer> */}
+      <InteractiveObject
+        id="printer"
+        activeObject={
+          <>
+            <group>
+              <primitive object={printer.scene} />
+            </group>
+            <mesh rotation-y={Math.PI}>
+              <CircleButton
+                position={openDoorButtonPosition}
+                onClick={onClick}
+              />
+              <CircleButton
+                position={startButtonPosition}
+                onClick={startPrinter}
+              />
+            </mesh>
+            {/* <VideoMaterial
+              url="/vr-laboratory/video.mp4"
+              x={3.315}
+              y={1.259}
+              z={-0.569}
+              width={0.51}
+              height={0.33}
+            /> */}
+          </>
+        }
+        inactiveObject={<primitive object={printerSkin.scene} />}
+      />
+      <Selectable>
         <InteractiveObject
-          id="printer"
+          id="vpp"
           activeObject={
             <>
-              <group>
-                <primitive object={printer.scene} />{" "}
-              </group>
-              <mesh rotation-y={Math.PI}>
-                <CircleButton
-                  position={openDoorButtonPosition}
-                  onClick={onClick}
-                />
-                <CircleButton
-                  position={startButtonPosition}
-                  onClick={startPrinter}
-                />
+              <primitive object={vpp.scene} />
+              <mesh rotation-y={2 * Math.PI}>
+                <CircleButton onClick={startVpp} position={vppButtonPosition} />
               </mesh>
-              <VideoMaterial
-                url="/vr-laboratory/video.mp4"
-                x={3.315}
-                y={1.259}
-                z={-0.569}
-                width={0.51}
-                height={0.33}
-              />
             </>
           }
-          inactiveObject={<primitive object={printerSkin.scene} />}
+          inactiveObject={<primitive object={vppSkin.scene} />}
         />
-
-        <Selectable>
-          <InteractiveObject
-            id="vpp"
-            activeObject={
-              <>
-                <primitive object={vpp.scene} />
-                <mesh rotation-y={2 * Math.PI}>
-                  <CircleButton
-                    onClick={startVpp}
-                    position={vppButtonPosition}
-                  />
-                </mesh>
-              </>
-            }
-            inactiveObject={<primitive object={vppSkin.scene} />}
-          />
-        </Selectable>
-      </Selection>
+      </Selectable>
     </SelectionContext.Provider>
   );
 };
