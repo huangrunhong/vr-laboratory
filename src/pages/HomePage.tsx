@@ -10,12 +10,11 @@ import playOnce from "../helpers/playOnce";
 import Selectable from "../components/Selectable";
 import SelectionContext from "../contexts/SelectionContext";
 import InteractiveObject from "../components/InteractiveObject";
-// import VideoMaterial from "../components/VideoMaterial";
-import Walls from "../components/Walls";
+import VideoMaterial from "../components/VideoMaterial";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, 0.5);
 const startButtonPosition = new Vector3(-1.7, 1.2, 0.5);
-const vppButtonPosition = new Vector3(2.95, 1.45, -6.1);
+const vppButtonPosition = new Vector3(3.15, 1.35, -6.32);
 const cameraBox = new Vector3(2, 0.25, 1.5);
 
 const modelPath = "/vr-laboratory/room.glb";
@@ -90,7 +89,10 @@ const HomePage = () => {
     <SelectionContext.Provider value={[selected, setSelected]}>
       <primitive object={room.scene} />
       <primitive object={logo.scene} />
-      <Walls />
+      {/* <mesh position={[0, 0.1, 2.95]}>
+        <boxGeometry args={[0.1, 0.1, 0.1]} />
+        <meshBasicMaterial color={0x000000} />
+      </mesh> */}
       <InteractiveObject
         id="printer"
         activeObject={
@@ -108,14 +110,14 @@ const HomePage = () => {
                 onClick={startPrinter}
               />
             </mesh>
-            {/* <VideoMaterial
+            <VideoMaterial
               url="/vr-laboratory/video.mp4"
               x={3.315}
               y={1.259}
               z={-0.569}
               width={0.51}
               height={0.33}
-            /> */}
+            />
           </>
         }
         inactiveObject={<primitive object={printerSkin.scene} />}

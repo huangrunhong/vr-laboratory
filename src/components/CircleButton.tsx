@@ -22,7 +22,7 @@ const CircleButton = (props: GroupProps) => {
       <mesh>
         <circleGeometry args={[0.06]} />
         <meshBasicMaterial
-          color={hovered ? 0x3070b3 : 0xffffff}
+          color={hovered ? 0x0065bd : 0xffffff}
           transparent
           opacity={0.6}
         />
