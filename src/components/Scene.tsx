@@ -11,8 +11,6 @@ interface SceneProps {
   store: XRStore;
   environmentFile: string;
   environmentIntensity: number;
-  backgroundIntensity: number;
-  backgroundFile: string;
 }
 
 const Scene = ({
@@ -20,9 +18,7 @@ const Scene = ({
   origin,
   store,
   environmentFile,
-  backgroundFile,
   environmentIntensity,
-  backgroundIntensity,
 }: SceneProps) => (
   <main>
     <IfSessionModeSupported mode="immersive-vr">
@@ -35,15 +31,12 @@ const Scene = ({
         <Camera x={origin[0]} y={1.6} z={origin[1]} />
         <Locomotion x={origin[0]} y={0} z={origin[1]} />
         {children}
-        <Environment
-          files={backgroundFile}
-          environmentIntensity={backgroundIntensity}
-          background
-          backgroundRotation={[0, 1.05 * Math.PI, 0]}
-        />
+        <ambientLight intensity={0.6} />
         <Environment
           files={environmentFile}
           environmentIntensity={environmentIntensity}
+          background
+          backgroundRotation={[0, 1.05 * Math.PI, 0]}
         />
         {/* <Stats /> */}
       </XR>
