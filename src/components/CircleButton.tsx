@@ -2,7 +2,18 @@ import { animated } from "@react-spring/three";
 import { GroupProps } from "@react-three/fiber";
 import { useState } from "react";
 
-const CircleButton = (props: GroupProps) => {
+interface CircleButtonProps extends GroupProps {
+  color?: number;
+  innerSize?: number;
+  outSize?: number;
+}
+
+const CircleButton = ({
+  color = 0xffffff,
+  innerSize = 0.06,
+  outSize = 0.07,
+  ...props
+}: CircleButtonProps) => {
   const [hovered, setHovered] = useState(false);
   const [actived, setActived] = useState(false);
 
@@ -16,13 +27,13 @@ const CircleButton = (props: GroupProps) => {
       scale={actived ? 0.9 : 1}
     >
       <mesh>
-        <ringGeometry args={[0.06, 0.07]} />
-        <animated.meshBasicMaterial color={0xffffff} transparent opacity={1} />
+        <ringGeometry args={[innerSize, outSize]} />
+        <animated.meshBasicMaterial color={color} transparent opacity={1} />
       </mesh>
       <mesh>
-        <circleGeometry args={[0.06]} />
+        <circleGeometry args={[innerSize]} />
         <meshBasicMaterial
-          color={hovered ? 0x0065bd : 0xffffff}
+          color={hovered ? 0x0065bd : color}
           transparent
           opacity={0.6}
         />
