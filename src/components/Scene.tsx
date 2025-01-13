@@ -9,8 +9,8 @@ interface SceneProps {
   children: React.ReactNode;
   origin: [number, number];
   store: XRStore;
-  environmentFile: string;
-  environmentIntensity: number;
+  environmentFile?: string;
+  environmentIntensity?: number;
 }
 
 const Scene = ({
@@ -35,7 +35,6 @@ const Scene = ({
         <Environment
           files={environmentFile}
           environmentIntensity={environmentIntensity}
-          background
           backgroundRotation={[0, 1.05 * Math.PI, 0]}
         />
         {/* <Stats /> */}

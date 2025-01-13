@@ -10,7 +10,7 @@ import VideoMaterial from "../components/VideoMaterial";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, 0.5);
 const startButtonPosition = new Vector3(-1.7, 1.2, 0.5);
-const vppButtonPosition = new Vector3(3.15, 1.35, -6.32);
+const vppButtonPosition = new Vector3(3.15, 1.35, -6.275);
 
 const modelPath = "/vr-laboratory/room.glb";
 const printerSkinPath = "/vr-laboratory/printerSkin.glb";
