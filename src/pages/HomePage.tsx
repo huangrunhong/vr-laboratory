@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { useAnimations, useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useXR } from "@react-three/xr";
-import { AnimationAction, Object3D, Vector3 } from "three";
-
+import { Vector3 } from "three";
 import CircleButton from "../components/CircleButton";
-import collisionDetection from "../helpers/collisionDetection";
 import playOnce from "../helpers/playOnce";
 import Selectable from "../components/Selectable";
 import SelectionContext from "../contexts/SelectionContext";
@@ -15,7 +11,6 @@ import VideoMaterial from "../components/VideoMaterial";
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, 0.5);
 const startButtonPosition = new Vector3(-1.7, 1.2, 0.5);
 const vppButtonPosition = new Vector3(3.15, 1.35, -6.32);
-const cameraBox = new Vector3(2, 0.25, 1.5);
 
 const modelPath = "/vr-laboratory/room.glb";
 const printerSkinPath = "/vr-laboratory/printerSkin.glb";
@@ -24,22 +19,7 @@ const vppSkinPath = "/vr-laboratory/vppSkin.glb";
 const logoPath = "/vr-laboratory/logo.glb";
 const vppPath = "/vr-laboratory/vpp.glb";
 
-const play = (
-  camera?: Object3D,
-  object?: Object3D,
-  action?: AnimationAction | null
-) => {
-  if (!camera || !object || !action) return;
-
-  const running = action.isRunning();
-  const collided = collisionDetection(camera.position, object, cameraBox);
-
-  !running && collided && playOnce(action);
-};
-
 const HomePage = () => {
-  const xr = useXR();
-
   const room = useGLTF(modelPath);
   const printerSkin = useGLTF(printerSkinPath);
   const vppSkin = useGLTF(vppSkinPath);
@@ -51,24 +31,27 @@ const HomePage = () => {
   const printerActions = useAnimations(printer.animations, printer.scene);
   const vppActions = useAnimations(vpp.animations, vpp.scene);
 
-  useFrame((state) => {
-    const playAction = (
-      object: Object3D | undefined,
-      action: AnimationAction | null
-    ) =>
-      xr.mode
-        ? play(xr.origin, object, action)
-        : play(state.camera, object, action);
+  const openDoor = () => playOnce(roomActions.actions["Door_entrance"], 2);
+  const openSocialSpace = () =>
+    playOnce(roomActions.actions["Door_social_space"], 2);
 
-    playAction(
-      room.nodes["Door_moving_lobby"],
-      roomActions.actions["Door_entrance"]
-    );
-    playAction(
-      room.nodes["Door_moving_social_space"],
-      roomActions.actions["Door_social_space"]
-    );
-  });
+  //   const playAction = (
+  //     object: Object3D | undefined,
+  //     action: AnimationAction | null
+  //   ) =>
+  //     xr.mode
+  //       ? play(xr.origin, object, action)
+  //       : play(state.camera, object, action);
+
+  //   playAction(
+  //     room.nodes["Door_moving_lobby"],
+  //     roomActions.actions["Door_entrance"]
+  //   );
+  //   playAction(
+  //     room.nodes["Door_moving_social_space"],
+  //     roomActions.actions["Door_social_space"]
+  //   );
+  // });
 
   const startPrinter = () => playOnce(printerActions.actions["Start"], 2);
 
@@ -89,7 +72,43 @@ const HomePage = () => {
     <SelectionContext.Provider value={[selected, setSelected]}>
       <primitive object={room.scene} />
       <primitive object={logo.scene} />
-      {/* <mesh position={[0, 0.1, 2.95]}>
+      <mesh rotation-y={Math.PI / 2}>
+        <CircleButton
+          onClick={openDoor}
+          position={[4.2, 1, -0.25]}
+          color={0x707070}
+          innerSize={0.07}
+          outSize={0.08}
+        />
+      </mesh>
+      <mesh rotation-y={-Math.PI / 2}>
+        <CircleButton
+          onClick={openDoor}
+          position={[-4.2, 1, 0.35]}
+          color={0x707070}
+          innerSize={0.07}
+          outSize={0.08}
+        />
+      </mesh>
+      <mesh rotation-y={Math.PI}>
+        <CircleButton
+          onClick={openSocialSpace}
+          position={[-8, 1, -3.1]}
+          color={0x707070}
+          innerSize={0.07}
+          outSize={0.08}
+        />
+      </mesh>
+      <mesh rotation-y={2 * Math.PI}>
+        <CircleButton
+          onClick={openSocialSpace}
+          position={[8, 1, 3.25]}
+          color={0x707070}
+          innerSize={0.07}
+          outSize={0.08}
+        />
+      </mesh>
+      {/* <mesh position={[0.4, 0.1, -9.1]}>
         <boxGeometry args={[0.1, 0.1, 0.1]} />
         <meshBasicMaterial color={0x000000} />
       </mesh> */}
