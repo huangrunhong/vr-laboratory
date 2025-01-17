@@ -37,6 +37,7 @@ const Scene = ({
           environmentIntensity={environmentIntensity}
           backgroundRotation={[0, 1.05 * Math.PI, 0]}
         />
+        <color attach="background" args={[0xffffff]} />
         {/* <Stats /> */}
       </XR>
     </Canvas>
