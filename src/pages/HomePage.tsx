@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { Vector3 } from "three";
+
 import CircleButton from "../components/CircleButton";
 import playOnce from "../helpers/playOnce";
 import Selectable from "../components/Selectable";
 import SelectionContext from "../contexts/SelectionContext";
 import InteractiveObject from "../components/InteractiveObject";
 import VideoMaterial from "../components/VideoMaterial";
+
+import ControlPanel from "../components/dashboard/ControlPanel";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, 0.5);
 const startButtonPosition = new Vector3(-1.7, 1.2, 0.5);
@@ -34,24 +37,6 @@ const HomePage = () => {
   const openDoor = () => playOnce(roomActions.actions["Door_entrance"], 2);
   const openSocialSpace = () =>
     playOnce(roomActions.actions["Door_social_space"], 2);
-
-  //   const playAction = (
-  //     object: Object3D | undefined,
-  //     action: AnimationAction | null
-  //   ) =>
-  //     xr.mode
-  //       ? play(xr.origin, object, action)
-  //       : play(state.camera, object, action);
-
-  //   playAction(
-  //     room.nodes["Door_moving_lobby"],
-  //     roomActions.actions["Door_entrance"]
-  //   );
-  //   playAction(
-  //     room.nodes["Door_moving_social_space"],
-  //     roomActions.actions["Door_social_space"]
-  //   );
-  // });
 
   const startPrinter = () => playOnce(printerActions.actions["Start"], 2);
 
@@ -108,10 +93,7 @@ const HomePage = () => {
           outSize={0.08}
         />
       </mesh>
-      {/* <mesh position={[0.4, 0.1, -9.1]}>
-        <boxGeometry args={[0.1, 0.1, 0.1]} />
-        <meshBasicMaterial color={0x000000} />
-      </mesh> */}
+      <ControlPanel />
       <InteractiveObject
         id="printer"
         activeObject={
