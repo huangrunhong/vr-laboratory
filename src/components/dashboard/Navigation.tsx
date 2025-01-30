@@ -15,7 +15,7 @@ const Navigation = ({ children, step, color }: NavigationProps) => {
         borderColor={color}
         borderRadius={15}
         borderWidth={0.35}
-        backgroundColor="#e8e8e8"
+        backgroundColor="#f0f0f0"
         alignItems="center"
         justifyContent="center"
       >
@@ -23,7 +23,7 @@ const Navigation = ({ children, step, color }: NavigationProps) => {
           {step}
         </Text>
       </Container>
-      <Text fontSize={6} color={color}>
+      <Text fontSize={4} color={color} fontWeight={500}>
         {children}
       </Text>
     </Container>

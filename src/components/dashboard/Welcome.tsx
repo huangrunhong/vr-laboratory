@@ -11,12 +11,13 @@ const Welcome = ({ onClick }: { onClick: () => void }) => {
       justifyContent="space-between"
       alignItems="center"
     >
-      <Text fontSize={10} textAlign="center" color="white">
+      <Text fontSize={10} textAlign="center" color="white" fontWeight={500}>
         Welcome to use Binder Jetting 3D Sand Printer!
       </Text>
       <RoundedButton
-        backgroundColor="white"
-        textColor="#0064c0"
+        backgroundColor="#0064c0"
+        borderColor="white"
+        textColor="white"
         fontSize={6}
         onClick={onClick}
       >

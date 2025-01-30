@@ -9,7 +9,7 @@ const ControlPanel = () => {
   return (
     <Root
       backgroundColor={page === "welcome" ? "#0064c0" : "white"}
-      borderRadius={3}
+      borderRadius={4}
       sizeX={2.2}
       sizeY={1.2}
       transformRotateY={-120}

@@ -10,22 +10,23 @@ const ProProcessing = () => {
         borderRightWidth={0.25}
         borderBottomLeftRadius={3}
         borderTopLeftRadius={3}
-        borderColor="#a1a1a1"
-        backgroundColor="#e8e8e8"
-        padding={6}
+        borderColor="#505050"
+        backgroundColor="#f5f5f5"
+        paddingX={6}
+        paddingY={10}
         flexDirection="column"
         justifyContent="space-between"
       >
         <Navigation step="1" color="#0064c0">
           Pro-processing
         </Navigation>
-        <Navigation step="2" color="#a1a1a1">
+        <Navigation step="2" color="#505050">
           Printing
         </Navigation>
-        <Navigation step="3" color="#a1a1a1">
+        <Navigation step="3" color="#505050">
           Post-processing
         </Navigation>
-        <Navigation step="4" color="#a1a1a1">
+        <Navigation step="4" color="#505050">
           Take Away
         </Navigation>
         <RoundedButton backgroundColor="black" textColor="white" fontSize={6}>
@@ -34,7 +35,8 @@ const ProProcessing = () => {
       </Container>
 
       <Container
-        padding={6}
+        paddingX={6}
+        paddingY={10}
         flexDirection="column"
         justifyContent="space-between"
       >
@@ -52,26 +54,28 @@ const ProProcessing = () => {
           >
             Virtual 3D Model
           </RoundedButton>
-          <Container backgroundColor="#a1a1a1" height={0.5} width={3} />
+          <Container backgroundColor="#505050" height={0.5} width={8} />
           <RoundedButton
             backgroundColor="white"
-            textColor="#a1a1a1"
-            borderColor="#a1a1a1"
+            textColor="#505050"
+            borderColor="#505050"
             fontSize={4}
           >
             Print Bed
           </RoundedButton>
-          <Container backgroundColor="#a1a1a1" height={0.5} width={3} />
+          <Container backgroundColor="#505050" height={0.5} width={8} />
           <RoundedButton
             backgroundColor="white"
-            textColor="#a1a1a1"
-            borderColor="#a1a1a1"
+            textColor="#505050"
+            borderColor="#505050"
             fontSize={4}
           >
             Print Head Setup
           </RoundedButton>
         </Container>
-        <Text fontSize={6}>Choose the part geometry:</Text>
+        <Text fontSize={6} fontWeight={500}>
+          Choose the part geometry:
+        </Text>
         <Container
           paddingX={12}
           flexDirection="row"
@@ -82,13 +86,13 @@ const ProProcessing = () => {
         </Container>
         <Container
           borderBottomWidth={0.5}
-          width={16}
+          width={12}
           alignSelf="flex-end"
           alignItems="center"
           justifyContent="center"
           paddingY={1}
         >
-          <Text fontSize={6} textAlign="center">
+          <Text fontSize={4} textAlign="center">
             Next
           </Text>
         </Container>

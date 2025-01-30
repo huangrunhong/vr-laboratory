@@ -10,6 +10,8 @@ import InteractiveObject from "../components/InteractiveObject";
 import VideoMaterial from "../components/VideoMaterial";
 
 import ControlPanel from "../components/dashboard/ControlPanel";
+import AnimationsController from "../components/AnimationsController";
+import TheoryPanel from "../components/TheoryPanel";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, 0.5);
 const startButtonPosition = new Vector3(-1.7, 1.2, 0.5);
@@ -93,7 +95,7 @@ const HomePage = () => {
           outSize={0.08}
         />
       </mesh>
-      <ControlPanel />
+
       <InteractiveObject
         id="printer"
         activeObject={
@@ -119,6 +121,9 @@ const HomePage = () => {
               width={0.51}
               height={0.33}
             />
+            <ControlPanel />
+            <AnimationsController />
+            <TheoryPanel />
           </>
         }
         inactiveObject={<primitive object={printerSkin.scene} />}
