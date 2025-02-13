@@ -13,9 +13,9 @@ const ControlPanel = () => {
       sizeX={2.2}
       sizeY={1.2}
       transformRotateY={-120}
+      transformTranslateX={470}
       transformTranslateY={-130}
-      transformTranslateX={460}
-      transformTranslateZ={-140}
+      transformTranslateZ={-150}
     >
       {page === "welcome" && (
         <Welcome onClick={() => setPage("pre-processing")} />

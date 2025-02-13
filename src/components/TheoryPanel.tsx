@@ -5,12 +5,12 @@ const TheoryPanel = () => {
     <Root
       borderRadius={4}
       backgroundColor="white"
-      sizeX={1.6}
-      sizeY={1}
-      transformRotateY={120}
-      transformTranslateX={100}
-      transformTranslateY={-130}
-      transformTranslateZ={-120}
+      sizeX={2.8}
+      sizeY={1.6}
+      transformRotateY={180}
+      transformTranslateX={360}
+      transformTranslateY={-140}
+      transformTranslateZ={299}
       padding={4}
       flexDirection="row"
       justifyContent="center"
