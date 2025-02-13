@@ -9,10 +9,10 @@ const AnimationsController = () => {
       backgroundColor="white"
       sizeX={1.8}
       sizeY={0.25}
-      transformRotateY={-120}
-      transformTranslateX={470}
+      transformRotateY={-150}
+      transformTranslateX={530}
       transformTranslateY={-50}
-      transformTranslateZ={-150}
+      transformTranslateZ={-120}
       padding={4}
       flexDirection="row"
       justifyContent="space-between"

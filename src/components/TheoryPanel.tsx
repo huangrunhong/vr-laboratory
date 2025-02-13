@@ -10,7 +10,7 @@ const TheoryPanel = () => {
       transformRotateY={180}
       transformTranslateX={360}
       transformTranslateY={-140}
-      transformTranslateZ={299}
+      transformTranslateZ={310}
       padding={4}
       flexDirection="row"
       justifyContent="center"

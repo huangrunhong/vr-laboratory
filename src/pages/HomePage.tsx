@@ -59,11 +59,15 @@ const HomePage = () => {
     <SelectionContext.Provider value={[selected, setSelected]}>
       <primitive object={room.scene} />
       <primitive object={logo.scene} />
+      {/* <mesh position={[8.45, 0.1, 2.7]}>
+        <boxGeometry args={[0.5, 0.1, 0.5]} />
+        <meshBasicMaterial color={0x555555} />
+      </mesh> */}
       <mesh rotation-y={Math.PI / 2}>
         <CircleButton
           onClick={openDoor}
           position={[4.2, 1, -0.25]}
-          color={0x707070}
+          color={0x707090}
           innerSize={0.07}
           outSize={0.08}
         />
@@ -80,7 +84,7 @@ const HomePage = () => {
       <mesh rotation-y={Math.PI}>
         <CircleButton
           onClick={openSocialSpace}
-          position={[-8, 1, -3.1]}
+          position={[-9.35, 1, -3.1]}
           color={0x707070}
           innerSize={0.07}
           outSize={0.08}
@@ -89,7 +93,7 @@ const HomePage = () => {
       <mesh rotation-y={2 * Math.PI}>
         <CircleButton
           onClick={openSocialSpace}
-          position={[8, 1, 3.25]}
+          position={[9.35, 1, 3.25]}
           color={0x707070}
           innerSize={0.07}
           outSize={0.08}

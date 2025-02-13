@@ -4,7 +4,7 @@ import { XROrigin, useXR, useXRControllerLocomotion } from "@react-three/xr";
 
 const entrance = new Box2(new Vector2(-7.05, -4.45), new Vector2(0, 2.75));
 const mainHall = new Box2(new Vector2(-0.02, -9.4), new Vector2(25.25, 2.75));
-const sideHall = new Box2(new Vector2(4.75, 2.7), new Vector2(9.2, 10.77));
+const sideHall = new Box2(new Vector2(8.45, 2.7), new Vector2(12.35, 10.77));
 
 const inRange = (x: number, z: number) => {
   const point = new Vector2(x, z);
