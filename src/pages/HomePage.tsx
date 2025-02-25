@@ -104,8 +104,8 @@ const HomePage = () => {
         id="printer"
         activeObject={
           <>
-            <group>
-              <primitive object={printerSkin.scene} />
+            <group rotation={[0, Math.PI, 0]} position={[3.288, 0.05, -0.278]}>
+              <primitive object={printer.scene} />
             </group>
             <mesh rotation-y={Math.PI}>
               <CircleButton
