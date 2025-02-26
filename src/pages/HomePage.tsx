@@ -23,6 +23,7 @@ const printerPath = "/vr-laboratory/printer.glb";
 const vppSkinPath = "/vr-laboratory/vppSkin.glb";
 const logoPath = "/vr-laboratory/logo.glb";
 const vppPath = "/vr-laboratory/vpp.glb";
+const statuePath = "/vr-laboratory/statue.glb";
 
 const HomePage = () => {
   const room = useGLTF(modelPath);
@@ -31,6 +32,7 @@ const HomePage = () => {
   const vpp = useGLTF(vppPath);
   const printer = useGLTF(printerPath);
   const logo = useGLTF(logoPath);
+  const statue = useGLTF(statuePath);
   const roomActions = useAnimations(room.animations, room.scene);
   const [selected, setSelected] = useState("");
   const printerActions = useAnimations(printer.animations, printer.scene);
@@ -59,6 +61,7 @@ const HomePage = () => {
     <SelectionContext.Provider value={[selected, setSelected]}>
       <primitive object={room.scene} />
       <primitive object={logo.scene} />
+      <primitive object={statue.scene} />
       {/* <mesh position={[8.45, 0.1, 2.7]}>
         <boxGeometry args={[0.5, 0.1, 0.5]} />
         <meshBasicMaterial color={0x555555} />
