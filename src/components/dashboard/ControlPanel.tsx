@@ -1,5 +1,6 @@
-import { Root } from "@react-three/uikit";
 import { useState } from "react";
+import { Root } from "@react-three/uikit";
+
 import Welcome from "./Welcome";
 import ProProcessing from "./PreProcessing";
 
@@ -15,12 +16,11 @@ const ControlPanel = () => {
       transformRotateY={-150}
       transformTranslateX={530}
       transformTranslateY={-130}
-      transformTranslateZ={-120}
+      transformTranslateZ={-70}
     >
       {page === "welcome" && (
         <Welcome onClick={() => setPage("pre-processing")} />
       )}
-
       {page === "pre-processing" && <ProProcessing />}
     </Root>
   );
