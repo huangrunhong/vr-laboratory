@@ -1,4 +1,4 @@
-import { Container, Image, Text } from "@react-three/uikit";
+import { Container, Image, Text, Video } from "@react-three/uikit";
 import Navigation from "./Navigation";
 import RoundedButton from "./RoundedButton";
 
@@ -81,8 +81,9 @@ const ProProcessing = () => {
           flexDirection="row"
           justifyContent="space-between"
         >
-          <Image src="/vr-laboratory/airplane.png" width={50} />
-          <Image src="/vr-laboratory/dinosaur.png" width={50} />
+          <Image src="/vr-laboratory/airplane.png" width={40} />
+          <Image src="/vr-laboratory/dinosaur.png" width={40} />
+          <Video src="/vr-laboratory/video.mp4" loop autoplay width={40} />
         </Container>
         <Container
           borderBottomWidth={0.5}

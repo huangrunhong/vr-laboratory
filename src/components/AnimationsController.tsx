@@ -13,7 +13,7 @@ const AnimationsController = () => {
       transformRotateY={-150}
       transformTranslateX={530}
       transformTranslateY={-50}
-      transformTranslateZ={-70}
+      transformTranslateZ={0}
       padding={4}
       flexDirection="row"
       justifyContent="space-between"
