@@ -1,6 +1,6 @@
 import { Root } from "@react-three/uikit";
 
-import RoundedButton from "./dashboard/RoundedButton";
+import RoundedButton from "./RoundedButton";
 
 const AnimationsController = () => {
   return (
@@ -13,7 +13,7 @@ const AnimationsController = () => {
       transformRotateY={-150}
       transformTranslateX={530}
       transformTranslateY={-50}
-      transformTranslateZ={0}
+      transformTranslateZ={30}
       padding={4}
       flexDirection="row"
       justifyContent="space-between"

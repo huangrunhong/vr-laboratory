@@ -16,10 +16,14 @@ const ControlPanel = () => {
       transformRotateY={-150}
       transformTranslateX={530}
       transformTranslateY={-130}
-      transformTranslateZ={0}
+      transformTranslateZ={30}
     >
       {page === "welcome" && (
-        <Welcome onClick={() => setPage("pre-processing")} />
+        <Welcome
+          button="Let's Go"
+          content="BJT"
+          onClick={() => setPage("pre-processing")}
+        />
       )}
       {page === "pre-processing" && <ProProcessing />}
     </Root>

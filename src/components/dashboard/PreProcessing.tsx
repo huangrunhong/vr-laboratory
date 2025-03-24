@@ -1,6 +1,6 @@
 import { Container, Image, Text, Video } from "@react-three/uikit";
 import Navigation from "./Navigation";
-import RoundedButton from "./RoundedButton";
+import RoundedButton from "../RoundedButton";
 
 const ProProcessing = () => {
   return (

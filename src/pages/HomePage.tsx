@@ -9,6 +9,7 @@ import InteractiveObject from "../components/InteractiveObject";
 
 import ControlPanel from "../components/dashboard/ControlPanel";
 import AnimationsController from "../components/AnimationsController";
+import TutorialPanel from "../components/tutorial/TutorialPanel";
 // import TheoryPanel from "../components/TheoryPanel";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.925);
@@ -42,8 +43,6 @@ const HomePage = () => {
     playOnce(roomActions.actions["Door_social_space"], 2);
 
   const startPrinter = () => playOnce(printerActions.actions["Start"], 2);
-
-  console.log(room.animations);
 
   const moveStatue = () => playOnce(roomActions.actions["Figure1"], 2);
 
@@ -132,11 +131,9 @@ const HomePage = () => {
             /> */}
             <ControlPanel />
             <AnimationsController />
+
             {/* <TheoryPanel /> */}
-            <mesh
-              position={[5.355, 1.35, -0.025]}
-              rotation-y={-(Math.PI * 5) / 6}
-            >
+            <mesh position={[5.3, 1.35, 0.31]} rotation-y={-(Math.PI * 5) / 6}>
               <boxGeometry args={[2, 1, 0.01]} />
               <meshBasicMaterial color={0xffffff} />
             </mesh>
@@ -156,6 +153,8 @@ const HomePage = () => {
         }
         inactiveObject={<primitive object={vppSkin.scene} />}
       />
+
+      <TutorialPanel />
     </SelectionContext.Provider>
   );
 };
