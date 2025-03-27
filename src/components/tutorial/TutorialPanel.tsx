@@ -5,7 +5,11 @@ import Welcome from "../dashboard/Welcome";
 
 import Introductions from "./Introductions";
 
-const TutorialPanel = () => {
+interface TutorialPanelProps {
+  onClick: () => void;
+}
+
+const TutorialPanel = (onClick: TutorialPanelProps) => {
   const [page, setPage] = useState(0);
 
   return (
@@ -20,7 +24,14 @@ const TutorialPanel = () => {
       transformTranslateZ={315}
     >
       {page === 0 && (
-        <Welcome content="Tutorial" button="Start" onClick={() => setPage(1)} />
+        <Welcome
+          content="Tutorial"
+          button="Start"
+          onClick={() => {
+            setPage(1);
+            onClick;
+          }}
+        />
       )}
       {page > 0 && <Introductions step={page} setStep={setPage} />}
     </Root>

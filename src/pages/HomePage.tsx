@@ -10,13 +10,10 @@ import InteractiveObject from "../components/InteractiveObject";
 import ControlPanel from "../components/dashboard/ControlPanel";
 import AnimationsController from "../components/AnimationsController";
 import TutorialPanel from "../components/tutorial/TutorialPanel";
-// import TheoryPanel from "../components/TheoryPanel";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.925);
 const startButtonPosition = new Vector3(-1.8, 1.2, -0.925);
 const vppButtonPosition = new Vector3(3.15, 1.35, -6.275);
-
-const statueButtonPosition = new Vector3(-4, 1.2, -25.6);
 
 const modelPath = "/vr-laboratory/room.glb";
 const printerSkinPath = "/vr-laboratory/printerSkin.glb";
@@ -42,9 +39,14 @@ const HomePage = () => {
   const openSocialSpace = () =>
     playOnce(roomActions.actions["Door_social_space"], 2);
 
+  console.log(roomActions);
+
+  const appearBlueLine = () => playOnce(roomActions.actions["Lobby_1"], 2);
+
   const startPrinter = () => playOnce(printerActions.actions["Start"], 2);
 
-  const moveStatue = () => playOnce(roomActions.actions["Figure1"], 2);
+  const openBox = () => playOnce(roomActions.actions["Lobby_2"], 2);
+  const activeLogo = () => playOnce(roomActions.actions["Lobby_3"], 2);
 
   const onClick = () => {
     const open = printerActions.actions["openDoor"]?.time ?? 0;
@@ -101,9 +103,6 @@ const HomePage = () => {
         />
       </mesh>
 
-      <mesh rotation-y={-Math.PI / 2}>
-        <CircleButton onClick={moveStatue} position={statueButtonPosition} />
-      </mesh>
       <InteractiveObject
         id="printer"
         activeObject={
@@ -121,18 +120,10 @@ const HomePage = () => {
                 onClick={startPrinter}
               />
             </mesh>
-            {/* <VideoMaterial
-              url="/vr-laboratory/video.mp4"
-              x={3.315}
-              y={1.259}
-              z={-0.569}
-              width={0.51}
-              height={0.33}
-            /> */}
+
             <ControlPanel />
             <AnimationsController />
 
-            {/* <TheoryPanel /> */}
             <mesh position={[5.3, 1.35, 0.31]} rotation-y={-(Math.PI * 5) / 6}>
               <boxGeometry args={[2, 1, 0.01]} />
               <meshBasicMaterial color={0xffffff} />
@@ -153,8 +144,25 @@ const HomePage = () => {
         }
         inactiveObject={<primitive object={vppSkin.scene} />}
       />
+      <mesh rotation={[-Math.PI / 2, 0, 0]}>
+        <CircleButton
+          onClick={openBox}
+          position={[-2.46, 0.1, 1.24]}
+          color={0x707070}
+          innerSize={0.05}
+          outSize={0.06}
+        />
+      </mesh>
 
-      <TutorialPanel />
+      <mesh
+        position={[-2.257, 1.239, -0.103]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        onClick={activeLogo}
+      >
+        <planeGeometry args={[0.06, 0.15]} />
+        <meshBasicMaterial color={0xffffff} transparent={true} opacity={0.1} />
+      </mesh>
+      <TutorialPanel onClick={appearBlueLine} />
     </SelectionContext.Provider>
   );
 };
