@@ -1,5 +1,5 @@
 import { Container, Image, Svg, Text } from "@react-three/uikit";
-import { Children } from "react";
+import { Children, useState } from "react";
 
 interface TutorialProps {
   active: boolean;
@@ -76,107 +76,106 @@ const Heading = ({ children }: { children: string }) => (
   </Text>
 );
 
-interface IntroductionsProps {
-  step: number;
-  setStep: (step: number) => void;
-}
+const Introductions = () => {
+  const [step, setStep] = useState(0);
 
-const Introductions = ({ step, setStep }: IntroductionsProps) => (
-  <Container
-    width="100%"
-    height="100%"
-    gap={4}
-    padding={4}
-    backgroundColor="#0064c0"
-    borderRadius={4}
-  >
-    <Container flexDirection="column" gap={1}>
-      <Tutorial
-        active={step === 2}
-        label="Movement"
-        icon="/vr-laboratory/svg/footprint-line.svg"
-        onClick={() => setStep(2)}
-      />
-      <Tutorial
-        active={step === 3}
-        label="Clicking"
-        icon="/vr-laboratory/svg/gamepad-line.svg"
-        onClick={() => setStep(3)}
-      />
-      <Tutorial
-        active={step === 4 || step === 5}
-        label="Inspection"
-        icon="/vr-laboratory/svg/search-line.svg"
-        onClick={() => setStep(4)}
-      />
-    </Container>
-    <StepContainer step={step} setStep={setStep}>
-      <Container flexDirection="column" gap={4}>
-        <Heading>Welcome to the Tutorial!</Heading>
-        <Span>
-          You will complete three mini-tutorials designed to help you
-          familiarize yourself with the basic functions of the Virtual Reality
-          environment.
-        </Span>
+  return (
+    <Container
+      width="100%"
+      height="100%"
+      gap={4}
+      padding={4}
+      backgroundColor="#0064c0"
+      borderRadius={4}
+    >
+      <Container flexDirection="column" gap={1}>
+        <Tutorial
+          active={step === 1}
+          label="Movement"
+          icon="/vr-laboratory/svg/footprint-line.svg"
+          onClick={() => setStep(1)}
+        />
+        <Tutorial
+          active={step === 2}
+          label="Clicking"
+          icon="/vr-laboratory/svg/gamepad-line.svg"
+          onClick={() => setStep(2)}
+        />
+        <Tutorial
+          active={step === 3 || step === 4}
+          label="Inspection"
+          icon="/vr-laboratory/svg/search-line.svg"
+          onClick={() => setStep(3)}
+        />
       </Container>
-      <Container flexDirection="column" gap={4}>
-        <Heading>Walking around</Heading>
-        <Span>
-          Walk to the reception desk by following the blue line. Use the
-          joysticks to navigate, as shown below.
-        </Span>
-        <Container gap={6} positionTop={4}>
-          <Image width={90} src="/vr-laboratory/move-controls.png" />
-          <Container flexDirection="column" width={55} gap={6}>
-            <Container flexDirection="column" gap={2}>
-              <Heading>Left Joystick</Heading>
-              <Span>Move forward, backward or sideways.</Span>
-            </Container>
-            <Container flexDirection="column" gap={2}>
-              <Heading>Right Joystick</Heading>
-              <Span>Turn around.</Span>
+      <StepContainer step={step} setStep={setStep}>
+        <Container flexDirection="column" gap={4}>
+          <Heading>Welcome to the Tutorial!</Heading>
+          <Span>
+            You will complete three mini-tutorials designed to help you
+            familiarize yourself with the basic functions of the Virtual Reality
+            environment.
+          </Span>
+        </Container>
+        <Container flexDirection="column" gap={4}>
+          <Heading>Walking around</Heading>
+          <Span>
+            Walk to the reception desk by following the blue line. Use the
+            joysticks to navigate, as shown below.
+          </Span>
+          <Container gap={6} positionTop={4}>
+            <Image width={90} src="/vr-laboratory/move-controls.png" />
+            <Container flexDirection="column" width={55} gap={6}>
+              <Container flexDirection="column" gap={2}>
+                <Heading>Left Joystick</Heading>
+                <Span>Move forward, backward or sideways.</Span>
+              </Container>
+              <Container flexDirection="column" gap={2}>
+                <Heading>Right Joystick</Heading>
+                <Span>Turn around.</Span>
+              </Container>
             </Container>
           </Container>
         </Container>
-      </Container>
-      <Container flexDirection="column" gap={2}>
-        <Heading>Opening the door</Heading>
-        <Span>
-          Point at the button on the drawer and press either Trigger Control to
-          open it.
-        </Span>
-        <Image
-          width={90}
-          src="/vr-laboratory/trigger-controls.png"
-          positionBottom={-8}
-        />
-      </Container>
-      <Container flexDirection="column" gap={2}>
-        <Heading>Activating the Model</Heading>
-        <Span>
-          Click the instruction button inside the drawer to activate the 3D
-          model and inspect it.
-        </Span>
-        <Image
-          width={90}
-          src="/vr-laboratory/trigger-controls.png"
-          positionBottom={-8}
-        />
-      </Container>
-      <Container flexDirection="column" gap={2}>
-        <Heading>Deactivating the Model</Heading>
-        <Span>
-          Click the instruction button again, then close the drawer by pressing
-          the button outside the drawer.
-        </Span>
-        <Image
-          width={90}
-          src="/vr-laboratory/trigger-controls.png"
-          positionBottom={-8}
-        />
-      </Container>
-    </StepContainer>
-  </Container>
-);
+        <Container flexDirection="column" gap={2}>
+          <Heading>Opening the door</Heading>
+          <Span>
+            Point at the button on the drawer and press either Trigger Control
+            to open it.
+          </Span>
+          <Image
+            width={90}
+            src="/vr-laboratory/trigger-controls.png"
+            positionBottom={-8}
+          />
+        </Container>
+        <Container flexDirection="column" gap={2}>
+          <Heading>Activating the Model</Heading>
+          <Span>
+            Click the instruction button inside the drawer to activate the 3D
+            model and inspect it.
+          </Span>
+          <Image
+            width={90}
+            src="/vr-laboratory/trigger-controls.png"
+            positionBottom={-8}
+          />
+        </Container>
+        <Container flexDirection="column" gap={2}>
+          <Heading>Deactivating the Model</Heading>
+          <Span>
+            Click the instruction button again, then close the drawer by
+            pressing the button outside the drawer.
+          </Span>
+          <Image
+            width={90}
+            src="/vr-laboratory/trigger-controls.png"
+            positionBottom={-8}
+          />
+        </Container>
+      </StepContainer>
+    </Container>
+  );
+};
 
 export default Introductions;

@@ -32,6 +32,7 @@ const HomePage = () => {
 
   const roomActions = useAnimations(room.animations, room.scene);
   const [selected, setSelected] = useState("");
+  const [activeStart, setActiveStart] = useState(false);
   const printerActions = useAnimations(printer.animations, printer.scene);
   const vppActions = useAnimations(vpp.animations, vpp.scene);
 
@@ -39,9 +40,10 @@ const HomePage = () => {
   const openSocialSpace = () =>
     playOnce(roomActions.actions["Door_social_space"], 2);
 
-  console.log(roomActions);
-
-  const appearBlueLine = () => playOnce(roomActions.actions["Lobby_1"], 2);
+  const appearBlueLine = () => {
+    playOnce(roomActions.actions["Lobby_1"], 2);
+    setActiveStart(true);
+  };
 
   const startPrinter = () => playOnce(printerActions.actions["Start"], 2);
 
@@ -144,15 +146,17 @@ const HomePage = () => {
         }
         inactiveObject={<primitive object={vppSkin.scene} />}
       />
-      <mesh rotation={[-Math.PI / 2, 0, 0]}>
-        <CircleButton
-          onClick={openBox}
-          position={[-2.46, 0.1, 1.24]}
-          color={0x707070}
-          innerSize={0.05}
-          outSize={0.06}
-        />
-      </mesh>
+      {activeStart && (
+        <mesh rotation={[-Math.PI / 2, 0, 0]}>
+          <CircleButton
+            onClick={openBox}
+            position={[-2.46, 0.1, 1.24]}
+            color={0x707070}
+            innerSize={0.04}
+            outSize={0.05}
+          />
+        </mesh>
+      )}
 
       <mesh
         position={[-2.257, 1.239, -0.103]}

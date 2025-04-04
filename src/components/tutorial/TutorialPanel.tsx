@@ -9,12 +9,12 @@ interface TutorialPanelProps {
   onClick: () => void;
 }
 
-const TutorialPanel = (onClick: TutorialPanelProps) => {
-  const [page, setPage] = useState(0);
+const TutorialPanel = ({ onClick }: TutorialPanelProps) => {
+  const [start, setStart] = useState(true);
 
   return (
     <Root
-      backgroundColor={page === 0 ? "#0064c0" : "white"}
+      backgroundColor={start ? "#0064c0" : "white"}
       borderRadius={4}
       sizeX={2.2}
       sizeY={1.2}
@@ -23,17 +23,17 @@ const TutorialPanel = (onClick: TutorialPanelProps) => {
       transformTranslateY={-160}
       transformTranslateZ={315}
     >
-      {page === 0 && (
+      {start && (
         <Welcome
           content="Tutorial"
           button="Start"
           onClick={() => {
-            setPage(1);
-            onClick;
+            onClick();
+            setStart(false);
           }}
         />
       )}
-      {page > 0 && <Introductions step={page} setStep={setPage} />}
+      {!start && <Introductions />}
     </Root>
   );
 };
