@@ -3,12 +3,11 @@ import { Container, Text } from "@react-three/uikit";
 import RoundedButton from "../RoundedButton";
 
 interface WelcomeProps {
+  title: string;
   onClick: () => void;
-  content: string;
-  button: string;
 }
 
-const Welcome = ({ onClick, content, button }: WelcomeProps) => (
+const Welcome = ({ onClick, title }: WelcomeProps) => (
   <Container
     flexDirection="column"
     gap={4}
@@ -21,7 +20,7 @@ const Welcome = ({ onClick, content, button }: WelcomeProps) => (
         Welcome to the Virtual Reality Lab Additive Manufacturing
       </Text>
       <Text fontSize={14} color="white" fontWeight={500}>
-        {content}
+        {title}
       </Text>
     </Container>
     <Container width="100%">
@@ -40,7 +39,7 @@ const Welcome = ({ onClick, content, button }: WelcomeProps) => (
         fontSize={6}
         onClick={onClick}
       >
-        {button}
+        Start
       </RoundedButton>
     </Container>
   </Container>

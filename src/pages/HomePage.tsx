@@ -6,10 +6,9 @@ import playOnce from "../helpers/playOnce";
 import CircleButton from "../components/CircleButton";
 import SelectionContext from "../contexts/SelectionContext";
 import InteractiveObject from "../components/InteractiveObject";
-
-import ControlPanel from "../components/dashboard/ControlPanel";
 import AnimationsController from "../components/AnimationsController";
 import TutorialPanel from "../components/tutorial/TutorialPanel";
+import AmHubPanel from "../components/amhub/AmHubPanel";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.925);
 const startButtonPosition = new Vector3(-1.8, 1.2, -0.925);
@@ -21,6 +20,7 @@ const printerPath = "/vr-laboratory/printer.glb";
 const vppSkinPath = "/vr-laboratory/vppSkin.glb";
 const logoPath = "/vr-laboratory/logo.glb";
 const vppPath = "/vr-laboratory/vpp.glb";
+const lobbyBoxPath = "/vr-laboratory/lobbyBox.glb";
 
 const HomePage = () => {
   const room = useGLTF(modelPath);
@@ -29,12 +29,14 @@ const HomePage = () => {
   const vpp = useGLTF(vppPath);
   const printer = useGLTF(printerPath);
   const logo = useGLTF(logoPath);
+  const lobbyBox = useGLTF(lobbyBoxPath);
 
   const roomActions = useAnimations(room.animations, room.scene);
   const [selected, setSelected] = useState("");
   const [activeStart, setActiveStart] = useState(false);
   const printerActions = useAnimations(printer.animations, printer.scene);
   const vppActions = useAnimations(vpp.animations, vpp.scene);
+  const lobbyBoxActions = useAnimations(lobbyBox.animations, lobbyBox.scene);
 
   const openDoor = () => playOnce(roomActions.actions["Door_entrance"], 2);
   const openSocialSpace = () =>
@@ -47,8 +49,8 @@ const HomePage = () => {
 
   const startPrinter = () => playOnce(printerActions.actions["Start"], 2);
 
-  const openBox = () => playOnce(roomActions.actions["Lobby_2"], 2);
-  const activeLogo = () => playOnce(roomActions.actions["Lobby_3"], 2);
+  const openBox = () => playOnce(lobbyBoxActions.actions["Lobby_2"], 2);
+  const activeLogo = () => playOnce(lobbyBoxActions.actions["Lobby_3"], 2);
 
   const onClick = () => {
     const open = printerActions.actions["openDoor"]?.time ?? 0;
@@ -104,7 +106,6 @@ const HomePage = () => {
           outSize={0.08}
         />
       </mesh>
-
       <InteractiveObject
         id="printer"
         activeObject={
@@ -122,10 +123,7 @@ const HomePage = () => {
                 onClick={startPrinter}
               />
             </mesh>
-
-            <ControlPanel />
             <AnimationsController />
-
             <mesh position={[5.3, 1.35, 0.31]} rotation-y={-(Math.PI * 5) / 6}>
               <boxGeometry args={[2, 1, 0.01]} />
               <meshBasicMaterial color={0xffffff} />
@@ -147,17 +145,21 @@ const HomePage = () => {
         inactiveObject={<primitive object={vppSkin.scene} />}
       />
       {activeStart && (
-        <mesh rotation={[-Math.PI / 2, 0, 0]}>
-          <CircleButton
-            onClick={openBox}
-            position={[-2.46, 0.1, 1.24]}
-            color={0x707070}
-            innerSize={0.04}
-            outSize={0.05}
-          />
-        </mesh>
+        <>
+          <mesh rotation={[-Math.PI / 2, 0, 0]}>
+            <CircleButton
+              onClick={openBox}
+              position={[-2.46, 0.1, 1.24]}
+              color={0x707070}
+              innerSize={0.04}
+              outSize={0.05}
+            />
+          </mesh>
+          <mesh position={[0, 0, 0]}>
+            <primitive object={lobbyBox.scene} />
+          </mesh>
+        </>
       )}
-
       <mesh
         position={[-2.257, 1.239, -0.103]}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -167,6 +169,7 @@ const HomePage = () => {
         <meshBasicMaterial color={0xffffff} transparent={true} opacity={0.1} />
       </mesh>
       <TutorialPanel onClick={appearBlueLine} />
+      <AmHubPanel />
     </SelectionContext.Provider>
   );
 };

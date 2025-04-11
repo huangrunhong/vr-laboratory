@@ -14,17 +14,17 @@ const CircleButton = ({
   outSize = 0.07,
   ...props
 }: CircleButtonProps) => {
+  const [active, setActive] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [actived, setActived] = useState(false);
 
   return (
     <group
       {...props}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      onPointerDown={() => setActived(true)}
-      onPointerLeave={() => setActived(false)}
-      scale={actived ? 0.9 : 1}
+      onPointerDown={() => setActive(true)}
+      onPointerLeave={() => setActive(false)}
+      scale={active ? 0.9 : 1}
     >
       <mesh>
         <ringGeometry args={[innerSize, outSize]} />
