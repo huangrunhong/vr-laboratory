@@ -13,9 +13,16 @@ interface SlidesProps {
   children: React.ReactNode;
   slides: Slide[];
   count: number;
+  showPageNumber?: boolean;
 }
 
-const Slides = ({ children, count, slides }: SlidesProps) => {
+const homePage: Slide = {
+  page: [0],
+  label: "Main Page",
+  icon: "/vr-laboratory/icon/home-line.png",
+};
+
+const Slides = ({ children, count, slides, showPageNumber }: SlidesProps) => {
   const [step, setStep] = useState(0);
 
   return (
@@ -28,7 +35,7 @@ const Slides = ({ children, count, slides }: SlidesProps) => {
       borderRadius={4}
     >
       <Container flexDirection="column" gap={1}>
-        {slides.map((slide) => (
+        {[...slides, homePage].map((slide) => (
           <Container
             key={slide.page[0]}
             alignItems="center"
@@ -47,7 +54,12 @@ const Slides = ({ children, count, slides }: SlidesProps) => {
                 <Image src={slide.icon} />
               </Container>
             )}
-            <Text fontSize={6} color="#fff" fontWeight={500}>
+            <Text
+              wordBreak="keep-all"
+              fontSize={6}
+              color="#fff"
+              fontWeight={500}
+            >
               {slide.label}
             </Text>
           </Container>
@@ -67,7 +79,9 @@ const Slides = ({ children, count, slides }: SlidesProps) => {
         )}
         <Container paddingX={0} justifyContent="space-between">
           <Text fontSize={4} fontWeight={400} flexGrow={1}>
-            {step.toString()} / {count.toString()}
+            {showPageNumber
+              ? `${(step + 1).toString()} / ${count.toString()}`
+              : ""}
           </Text>
           <Container gap={6}>
             <Svg

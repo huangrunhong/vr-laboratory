@@ -1,27 +1,33 @@
 import { Container, Text } from "@react-three/uikit";
 
+import colors from "../../shared/colors";
+
 interface RoundedButtonProps {
   children: string;
-  backgroundColor: string;
-  textColor: string;
-  borderColor?: string;
-  fontSize: number;
   onClick?: () => void;
+  outline?: boolean;
+  inverse?: boolean;
 }
 
 const RoundedButton = ({
   children,
-  backgroundColor,
-  borderColor,
-  textColor,
-  fontSize,
   onClick,
+  outline,
+  inverse,
 }: RoundedButtonProps) => (
   <Container
     paddingY={2}
     paddingX={4}
-    backgroundColor={backgroundColor}
-    borderColor={borderColor}
+    backgroundColor={
+      inverse
+        ? outline
+          ? colors.primary
+          : colors.white
+        : outline
+          ? colors.white
+          : colors.primary
+    }
+    borderColor={inverse ? colors.white : colors.primary}
     borderWidth={0.35}
     borderRadius={20}
     justifyContent="center"
@@ -31,9 +37,9 @@ const RoundedButton = ({
   >
     <Text
       textAlign="center"
-      fontSize={fontSize}
+      fontSize={6}
       fontWeight={600}
-      color={textColor}
+      color={inverse || !outline ? colors.white : colors.primary}
     >
       {children}
     </Text>

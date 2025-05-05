@@ -6,9 +6,11 @@ import playOnce from "../helpers/playOnce";
 import CircleButton from "../components/CircleButton";
 import SelectionContext from "../contexts/SelectionContext";
 import InteractiveObject from "../components/InteractiveObject";
-import AnimationsController from "../components/AnimationsController";
+
 import TutorialPanel from "../components/tutorial/TutorialPanel";
 import AmHubPanel from "../components/amhub/AmHubPanel";
+import TransparentButton from "../components/TransparentButton";
+import BinderJettingPanel from "../components/binderJetting/BinderJettingsPanel";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.925);
 const startButtonPosition = new Vector3(-1.8, 1.2, -0.925);
@@ -50,7 +52,9 @@ const HomePage = () => {
   const startPrinter = () => playOnce(printerActions.actions["Start"], 2);
 
   const openBox = () => playOnce(lobbyBoxActions.actions["Lobby_2"], 2);
-  const activeLogo = () => playOnce(lobbyBoxActions.actions["Lobby_3"], 2);
+  const activeTum = () => playOnce(lobbyBoxActions.actions["Lobby_3"], 2);
+  const activeFraunhofer = () => playOnce(roomActions.actions["Hub_2"], 2);
+  const activeMicroFactory = () => playOnce(roomActions.actions["Hub_1"], 2);
 
   const onClick = () => {
     const open = printerActions.actions["openDoor"]?.time ?? 0;
@@ -123,11 +127,15 @@ const HomePage = () => {
                 onClick={startPrinter}
               />
             </mesh>
-            <AnimationsController />
-            <mesh position={[5.3, 1.35, 0.31]} rotation-y={-(Math.PI * 5) / 6}>
-              <boxGeometry args={[2, 1, 0.01]} />
+            <mesh
+              position={[5.6, 1.35, 0.12]}
+              rotation-y={-(Math.PI * 4.5) / 6}
+            >
+              <boxGeometry args={[2.5, 1.5, 0.01]} />
               <meshBasicMaterial color={0xffffff} />
             </mesh>
+
+            <BinderJettingPanel />
           </>
         }
         inactiveObject={<primitive object={printerSkin.scene} />}
@@ -160,14 +168,34 @@ const HomePage = () => {
           </mesh>
         </>
       )}
-      <mesh
-        position={[-2.257, 1.239, -0.103]}
-        rotation={[-Math.PI / 2, 0, 0]}
-        onClick={activeLogo}
-      >
-        <planeGeometry args={[0.06, 0.15]} />
-        <meshBasicMaterial color={0xffffff} transparent={true} opacity={0.1} />
-      </mesh>
+      <TransparentButton
+        x={-2.257}
+        y={1.2449}
+        z={-0.103}
+        rotationX={-Math.PI / 2}
+        rotationY={0}
+        rotationZ={0}
+        onClick={activeTum}
+      />
+
+      <TransparentButton
+        x={8.042}
+        y={1.63}
+        z={9.965}
+        rotationX={0}
+        rotationY={Math.PI / 2}
+        rotationZ={Math.PI / 2}
+        onClick={activeFraunhofer}
+      />
+      <TransparentButton
+        x={12.767}
+        y={1.63}
+        z={9.955}
+        rotationX={0}
+        rotationY={-Math.PI / 2}
+        rotationZ={Math.PI / 2}
+        onClick={activeMicroFactory}
+      />
       <TutorialPanel onClick={appearBlueLine} />
       <AmHubPanel />
     </SelectionContext.Provider>

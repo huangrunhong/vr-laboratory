@@ -19,7 +19,7 @@ const slides: Slide[] = [
   { page: [2], icon: "/vr-laboratory/icon/cursor-line.png", label: "Clicking" },
   {
     page: [3],
-    icon: "/vr-laboratory/icon/search-2-line.png",
+    icon: "/vr-laboratory/icon/search-line.png",
     label: "Inspection",
   },
 ];
@@ -31,6 +31,7 @@ interface TutorialPanelProps {
 const TutorialPanel = ({ onClick }: TutorialPanelProps) => (
   <Panel
     title="Tutorial"
+    subtitle="Welcome to the Virtual Reality Lab Additive Manufacturing"
     onStart={onClick}
     transformRotateY={-180}
     transformTranslateX={-500}
@@ -56,7 +57,6 @@ const TutorialPanel = ({ onClick }: TutorialPanelProps) => (
           <Image width={120} src="/vr-laboratory/move-controls.png" />
           <Container flexDirection="column" width={55} gap={8}>
             <Container flexDirection="column" gap={2}>
-              {/* <Heading>Left Joystick</Heading> */}
               <Text fontSize={7} fontWeight={600}>
                 Left Joystick
               </Text>

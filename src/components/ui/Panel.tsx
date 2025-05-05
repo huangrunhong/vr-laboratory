@@ -9,12 +9,16 @@ interface PanelProps extends RootProperties {
   children: React.ReactNode;
   onStart?: () => void;
   title: string;
+  subtitle: string;
+  cooperator?: string;
 }
 
 const Panel = ({
   children,
   onStart = () => {},
   title,
+  subtitle,
+  cooperator,
   ...rest
 }: PanelProps) => {
   const [start, setStart] = useState(true);
@@ -28,7 +32,12 @@ const Panel = ({
       {...rest}
     >
       {start && (
-        <Welcome title={title} onClick={() => (onStart(), setStart(false))} />
+        <Welcome
+          title={title}
+          subtitle={subtitle}
+          cooperator={cooperator}
+          onClick={() => (onStart(), setStart(false))}
+        />
       )}
       {!start && children}
     </Root>
