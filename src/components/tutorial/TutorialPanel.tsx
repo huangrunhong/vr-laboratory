@@ -58,23 +58,41 @@ const TutorialPanel = ({ onClick }: TutorialPanelProps) => {
             Walk to the reception desk by following the blue line. Use the
             joysticks to navigate, as shown below.
           </Span>
-          <Container gap={12} positionTop={4}>
-            <Image width={120} src="/vr-laboratory/move-controls.png" />
-            <Container flexDirection="column" width={55} gap={8}>
-              <Container flexDirection="column" gap={2}>
-                <Text fontSize={7} fontWeight={600}>
-                  Left Joystick
-                </Text>
-                <Text fontSize={7}>Move forward, backward or sideways.</Text>
-              </Container>
-              <Container flexDirection="column" gap={2}>
-                <Text fontSize={7} fontWeight={600}>
-                  Right Joystick
-                </Text>
-                <Text fontSize={7}>Turn around.</Text>
-              </Container>
+          <Container>
+            <Container
+              flexGrow={1}
+              flexShrink={0}
+              flexBasis={0}
+              flexDirection="column"
+              alignItems="center"
+              gap={2}
+            >
+              <Text fontSize={7} fontWeight={600}>
+                Left Joystick
+              </Text>
+              <Text fontSize={7} textAlign="center">
+                Move forward, backward or sideways.
+              </Text>
+            </Container>
+            <Container
+              flexGrow={1}
+              flexShrink={0}
+              flexBasis={0}
+              flexDirection="column"
+              alignItems="center"
+              gap={2}
+            >
+              <Text fontSize={7} fontWeight={600}>
+                Right Joystick
+              </Text>
+              <Text fontSize={7}>Turn around.</Text>
             </Container>
           </Container>
+          <Image
+            alignSelf="center"
+            width={120}
+            src="/vr-laboratory/move-controls.png"
+          />
         </Container>
         <Container flexDirection="column" width={200} gap={2}>
           <Heading>Opening the door</Heading>
@@ -83,9 +101,10 @@ const TutorialPanel = ({ onClick }: TutorialPanelProps) => {
             to open it.
           </Span>
           <Image
+            marginTop={8}
+            alignSelf="center"
             width={120}
             src="/vr-laboratory/trigger-controls.png"
-            positionBottom={-8}
           />
         </Container>
         <Container flexDirection="column" width={200} gap={6}>
@@ -103,11 +122,7 @@ const TutorialPanel = ({ onClick }: TutorialPanelProps) => {
               pressing the button outside the drawer.
             </Span>
           </Container>
-          <Image
-            width={120}
-            src="/vr-laboratory/trigger-controls.png"
-            positionBottom={-8}
-          />
+          <Image width={120} src="/vr-laboratory/trigger-controls.png" />
         </Container>
       </Slides>
     </Panel>
