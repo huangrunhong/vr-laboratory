@@ -5,75 +5,84 @@ import Panel from "../ui/Panel";
 import Slides, { Slide } from "../ui/Slides";
 import RoundedButton from "../ui/RoundedButton";
 import Span from "../ui/Span";
+import Heading from "../ui/Heading";
+import Information from "../ui/Information";
 
 const slides: Slide[] = [
   {
-    page: [0],
+    page: [1],
     icon: "/vr-laboratory/bjt/00_Icon_Printer_Components.png",
     label: "Printer Components",
   },
   {
-    page: [1],
+    page: [2],
     icon: "/vr-laboratory/bjt/01_Icon_Pre-processing.png",
     label: "Pre-processing",
   },
   {
-    page: [2],
+    page: [3],
     icon: "/vr-laboratory/bjt/02_Icon_Printing.png",
     label: "Printing",
   },
   {
-    page: [3],
+    page: [4],
     icon: "/vr-laboratory/bjt/03_Icon_Post-processing.png",
     label: "Post-processing",
   },
   {
-    page: [4],
+    page: [5],
     icon: "/vr-laboratory/bjt/04_Icon_Take_Aways.png",
     label: "Take Away",
   },
 ];
 
 const BinderJettingPanel = () => {
+  const [page, setPage] = useState(0);
   const [component, setComponent] = useState(0);
 
   return (
     <Panel
-      title="Binder Jetting (BJT)"
-      subtitle="Welcome to the Process Area"
       cooperator="/vr-laboratory/bjt/igcv.png"
+      onClick={() => setPage(1)}
+      title="Binder Jetting (BJT)"
+      showWelcome={page === 0}
+      subtitle="Welcome to the Process Area"
       transformRotateY={-135}
       transformTranslateX={560}
       transformTranslateY={-135}
       transformTranslateZ={10}
     >
-      <Slides slides={slides} count={4}>
+      <Slides slides={slides} count={4} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
           <Image
             src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png"
             flexGrow={1}
           />
+          <Span primary width={200}>
+            Click on the buttons below to locate the respective parts inside the
+            printer!
+          </Span>
           <Container justifyContent="space-between">
             <RoundedButton
-              outline={component !== 0}
+              outline={component === 0}
               onClick={() => setComponent(0)}
             >
               Build Platform
             </RoundedButton>
             <RoundedButton
-              outline={component !== 1}
+              outline={component === 1}
               onClick={() => setComponent(1)}
             >
               Print Head
             </RoundedButton>
             <RoundedButton
-              outline={component !== 2}
+              outline={component === 2}
               onClick={() => setComponent(2)}
             >
               Recoater
             </RoundedButton>
             <RoundedButton
-              outline={component !== 3}
+              outline={component === 3}
               onClick={() => setComponent(3)}
             >
               Cleaning Unit
@@ -109,6 +118,85 @@ const BinderJettingPanel = () => {
               </Span>
             )}
           </Container>
+        </Container>
+        <Container flexDirection="column" gap={8} positionType="relative">
+          <Image
+            src="/vr-laboratory/bjt/Slide_7_Table_BJT_Studio.png"
+            flexGrow={1}
+          />
+          <Container flexDirection="column" gap={4} alignItems="flex-start">
+            <Span primary width={200}>
+              Clean the Print Head before you start printing!
+            </Span>
+            <RoundedButton onClick={() => setComponent(0)}>
+              Clean Print Head
+            </RoundedButton>
+          </Container>
+          <Container flexDirection="column" gap={4} alignItems="flex-start">
+            <Span primary width={200}>
+              Print the Test Patterns, to ensure the Print Head is cleaned and
+              all the nozzles are working!
+            </Span>
+            <Container
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="center"
+              gap={12}
+            >
+              <RoundedButton onClick={() => setComponent(0)}>
+                Print Test Patterns
+              </RoundedButton>
+              <Image
+                src="/vr-laboratory/bjt/Slide_7_BJT_Test_Patterns.png"
+                width={60}
+              />
+            </Container>
+          </Container>
+          <Information flexDirection="column" height={150}>
+            <Heading>Importance of Print Head cleaning:</Heading>
+            <Span paddingTop={4} paddingBottom={8}>
+              Print Head cleaning helps to keep the nozzles in the print head
+              open. The nozzle plate always has some residual binder sticking on
+              the surface of the nozzle plate, and while printing, the sand
+              particles can stick to the residual binder and damage the nozzle
+              plate. This could lead to uneven binder spray for consecutive
+              layers.
+            </Span>
+            <Heading>Frequency of Print Head cleaning:</Heading>
+            <Span paddingY={4}>
+              It is also very important to note that Print Head cleaning needs
+              to be done as frequently as possible. It is a compulsion to do it
+              once before printing. Most printers have the program set up so
+              that the Print Head gets cleaned at certain intervals of layers.
+            </Span>
+          </Information>
+        </Container>
+
+        <Container flexDirection="column" gap={8}>
+          <Span width={200}>
+            To create an interface between the build platform and the part, few
+            layers need to be coated without any part printing on it.
+          </Span>
+          <Container flexDirection="column" gap={4} alignItems="flex-start">
+            <Span fontWeight={600}>Coat Initial Layers! </Span>
+            <RoundedButton onClick={() => setComponent(0)}>
+              Coat Initial Layers
+            </RoundedButton>
+          </Container>
+          <Container flexDirection="column" gap={4} alignItems="flex-start">
+            <Span width={200} fontWeight={600}>
+              Start Printing and observe the layer-by-layer build-up of the
+              part!
+            </Span>
+            <RoundedButton onClick={() => setComponent(0)}>
+              Start Printing
+            </RoundedButton>
+          </Container>
+
+          <Span color="#C00000" width={200} marginTop={30}>
+            Note: The printing process is compacted to avoid extended exposure
+            to VR environment.
+          </Span>
         </Container>
       </Slides>
     </Panel>

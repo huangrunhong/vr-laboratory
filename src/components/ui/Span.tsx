@@ -1,11 +1,18 @@
-import { Text } from "@react-three/uikit";
+import { Text, TextProperties } from "@react-three/uikit";
 
 import colors from "../../shared/colors";
 
-const Span = ({ children }: { children: string }) => (
-  <Text color={colors.foreground} fontWeight={400} fontSize={8} lineHeight={10}>
-    {children}
-  </Text>
+interface SpanProps extends TextProperties {
+  primary?: boolean;
+}
+
+const Span = ({ primary, ...props }: SpanProps) => (
+  <Text
+    color={primary ? colors.primary : colors.foreground}
+    fontWeight={400}
+    fontSize={7}
+    {...props}
+  />
 );
 
 export default Span;

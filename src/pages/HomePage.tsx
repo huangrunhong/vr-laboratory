@@ -6,7 +6,6 @@ import playOnce from "../helpers/playOnce";
 import CircleButton from "../components/CircleButton";
 import SelectionContext from "../contexts/SelectionContext";
 import InteractiveObject from "../components/InteractiveObject";
-
 import TutorialPanel from "../components/tutorial/TutorialPanel";
 import AmHubPanel from "../components/amhub/AmHubPanel";
 import TransparentButton from "../components/TransparentButton";
@@ -48,6 +47,8 @@ const HomePage = () => {
     playOnce(roomActions.actions["Lobby_1"], 2);
     setActiveStart(true);
   };
+
+  console.log(printer.nodes.Build_Platform);
 
   const startPrinter = () => playOnce(printerActions.actions["Start"], 2);
 
