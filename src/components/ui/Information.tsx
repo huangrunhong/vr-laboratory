@@ -12,13 +12,14 @@ const Information = (props: ContainerProperties) => {
         width={12}
         cursor="pointer"
         onClick={() => setActive(!active)}
+        alignSelf="flex-end"
       />
       {active && (
         <Container
           width="100%"
           height="100%"
           positionTop={-4}
-          positionLeft={-4}
+          positionLeft={0}
           positionType="absolute"
           padding={8}
           backgroundColor={colors.white}

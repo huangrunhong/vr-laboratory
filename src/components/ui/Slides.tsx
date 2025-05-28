@@ -3,6 +3,8 @@ import { Container, Image, Svg, Text } from "@react-three/uikit";
 
 import colors from "../../shared/colors";
 
+import RoundedButton from "./RoundedButton";
+
 export interface Slide {
   page: number[];
   label: string;
@@ -17,12 +19,6 @@ interface SlidesProps {
   setStep: (step: number) => void;
   showPageNumber?: boolean;
 }
-
-const homePage: Slide = {
-  page: [0],
-  label: "Main Page",
-  icon: "/vr-laboratory/icon/home-line.png",
-};
 
 interface MenuProps {
   slide: Slide;
@@ -80,7 +76,12 @@ const Slides = ({
       {slides.map((slide) => (
         <Menu key={slide.label} slide={slide} step={step} setStep={setStep} />
       ))}
-      <Menu slide={homePage} step={step} setStep={setStep} />
+      <Container flexGrow={1} />
+      <Container justifyContent="center" padding={4}>
+        <RoundedButton inverse outline onClick={() => setStep(0)}>
+          Home
+        </RoundedButton>
+      </Container>
     </Container>
     <Container
       height="100%"

@@ -11,8 +11,8 @@ import AmHubPanel from "../components/amhub/AmHubPanel";
 import TransparentButton from "../components/TransparentButton";
 import BinderJettingPanel from "../components/binderJetting/BinderJettingsPanel";
 
-const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.925);
-const startButtonPosition = new Vector3(-1.8, 1.2, -0.925);
+// const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.925);
+// const startButtonPosition = new Vector3(-1.8, 1.2, -0.925);
 const vppButtonPosition = new Vector3(3.15, 1.35, -6.275);
 
 const modelPath = "/vr-laboratory/room.glb";
@@ -48,25 +48,33 @@ const HomePage = () => {
     setActiveStart(true);
   };
 
-  console.log(printer.nodes.Build_Platform);
+  console.log(printerActions.actions);
 
-  const startPrinter = () => playOnce(printerActions.actions["Start"], 2);
+  // const startPrinter = () => playOnce(printerActions.actions["Start"], 2);
 
   const openBox = () => playOnce(lobbyBoxActions.actions["Lobby_2"], 2);
   const activeTum = () => playOnce(lobbyBoxActions.actions["Lobby_3"], 2);
   const activeFraunhofer = () => playOnce(roomActions.actions["Hub_2"], 2);
   const activeMicroFactory = () => playOnce(roomActions.actions["Hub_1"], 2);
 
-  const onClick = () => {
-    const open = printerActions.actions["openDoor"]?.time ?? 0;
-    const close = printerActions.actions["doorClose"]?.time ?? 0;
+  const cleanPrintHead = () =>
+    playOnce(printerActions.actions["CleanPrintHead"], 2);
+  const printTestPatterns = () =>
+    playOnce(printerActions.actions["PrintTestPatterns"], 2);
+  const coatInitialLayers = () =>
+    playOnce(printerActions.actions["CoatlnitialLayers"], 2);
+  const startPrinting = () =>
+    playOnce(printerActions.actions["StartPrinting"], 2);
+  // const onClick = () => {
+  //   const open = printerActions.actions["openDoor"]?.time ?? 0;
+  //   const close = printerActions.actions["doorClose"]?.time ?? 0;
 
-    playOnce(
-      open <= close
-        ? printerActions.actions["openDoor"]
-        : printerActions.actions["doorClose"]
-    );
-  };
+  //   playOnce(
+  //     open <= close
+  //       ? printerActions.actions["openDoor"]
+  //       : printerActions.actions["doorClose"]
+  //   );
+  // };
 
   const startVpp = () => playOnce(vppActions.actions["Play"], 2);
 
@@ -118,7 +126,7 @@ const HomePage = () => {
             <group>
               <primitive object={printer.scene} />
             </group>
-            <mesh rotation-y={Math.PI}>
+            {/* <mesh rotation-y={Math.PI}>
               <CircleButton
                 position={openDoorButtonPosition}
                 onClick={onClick}
@@ -127,7 +135,7 @@ const HomePage = () => {
                 position={startButtonPosition}
                 onClick={startPrinter}
               />
-            </mesh>
+            </mesh> */}
             <mesh
               position={[5.6, 1.35, 0.12]}
               rotation-y={-(Math.PI * 4.5) / 6}
@@ -136,7 +144,12 @@ const HomePage = () => {
               <meshBasicMaterial color={0xffffff} />
             </mesh>
 
-            <BinderJettingPanel />
+            <BinderJettingPanel
+              cleanPrintHead={cleanPrintHead}
+              printTestPatterns={printTestPatterns}
+              coatInitialLayers={coatInitialLayers}
+              startPrinting={startPrinting}
+            />
           </>
         }
         inactiveObject={<primitive object={printerSkin.scene} />}
@@ -158,7 +171,7 @@ const HomePage = () => {
           <mesh rotation={[-Math.PI / 2, 0, 0]}>
             <CircleButton
               onClick={openBox}
-              position={[-2.46, 0.1, 1.24]}
+              position={[-2.36, 0.1, 1.24]}
               color={0x707070}
               innerSize={0.04}
               outSize={0.05}
@@ -170,12 +183,12 @@ const HomePage = () => {
         </>
       )}
       <TransparentButton
-        x={-2.257}
-        y={1.2449}
-        z={-0.103}
-        rotationX={-Math.PI / 2}
-        rotationY={0}
-        rotationZ={0}
+        x={-2.2815}
+        y={1.505}
+        z={-0.08}
+        rotationX={0}
+        rotationY={-Math.PI / 2}
+        rotationZ={Math.PI / 2}
         onClick={activeTum}
       />
 
