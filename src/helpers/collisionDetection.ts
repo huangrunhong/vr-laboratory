@@ -1,8 +1,8 @@
-import { Box3, Mesh, Object3D, Vector3 } from "three";
+import { Box3, Object3D, Vector3 } from "three";
+
+import isMesh from "./isMesh";
 
 const size = new Vector3(0.25, 0.25, 0.25);
-
-const isMesh = (object: Object3D): object is Mesh => object instanceof Mesh;
 
 const collisionDetection = (origin: Vector3, scene: Object3D, box = size) => {
   let collided = false;

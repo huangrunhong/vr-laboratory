@@ -1,7 +1,7 @@
-import { GroupProps } from "@react-three/fiber";
 import { useState } from "react";
+import { ThreeElements } from "@react-three/fiber";
 
-const RingButton = (props: GroupProps) => {
+const RingButton = (props: ThreeElements["group"]) => {
   const [hovered, setHovered] = useState(false);
 
   return (

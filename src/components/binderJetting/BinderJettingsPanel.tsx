@@ -41,6 +41,9 @@ interface BinderJettingPanelProps {
   printTestPatterns: () => void;
   coatInitialLayers: () => void;
   startPrinting: () => void;
+  displayPart: () => void;
+  openBJT: () => void;
+  onSelectComponent: (index: number) => void;
 }
 
 const BinderJettingPanel = ({
@@ -48,9 +51,12 @@ const BinderJettingPanel = ({
   printTestPatterns,
   coatInitialLayers,
   startPrinting,
+  displayPart,
+  openBJT,
+  onSelectComponent,
 }: BinderJettingPanelProps) => {
   const [page, setPage] = useState(0);
-  const [component, setComponent] = useState(0);
+  const [component, setComponent] = useState<number>();
 
   return (
     <Panel
@@ -67,35 +73,36 @@ const BinderJettingPanel = ({
       <Slides slides={slides} count={4} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
           <Image
-            src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png"
+            src="/vr-laboratory/bjt/Slide2-6&12_Table_ProcessOverview.png"
             flexGrow={1}
           />
-          <Span primary width={200}>
+          <RoundedButton onClick={() => openBJT()}>Open the Door</RoundedButton>
+          <Span fontWeight={600} width={200}>
             Click on the buttons below to locate the respective parts inside the
             printer!
           </Span>
           <Container justifyContent="space-between">
             <RoundedButton
               outline={component === 0}
-              onClick={() => setComponent(0)}
+              onClick={() => (setComponent(0), onSelectComponent(0))}
             >
               Build Platform
             </RoundedButton>
             <RoundedButton
               outline={component === 1}
-              onClick={() => setComponent(1)}
+              onClick={() => (setComponent(1), onSelectComponent(1))}
             >
               Print Head
             </RoundedButton>
             <RoundedButton
               outline={component === 2}
-              onClick={() => setComponent(2)}
+              onClick={() => (setComponent(2), onSelectComponent(2))}
             >
               Recoater
             </RoundedButton>
             <RoundedButton
               outline={component === 3}
-              onClick={() => setComponent(3)}
+              onClick={() => (setComponent(3), onSelectComponent(3))}
             >
               Cleaning Unit
             </RoundedButton>
@@ -131,13 +138,13 @@ const BinderJettingPanel = ({
             )}
           </Container>
         </Container>
-        <Container flexDirection="column" gap={8} positionType="relative">
+        <Container flexDirection="column" gap={8}>
           <Image
-            src="/vr-laboratory/bjt/Slide_7_Table_BJT_Studio.png"
-            flexGrow={1}
+            src="/vr-laboratory/bjt/Slide_7_Table_Pre-processing_Parameters_New.png"
+            width={220}
           />
           <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span primary width={200}>
+            <Span fontWeight={600} width={200}>
               Clean the Print Head before you start printing!
             </Span>
             <RoundedButton onClick={() => cleanPrintHead()}>
@@ -145,7 +152,7 @@ const BinderJettingPanel = ({
             </RoundedButton>
           </Container>
           <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span primary width={200}>
+            <Span fontWeight={600} width={200}>
               Print the Test Patterns, to ensure the Print Head is cleaned and
               all the nozzles are working!
             </Span>
@@ -203,7 +210,7 @@ const BinderJettingPanel = ({
               Start Printing
             </RoundedButton>
           </Container>
-          <Span color="#C00000" width={200} marginTop={30}>
+          <Span color="#C00000" width={200} marginTop={34}>
             Note: The printing process is compacted to avoid extended exposure
             to VR environment.
           </Span>
@@ -211,46 +218,55 @@ const BinderJettingPanel = ({
         <Container flexDirection="column" gap={8} positionType="relative">
           <Span width={200}>
             Printing is followed by multiple Post-processing steps. These steps
-            help extract the part from the print bed.{" "}
+            help extract the part from the print bed.
           </Span>
-          <Image src="/vr-laboratory/bjt/Slide_10_BJT_Post-processing.png" />
-          <Span color="#C00000" width={180} marginTop={10}>
-            Note: The printing process is compacted to avoid extended exposure
-            to VR environment.
-          </Span>
-          <Information flexDirection="column" height={150}>
-            <Span paddingY={4}>
-              After printing, you cannot see the part yet; the build platform
-              has a print bed with the part in it.{" "}
+          <Image src="/vr-laboratory/bjt/Slide_10_Postprocessing.png" />
+          <Container marginBottom={4} justifyContent="space-between">
+            <Span color="#C00000" width={180} marginTop={0}>
+              Note: The printing process is compacted to avoid extended exposure
+              to VR environment.
             </Span>
-            <Span paddingY={4}>
-              The first step is to remove the Print Bed from the Build Platform.
-            </Span>
-            <Span paddingY={4}>
-              The sand bed is kept in a microwave oven for curing. Heating the
-              part helps the binder to cure and bond the sand particles firmly.
-              If not cured, the binder is not in action yet, and the part will
-              crumble.
-            </Span>
-            <Span paddingY={4}>
-              Hence, this step is crucial to make the part handleable for
-              further processing or usage.
-            </Span>
-            <Span paddingY={4}>
-              The loose powder crumbles upon curing, and you can see the part. A
-              brush can clear the powder particles and reveal the printed part.
-            </Span>
-          </Information>
+            <Information flexDirection="column" height={140} positionTop={-140}>
+              <Span paddingY={4}>
+                After printing, you cannot see the part yet; the build platform
+                has a print bed with the part in it.
+              </Span>
+              <Span paddingY={4}>
+                The first step is to remove the Print Bed from the Build
+                Platform.
+              </Span>
+              <Span paddingY={4}>
+                The sand bed is kept in a microwave oven for curing. Heating the
+                part helps the binder to cure and bond the sand particles
+                firmly. If not cured, the binder is not in action yet, and the
+                part will crumble.
+              </Span>
+              <Span paddingY={4}>
+                Hence, this step is crucial to make the part handleable for
+                further processing or usage.
+              </Span>
+              <Span paddingY={4}>
+                The loose powder crumbles upon curing, and you can see the part.
+                A brush can clear the powder particles and reveal the printed
+                part.
+              </Span>
+            </Information>
+          </Container>
         </Container>
         <Container flexDirection="column" gap={8}>
           <Image
-            src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png"
+            src="/vr-laboratory/bjt/Slide2-6&12_Table_ProcessOverview.png"
             flexGrow={1}
           />
-          <Container flexDirection="row" gap={4} alignItems="center">
+          <Container
+            flexDirection="row"
+            gap={4}
+            alignItems="flex-end"
+            marginBottom={8}
+          >
             <RoundedButton
               outline={component === 1}
-              onClick={() => setComponent(0)}
+              onClick={() => displayPart()}
             >
               Display Part
             </RoundedButton>
@@ -259,9 +275,14 @@ const BinderJettingPanel = ({
               flexGrow={1}
             />
           </Container>
-          <Span width={200}>
-            Congratulations! You have successfully completed the Process Area.
-          </Span>
+          <Information flexDirection="column" gap={8} height={140}>
+            <Image src="/vr-laboratory/bjt/Slide_13_AM_studio_Table.png" />
+            <Span>
+              Congratulations! You have successfully completed the Process Area.
+              Now go to the Post-processing Dashboard to have a detailed
+              overview of the Post-processing steps.
+            </Span>
+          </Information>
         </Container>
       </Slides>
     </Panel>

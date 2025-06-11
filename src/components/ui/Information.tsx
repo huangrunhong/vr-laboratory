@@ -1,5 +1,6 @@
 import { Container, ContainerProperties, Image } from "@react-three/uikit";
 import { useState } from "react";
+
 import colors from "../../shared/colors";
 
 const Information = (props: ContainerProperties) => {

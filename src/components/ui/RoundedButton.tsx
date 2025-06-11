@@ -34,6 +34,7 @@ const RoundedButton = ({
     minWidth={40}
     onClick={onClick}
     cursor="pointer"
+    alignSelf="flex-start"
   >
     <Text
       textAlign="center"

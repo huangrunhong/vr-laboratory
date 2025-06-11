@@ -1,12 +1,13 @@
 import { animated } from "@react-spring/three";
-import { GroupProps } from "@react-three/fiber";
+import { ThreeElements } from "@react-three/fiber";
+
 import { useState } from "react";
 
-interface CircleButtonProps extends GroupProps {
+type CircleButtonProps = ThreeElements["group"] & {
   color?: number;
   innerSize?: number;
   outSize?: number;
-}
+};
 
 const CircleButton = ({
   color = 0xffffff,
