@@ -11,10 +11,11 @@ import AmHubPanel from "../components/amhub/AmHubPanel";
 import TransparentButton from "../components/TransparentButton";
 import BinderJettingPanel from "../components/binderJetting/BinderJettingsPanel";
 import isMesh from "../helpers/isMesh";
+import VppPanel from "../components/vpp/VppPanel";
 
-// const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.925);
+const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.915);
 // const startButtonPosition = new Vector3(-1.8, 1.2, -0.925);
-const vppButtonPosition = new Vector3(3.15, 1.35, -6.275);
+const vppButtonPosition = new Vector3(4, 1.35, -7.875);
 
 const modelPath = "/vr-laboratory/room.glb";
 const printerSkinPath = "/vr-laboratory/printerSkin.glb";
@@ -155,16 +156,16 @@ const HomePage = () => {
             <group>
               <primitive object={printer.scene} />
             </group>
-            {/* <mesh rotation-y={Math.PI}>
+            <mesh rotation-y={Math.PI}>
               <CircleButton
                 position={openDoorButtonPosition}
                 onClick={onClick}
               />
-              <CircleButton
+              {/* <CircleButton
                 position={startButtonPosition}
                 onClick={startPrinter}
-              />
-            </mesh> */}
+              /> */}
+            </mesh>
             <mesh
               position={[5.6, 1.35, 0.12]}
               rotation-y={-(Math.PI * 4.5) / 6}
@@ -243,6 +244,7 @@ const HomePage = () => {
         onClick={activeMicroFactory}
       />
       <TutorialPanel onClick={appearBlueLine} />
+      <VppPanel />
       <AmHubPanel />
     </SelectionContext.Provider>
   );

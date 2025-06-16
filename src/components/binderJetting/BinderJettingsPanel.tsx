@@ -277,11 +277,14 @@ const BinderJettingPanel = ({
           </Container>
           <Information flexDirection="column" gap={8} height={140}>
             <Image src="/vr-laboratory/bjt/Slide_13_AM_studio_Table.png" />
-            <Span>
-              Congratulations! You have successfully completed the Process Area.
-              Now go to the Post-processing Dashboard to have a detailed
-              overview of the Post-processing steps.
-            </Span>
+            <Container flexDirection="column" gap={2}>
+              <Span>Congratulations!</Span>
+              <Span>
+                You have successfully completed the Process Area. Now go to the
+                Post-processing Dashboard to have a detailed overview of the
+                Post-processing steps.
+              </Span>
+            </Container>
           </Information>
         </Container>
       </Slides>
