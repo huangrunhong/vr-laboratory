@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Image } from "@react-three/uikit";
 
 import Panel from "../ui/Panel";
@@ -42,7 +42,6 @@ interface BinderJettingPanelProps {
   coatInitialLayers: () => void;
   startPrinting: () => void;
   displayPart: () => void;
-  openBJT: () => void;
   onSelectComponent: (index: number) => void;
 }
 
@@ -52,11 +51,14 @@ const BinderJettingPanel = ({
   coatInitialLayers,
   startPrinting,
   displayPart,
-  openBJT,
   onSelectComponent,
 }: BinderJettingPanelProps) => {
   const [page, setPage] = useState(0);
   const [component, setComponent] = useState<number>();
+
+  useEffect(() => {
+    setComponent(undefined);
+  }, [page]);
 
   return (
     <Panel
@@ -76,7 +78,6 @@ const BinderJettingPanel = ({
             src="/vr-laboratory/bjt/Slide2-6&12_Table_ProcessOverview.png"
             flexGrow={1}
           />
-          <RoundedButton onClick={() => openBJT()}>Open the Door</RoundedButton>
           <Span fontWeight={600} width={200}>
             Click on the buttons below to locate the respective parts inside the
             printer!
@@ -223,8 +224,8 @@ const BinderJettingPanel = ({
           <Image src="/vr-laboratory/bjt/Slide_10_Postprocessing.png" />
           <Container marginBottom={4} justifyContent="space-between">
             <Span color="#C00000" width={180} marginTop={0}>
-              Note: The printing process is compacted to avoid extended exposure
-              to VR environment.
+              Note:To see the detailed steps, check out the Post-processing
+              Dashboard.
             </Span>
             <Information flexDirection="column" height={140} positionTop={-140}>
               <Span paddingY={4}>

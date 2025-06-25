@@ -74,19 +74,8 @@ const HomePage = () => {
   const startPrinting = () =>
     playOnce(printerActions.actions["StartPrinting"], 2);
   const displayPart = () => playOnce(printerActions.actions["DisplayPart"], 1);
-  const onClick = () => {
-    const open = printerActions.actions["DoorOpen"]?.time ?? 0;
-    const close = printerActions.actions["DoorClose"]?.time ?? 0;
-    playOnce(
-      open <= close
-        ? printerActions.actions["DoorOpen"]
-        : printerActions.actions["DoorClose"]
-    );
-  };
-
+  const openBJT = () => playOnce(printerActions.actions["DoorOpen"]);
   const startVpp = () => playOnce(vppActions.actions["Play"], 2);
-
-  console.log(printerActions.actions);
 
   const highlightSelection = (selected: number) =>
     outlinedObjects.forEach((object, index) => {
@@ -159,7 +148,7 @@ const HomePage = () => {
             <mesh rotation-y={Math.PI}>
               <CircleButton
                 position={openDoorButtonPosition}
-                onClick={onClick}
+                onClick={openBJT}
               />
               {/* <CircleButton
                 position={startButtonPosition}
@@ -180,7 +169,6 @@ const HomePage = () => {
               coatInitialLayers={coatInitialLayers}
               startPrinting={startPrinting}
               displayPart={displayPart}
-              openBJT={onClick}
               onSelectComponent={highlightSelection}
             />
           </>
@@ -244,7 +232,7 @@ const HomePage = () => {
         onClick={activeMicroFactory}
       />
       <TutorialPanel onClick={appearBlueLine} />
-      <VppPanel />
+      <VppPanel onSelectComponent={highlightSelection} />
       <AmHubPanel />
     </SelectionContext.Provider>
   );
