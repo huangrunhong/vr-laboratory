@@ -58,6 +58,7 @@ const BinderJettingPanel = ({
 
   useEffect(() => {
     setComponent(undefined);
+    onSelectComponent(-1);
   }, [page]);
 
   return (
@@ -75,7 +76,7 @@ const BinderJettingPanel = ({
       <Slides slides={slides} count={4} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
           <Image
-            src="/vr-laboratory/bjt/Slide2-6&12_Table_ProcessOverview.png"
+            src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png"
             flexGrow={1}
           />
           <Span fontWeight={600} width={200}>
@@ -108,7 +109,7 @@ const BinderJettingPanel = ({
               Cleaning Unit
             </RoundedButton>
           </Container>
-          <Container width={200}>
+          <Container width={204}>
             {component === 0 && (
               <Span>
                 The Build Platform is a metal plate on which the printing is
@@ -142,7 +143,7 @@ const BinderJettingPanel = ({
         <Container flexDirection="column" gap={8}>
           <Image
             src="/vr-laboratory/bjt/Slide_7_Table_Pre-processing_Parameters_New.png"
-            width={220}
+            flexGrow={1}
           />
           <Container flexDirection="column" gap={4} alignItems="flex-start">
             <Span fontWeight={600} width={200}>
@@ -160,7 +161,7 @@ const BinderJettingPanel = ({
             <Container
               flexDirection="row"
               justifyContent="space-between"
-              alignItems="center"
+              alignItems="flex-start"
               gap={12}
             >
               <RoundedButton onClick={() => printTestPatterns()}>
@@ -213,7 +214,7 @@ const BinderJettingPanel = ({
           </Container>
           <Span color="#C00000" width={200} marginTop={34}>
             Note: The printing process is compacted to avoid extended exposure
-            to VR environment.
+            to the VR environment.
           </Span>
         </Container>
         <Container flexDirection="column" gap={8} positionType="relative">
@@ -224,7 +225,7 @@ const BinderJettingPanel = ({
           <Image src="/vr-laboratory/bjt/Slide_10_Postprocessing.png" />
           <Container marginBottom={4} justifyContent="space-between">
             <Span color="#C00000" width={180} marginTop={0}>
-              Note:To see the detailed steps, check out the Post-processing
+              Note: To see the detailed steps, check out the Post-processing
               Dashboard.
             </Span>
             <Information flexDirection="column" height={140} positionTop={-140}>
@@ -256,7 +257,7 @@ const BinderJettingPanel = ({
         </Container>
         <Container flexDirection="column" gap={8}>
           <Image
-            src="/vr-laboratory/bjt/Slide2-6&12_Table_ProcessOverview.png"
+            src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png"
             flexGrow={1}
           />
           <Container
@@ -272,7 +273,7 @@ const BinderJettingPanel = ({
               Display Part
             </RoundedButton>
             <Image
-              src="/vr-laboratory/bjt/Slide_12_Table_BJT_Take_Aways.png"
+              src="/vr-laboratory/bjt/Slide_12_Table_BJT_Takeaways.png"
               flexGrow={1}
             />
           </Container>

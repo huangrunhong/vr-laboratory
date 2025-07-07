@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Slides, { Slide } from "../ui/Slides";
 import Span from "../ui/Span";
 import RoundedButton from "../ui/RoundedButton";
+import Information from "../ui/Information";
 
 const slides: Slide[] = [
   {
@@ -35,10 +36,11 @@ const slides: Slide[] = [
 ];
 
 interface VppPanelProps {
+  displayPart: () => void;
   onSelectComponent: (index: number) => void;
 }
 
-const VppPanel = ({ onSelectComponent }: VppPanelProps) => {
+const VppPanel = ({ displayPart, onSelectComponent }: VppPanelProps) => {
   const [page, setPage] = useState(0);
   const [component, setComponent] = useState<number>();
 
@@ -60,7 +62,10 @@ const VppPanel = ({ onSelectComponent }: VppPanelProps) => {
     >
       <Slides slides={slides} count={5} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory/vpp/Slide_2_Table_Process_Overview.png" />
+          <Image
+            src="/vr-laboratory/vpp/Slide_2_Table_Process_Overview.png"
+            flexGrow={1}
+          />
           <Span fontWeight={600} width={200}>
             Click on the buttons below to locate the respective parts inside the
             printer!
@@ -69,7 +74,7 @@ const VppPanel = ({ onSelectComponent }: VppPanelProps) => {
             flexDirection="row"
             gap={2}
             alignItems="center"
-            width={200}
+            width={204}
           >
             <RoundedButton
               outline={component === 0}
@@ -156,6 +161,103 @@ const VppPanel = ({ onSelectComponent }: VppPanelProps) => {
           <Span fontWeight={600} width={200}>
             With these parameters, you can now commence the printing job!
           </Span>
+        </Container>
+        <Container flexDirection="column" gap={8}>
+          <Span fontWeight={600} width={200}>
+            Start Printing and observe the layer-by-layer build-up of the Part!
+          </Span>
+          <RoundedButton>Start Printing</RoundedButton>
+          <Span color="#C00000" width={200} marginTop={98}>
+            Note: The printing process is compacted to avoid extended exposure
+            to the VR environment.
+          </Span>
+        </Container>
+        <Container flexDirection="column" gap={8}>
+          <Span width={200} fontSize={6}>
+            The post-processing steps of Vat Photopolymerization, including
+            Cleaning and Curing, are already carried out in the process shown
+            and are explained in detail in the information section.
+          </Span>
+          <Span width={200} fontSize={6}>
+            Only the supports of the model must be removed using
+            scissors/cutters.
+          </Span>
+          <Image
+            src="/vr-laboratory/vpp/Slide_11_Post-processing.png"
+            flexGrow={1}
+          />
+          <Container marginBottom={4} justifyContent="space-between">
+            <Span color="#C00000" width={180} marginTop={0} fontSize={6}>
+              Note: To see the detailed steps, check out the Post-processing
+              Dashboard.
+            </Span>
+            <Information flexDirection="column" height={144} positionTop={-150}>
+              <Span paddingY={4} fontWeight={600} fontSize={5.5}>
+                Cleanning:
+              </Span>
+              <Span paddingY={4} fontSize={5.5}>
+                When all the layers are printed, the build platform moves the
+                entire Part out of the Resin Bath, holds for some time to allow
+                the uncured resin to drip back into the Resin Bath, and then
+                cleans the Part in the Solvent Cleaner.
+              </Span>
+              <Span paddingY={4} fontSize={5.5}>
+                The Cleaning Time of 5 minutes is suitable to effectively remove
+                uncured resin from the Part’s surface without damaging it. Thus,
+                it ensures the Part is clean and ready for curing, maintaining
+                both mechanical and aesthetic quality.
+              </Span>
+              <Span paddingY={4} fontSize={5.5} fontWeight={600} marginTop={4}>
+                Curing:
+              </Span>
+              <Span paddingY={4} fontSize={5.5}>
+                After cleaning the Part, it is exposed to UV light to cure all
+                layers, resulting in a single Part.
+              </Span>
+              <Span paddingY={4} fontSize={5.5}>
+                The Curing Time of 10 minutes is in the optimal range, giving
+                the Part structural strength and a smooth surface finish. Curing
+                ensures that the layers are bonded properly and there is no
+                damage to the part due to uneven bonding of material at the
+                layer interface. Curing the part is essential to achieve the
+                intended mechanical properties.
+              </Span>
+            </Information>
+          </Container>
+        </Container>
+        <Container flexDirection="column" gap={8}>
+          <Image
+            src="/vr-laboratory/vpp/Slide_2_Table_Process_Overview.png"
+            flexGrow={1}
+          />
+          <Container
+            flexDirection="row"
+            gap={4}
+            alignItems="flex-end"
+            marginBottom={8}
+          >
+            <RoundedButton
+              outline={component === 1}
+              onClick={() => displayPart()}
+            >
+              Display Part
+            </RoundedButton>
+            <Image
+              src="/vr-laboratory/vpp/Slide_13_Take_aways.png"
+              flexGrow={1}
+            />
+          </Container>
+          <Information flexDirection="column" gap={8} height={144}>
+            <Image src="/vr-laboratory/vpp/Slide_13_AM-Studio.png" />
+            <Container flexDirection="column" gap={2}>
+              <Span>Congratulations!</Span>
+              <Span>
+                You have successfully completed the Process Area. Now go to the
+                Post-processing Dashboard to have a detailed overview of the
+                Post-processing steps.
+              </Span>
+            </Container>
+          </Information>
         </Container>
       </Slides>
     </Panel>

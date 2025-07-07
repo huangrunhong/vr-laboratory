@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { Color, MeshStandardMaterial, Vector3 } from "three";
 
-import playOnce from "../helpers/playOnce";
+import playBack from "../helpers/playBack";
 import CircleButton from "../components/CircleButton";
 import SelectionContext from "../contexts/SelectionContext";
 import InteractiveObject from "../components/InteractiveObject";
@@ -12,6 +12,7 @@ import TransparentButton from "../components/TransparentButton";
 import BinderJettingPanel from "../components/binderJetting/BinderJettingsPanel";
 import isMesh from "../helpers/isMesh";
 import VppPanel from "../components/vpp/VppPanel";
+import playOnce from "../helpers/playOnce";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.915);
 // const startButtonPosition = new Vector3(-1.8, 1.2, -0.925);
@@ -74,7 +75,7 @@ const HomePage = () => {
   const startPrinting = () =>
     playOnce(printerActions.actions["StartPrinting"], 2);
   const displayPart = () => playOnce(printerActions.actions["DisplayPart"], 1);
-  const openBJT = () => playOnce(printerActions.actions["DoorOpen"]);
+  const openBJT = () => playBack(printerActions.actions["DoorOpen"]);
   const startVpp = () => playOnce(vppActions.actions["Play"], 2);
 
   const highlightSelection = (selected: number) =>
@@ -97,6 +98,8 @@ const HomePage = () => {
       });
     });
 
+  const displayPartVPP = () => playOnce(vppActions.actions["DisplayPart"], 1);
+
   return (
     <SelectionContext.Provider value={[selected, setSelected]}>
       <primitive object={room.scene} />
@@ -106,7 +109,7 @@ const HomePage = () => {
         <CircleButton
           onClick={openDoor}
           position={[4.2, 1, -0.25]}
-          color={0x707090}
+          color={0x707070}
           innerSize={0.07}
           outSize={0.08}
         />
@@ -183,6 +186,10 @@ const HomePage = () => {
             <mesh rotation-y={2 * Math.PI}>
               <CircleButton onClick={startVpp} position={vppButtonPosition} />
             </mesh>
+            <VppPanel
+              displayPart={displayPartVPP}
+              onSelectComponent={highlightSelection}
+            />
           </>
         }
         inactiveObject={<primitive object={vppSkin.scene} />}
@@ -232,7 +239,6 @@ const HomePage = () => {
         onClick={activeMicroFactory}
       />
       <TutorialPanel onClick={appearBlueLine} />
-      <VppPanel onSelectComponent={highlightSelection} />
       <AmHubPanel />
     </SelectionContext.Provider>
   );
