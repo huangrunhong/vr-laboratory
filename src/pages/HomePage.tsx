@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAnimations, useGLTF } from "@react-three/drei";
 import { Color, MeshStandardMaterial, Vector3 } from "three";
+import { ObjectMap } from "@react-three/fiber";
 
 import playBack from "../helpers/playBack";
 import CircleButton from "../components/CircleButton";
@@ -16,7 +17,7 @@ import playOnce from "../helpers/playOnce";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.915);
 // const startButtonPosition = new Vector3(-1.8, 1.2, -0.925);
-const vppButtonPosition = new Vector3(4, 1.35, -7.875);
+// const vppButtonPosition = new Vector3(4, 1.35, -7.875);
 
 const modelPath = "/vr-laboratory/room.glb";
 const printerSkinPath = "/vr-laboratory/printerSkin.glb";
@@ -26,19 +27,22 @@ const logoPath = "/vr-laboratory/logo.glb";
 const vppPath = "/vr-laboratory/vpp.glb";
 const lobbyBoxPath = "/vr-laboratory/lobbyBox.glb";
 
-const outlinedObjects = [
+const bjtMeshes = ["BuildPlatform", "PrintHead", "Recoater", "CleaningUnit"];
+
+const vppMeshes = [
+  "PrintingResin",
   "BuildPlatform",
-  "PrintHead",
-  "Recoater",
-  "CleaningUnit",
+  "OpticsUnit",
+  "SolventCleaner",
+  "CuringUnit",
 ];
 
 const HomePage = () => {
   const room = useGLTF(modelPath);
-  const printerSkin = useGLTF(printerSkinPath);
+  const bjtSkin = useGLTF(printerSkinPath);
   const vppSkin = useGLTF(vppSkinPath);
   const vpp = useGLTF(vppPath);
-  const printer = useGLTF(printerPath);
+  const bjt = useGLTF(printerPath);
   const logo = useGLTF(logoPath);
   const lobbyBox = useGLTF(lobbyBoxPath);
 
@@ -46,9 +50,11 @@ const HomePage = () => {
   const [activeStart, setActiveStart] = useState(false);
 
   const roomActions = useAnimations(room.animations, room.scene);
-  const printerActions = useAnimations(printer.animations, printer.scene);
+  const printerActions = useAnimations(bjt.animations, bjt.scene);
   const vppActions = useAnimations(vpp.animations, vpp.scene);
   const lobbyBoxActions = useAnimations(lobbyBox.animations, lobbyBox.scene);
+
+  console.log(vpp);
 
   const openDoor = () => playOnce(roomActions.actions["Door_entrance"], 2);
   const openSocialSpace = () =>
@@ -64,6 +70,7 @@ const HomePage = () => {
   const openBox = () => playOnce(lobbyBoxActions.actions["Lobby_2"], 2);
   const activeTum = () => playOnce(lobbyBoxActions.actions["Lobby_3"], 2);
   const activeFraunhofer = () => playOnce(roomActions.actions["Hub_2"], 2);
+  const activeEos = () => playOnce(roomActions.actions["Hub_3"], 2);
   const activeMicroFactory = () => playOnce(roomActions.actions["Hub_1"], 2);
 
   const cleanPrintHead = () =>
@@ -78,25 +85,26 @@ const HomePage = () => {
   const openBJT = () => playBack(printerActions.actions["DoorOpen"]);
   const startVpp = () => playOnce(vppActions.actions["Play"], 2);
 
-  const highlightSelection = (selected: number) =>
-    outlinedObjects.forEach((object, index) => {
-      const node = printer.nodes[object];
-      const meshes = isMesh(node)
-        ? [node]
-        : (node?.children?.filter(isMesh) ?? []);
+  const highlightSelection =
+    (object: ObjectMap, targets: string[]) => (selected: number) =>
+      targets.forEach((target, index) => {
+        const node = object.nodes[target];
+        const meshes = isMesh(node)
+          ? [node]
+          : (node?.children?.filter(isMesh) ?? []);
 
-      meshes.forEach((mesh) => {
-        const material = [mesh.material].flat()[0]?.clone();
+        meshes.forEach((mesh) => {
+          const material = [mesh.material].flat()[0]?.clone();
 
-        if (material instanceof MeshStandardMaterial) {
-          material.emissive = new Color(
-            selected === index ? "#0064c0" : "black"
-          );
-        }
+          if (material instanceof MeshStandardMaterial) {
+            material.emissive = new Color(
+              selected === index ? "#0064c0" : "black"
+            );
+          }
 
-        mesh.material = material;
+          mesh.material = material;
+        });
       });
-    });
 
   const displayPartVPP = () => playOnce(vppActions.actions["DisplayPart"], 1);
 
@@ -104,7 +112,6 @@ const HomePage = () => {
     <SelectionContext.Provider value={[selected, setSelected]}>
       <primitive object={room.scene} />
       <primitive object={logo.scene} />
-
       <mesh rotation-y={Math.PI / 2}>
         <CircleButton
           onClick={openDoor}
@@ -146,7 +153,7 @@ const HomePage = () => {
         activeObject={
           <>
             <group>
-              <primitive object={printer.scene} />
+              <primitive object={bjt.scene} />
             </group>
             <mesh rotation-y={Math.PI}>
               <CircleButton
@@ -172,23 +179,21 @@ const HomePage = () => {
               coatInitialLayers={coatInitialLayers}
               startPrinting={startPrinting}
               displayPart={displayPart}
-              onSelectComponent={highlightSelection}
+              onSelectComponent={highlightSelection(bjt, bjtMeshes)}
             />
           </>
         }
-        inactiveObject={<primitive object={printerSkin.scene} />}
+        inactiveObject={<primitive object={bjtSkin.scene} />}
       />
       <InteractiveObject
         id="vpp"
         activeObject={
           <>
             <primitive object={vpp.scene} />
-            <mesh rotation-y={2 * Math.PI}>
-              <CircleButton onClick={startVpp} position={vppButtonPosition} />
-            </mesh>
             <VppPanel
               displayPart={displayPartVPP}
-              onSelectComponent={highlightSelection}
+              play={startVpp}
+              onSelectComponent={highlightSelection(vpp, vppMeshes)}
             />
           </>
         }
@@ -228,6 +233,15 @@ const HomePage = () => {
         rotationY={Math.PI / 2}
         rotationZ={Math.PI / 2}
         onClick={activeFraunhofer}
+      />
+      <TransparentButton
+        x={8.048}
+        y={1.632}
+        z={7.533}
+        rotationX={0}
+        rotationY={Math.PI / 2}
+        rotationZ={Math.PI / 2}
+        onClick={activeEos}
       />
       <TransparentButton
         x={12.767}

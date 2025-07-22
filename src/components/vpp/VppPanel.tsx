@@ -37,14 +37,16 @@ const slides: Slide[] = [
 
 interface VppPanelProps {
   displayPart: () => void;
+  play: () => void;
   onSelectComponent: (index: number) => void;
 }
 
-const VppPanel = ({ displayPart, onSelectComponent }: VppPanelProps) => {
+const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
   const [page, setPage] = useState(0);
   const [component, setComponent] = useState<number>();
 
   useEffect(() => {
+    onSelectComponent(-1);
     setComponent(undefined);
   }, [page]);
 
@@ -61,10 +63,11 @@ const VppPanel = ({ displayPart, onSelectComponent }: VppPanelProps) => {
       transformTranslateZ={-662.05}
     >
       <Slides slides={slides} count={5} step={page} setStep={setPage}>
-        <Container flexDirection="column" gap={8}>
+        <Container flexDirection="column" gap={8} width={204}>
           <Image
-            src="/vr-laboratory/vpp/Slide_2_Table_Process_Overview.png"
+            src="/vr-laboratory/vpp/Slide_2_Table_Processoverview_VPP.png"
             flexGrow={1}
+            width={196}
           />
           <Span fontWeight={600} width={200}>
             Click on the buttons below to locate the respective parts inside the
@@ -72,9 +75,10 @@ const VppPanel = ({ displayPart, onSelectComponent }: VppPanelProps) => {
           </Span>
           <Container
             flexDirection="row"
-            gap={2}
+            justifyContent="space-between"
+            gap={1}
             alignItems="center"
-            width={204}
+            width={196}
           >
             <RoundedButton
               outline={component === 0}
@@ -166,7 +170,9 @@ const VppPanel = ({ displayPart, onSelectComponent }: VppPanelProps) => {
           <Span fontWeight={600} width={200}>
             Start Printing and observe the layer-by-layer build-up of the Part!
           </Span>
-          <RoundedButton>Start Printing</RoundedButton>
+          <RoundedButton outline={component === 1} onClick={() => play()}>
+            Start Printing
+          </RoundedButton>
           <Span color="#C00000" width={200} marginTop={98}>
             Note: The printing process is compacted to avoid extended exposure
             to the VR environment.
@@ -183,8 +189,9 @@ const VppPanel = ({ displayPart, onSelectComponent }: VppPanelProps) => {
             scissors/cutters.
           </Span>
           <Image
+            alignSelf="center"
             src="/vr-laboratory/vpp/Slide_11_Post-processing.png"
-            flexGrow={1}
+            width={200}
           />
           <Container marginBottom={4} justifyContent="space-between">
             <Span color="#C00000" width={180} marginTop={0} fontSize={6}>
@@ -227,14 +234,15 @@ const VppPanel = ({ displayPart, onSelectComponent }: VppPanelProps) => {
         </Container>
         <Container flexDirection="column" gap={8}>
           <Image
-            src="/vr-laboratory/vpp/Slide_2_Table_Process_Overview.png"
+            src="/vr-laboratory/vpp/Slide_2_Table_Processoverview_VPP.png"
             flexGrow={1}
           />
           <Container
             flexDirection="row"
             gap={4}
             alignItems="flex-end"
-            marginBottom={8}
+            marginBottom={18}
+            justifyContent="space-between"
           >
             <RoundedButton
               outline={component === 1}
@@ -243,8 +251,8 @@ const VppPanel = ({ displayPart, onSelectComponent }: VppPanelProps) => {
               Display Part
             </RoundedButton>
             <Image
-              src="/vr-laboratory/vpp/Slide_13_Take_aways.png"
-              flexGrow={1}
+              src="/vr-laboratory/vpp/Slide_13_Takeaways.png"
+              width={129.5}
             />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>

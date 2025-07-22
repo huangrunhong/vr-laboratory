@@ -32,7 +32,7 @@ const slides: Slide[] = [
   {
     page: [5],
     icon: "/vr-laboratory/bjt/04_Icon_Take_Aways.png",
-    label: "Take Away",
+    label: "Takeaways",
   },
 ];
 
@@ -265,6 +265,7 @@ const BinderJettingPanel = ({
             gap={4}
             alignItems="flex-end"
             marginBottom={8}
+            justifyContent="space-between"
           >
             <RoundedButton
               outline={component === 1}
@@ -274,7 +275,7 @@ const BinderJettingPanel = ({
             </RoundedButton>
             <Image
               src="/vr-laboratory/bjt/Slide_12_Table_BJT_Takeaways.png"
-              flexGrow={1}
+              width={129.5}
             />
           </Container>
           <Information flexDirection="column" gap={8} height={140}>
