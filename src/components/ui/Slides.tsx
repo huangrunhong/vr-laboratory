@@ -9,6 +9,7 @@ export interface Slide {
   page: number[];
   label: string;
   icon?: string;
+  abbr?: string;
 }
 
 interface SlidesProps {
@@ -40,10 +41,15 @@ const Menu = ({ slide, step, setStep }: MenuProps) => (
     hover={{ backgroundColor: colors.primaryHover }}
     onClick={() => setStep(slide.page[0])}
   >
-    {slide.icon && (
+    {slide.icon && !slide.abbr && (
       <Container width={8} height={8}>
         <Image src={slide.icon} />
       </Container>
+    )}
+    {slide.abbr && (
+      <Text fontSize={4} color="#fff" fontWeight={700}>
+        {slide.abbr}
+      </Text>
     )}
     <Text
       wordBreak="keep-all"

@@ -33,7 +33,7 @@ const vppMeshes = [
   "PrintingResin",
   "BuildPlatform",
   "OpticsUnit",
-  "SolventCleaner",
+  "SolventCleaner001",
   "CuringUnit",
 ];
 
