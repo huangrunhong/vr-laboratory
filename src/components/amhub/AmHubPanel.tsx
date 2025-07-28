@@ -87,6 +87,9 @@ const AmHubPanel = () => {
         setStep={setPage}
       >
         <Container>
+          <Image flexGrow={1} src="/vr-laboratory/amHub/images/test.png" />
+        </Container>
+        <Container>
           <Image
             flexGrow={1}
             src="/vr-laboratory/amHub/images/Definition_Page_2.png"

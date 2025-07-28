@@ -14,6 +14,7 @@ import BinderJettingPanel from "../components/binderJetting/BinderJettingsPanel"
 import isMesh from "../helpers/isMesh";
 import VppPanel from "../components/vpp/VppPanel";
 import playOnce from "../helpers/playOnce";
+import PowderBedFusionPanel from "../components/pbf/PowderBedFusionPanel";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.915);
 // const startButtonPosition = new Vector3(-1.8, 1.2, -0.925);
@@ -26,6 +27,8 @@ const vppSkinPath = "/vr-laboratory/vppSkin.glb";
 const logoPath = "/vr-laboratory/logo.glb";
 const vppPath = "/vr-laboratory/vpp.glb";
 const lobbyBoxPath = "/vr-laboratory/lobbyBox.glb";
+const pbfSkinPath = "/vr-laboratory/pbfSkin.glb";
+const pbfPath = "/vr-laboratory/pbf.glb";
 
 const bjtMeshes = ["BuildPlatform", "PrintHead", "Recoater", "CleaningUnit"];
 
@@ -45,6 +48,8 @@ const HomePage = () => {
   const bjt = useGLTF(printerPath);
   const logo = useGLTF(logoPath);
   const lobbyBox = useGLTF(lobbyBoxPath);
+  const pbfSkin = useGLTF(pbfSkinPath);
+  const pbf = useGLTF(pbfPath);
 
   const [selected, setSelected] = useState("");
   const [activeStart, setActiveStart] = useState(false);
@@ -199,6 +204,16 @@ const HomePage = () => {
         }
         inactiveObject={<primitive object={vppSkin.scene} />}
       />
+      <InteractiveObject
+        id="pbf"
+        activeObject={
+          <>
+            <primitive object={pbf.scene} />
+            <PowderBedFusionPanel />
+          </>
+        }
+        inactiveObject={<primitive object={pbfSkin.scene} />}
+      />
       {activeStart && (
         <>
           <mesh rotation={[-Math.PI / 2, 0, 0]}>
@@ -224,7 +239,6 @@ const HomePage = () => {
         rotationZ={Math.PI / 2}
         onClick={activeTum}
       />
-
       <TransparentButton
         x={8.042}
         y={1.63}
