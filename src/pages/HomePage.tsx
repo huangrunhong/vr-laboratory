@@ -27,6 +27,7 @@ const vppPath = "/vr-laboratory/vpp.glb";
 const lobbyBoxPath = "/vr-laboratory/lobbyBox.glb";
 const pbfSkinPath = "/vr-laboratory/pbfSkin.glb";
 const pbfPath = "/vr-laboratory/pbf.glb";
+const mexSkinPath = "/vr-laboratory/mexSkin.glb";
 
 const bjtMeshes = ["BuildPlatform", "PrintHead", "Recoater", "CleaningUnit"];
 
@@ -54,6 +55,7 @@ const HomePage = () => {
   const logo = useGLTF(logoPath);
   const lobbyBox = useGLTF(lobbyBoxPath);
   const pbfSkin = useGLTF(pbfSkinPath);
+  const mexSkin = useGLTF(mexSkinPath);
   const pbf = useGLTF(pbfPath);
 
   const [selected, setSelected] = useState("");
@@ -220,6 +222,11 @@ const HomePage = () => {
           </>
         }
         inactiveObject={<primitive object={pbfSkin.scene} />}
+      />
+      <InteractiveObject
+        id="mex"
+        activeObject={<></>}
+        inactiveObject={<primitive object={mexSkin.scene} />}
       />
       {activeStart && (
         <>

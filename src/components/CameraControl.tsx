@@ -7,9 +7,7 @@ import {
   PerspectiveCamera,
   Raycaster,
   Vector2,
-  Vector3,
 } from "three";
-import { PerspectiveCamera as PerspectiveCameraComponent } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 
 import collisionDetection from "../helpers/collisionDetection";
@@ -23,35 +21,28 @@ const findFloor = (raycaster: Raycaster, objects: Object3D[]) => {
   return isGroundObject(intersection) ? intersection : undefined;
 };
 
-interface cameraProps {
-  x: number;
-  y: number;
-  z: number;
+interface CameraControlProps {
+  camera: PerspectiveCamera;
 }
 
-const Camera = ({ x, y, z }: cameraProps) => {
+const CameraControl = ({ camera }: CameraControlProps) => {
   const state = useThree();
 
   const circle = useRef<Mesh>(null);
-  const camera = useRef<PerspectiveCamera>(null);
 
   const count = useRef(0);
   const euler = useMemo(() => new Euler(0, 0, 0, "YXZ"), []);
-  const position = useMemo(() => new Vector3(x, y, z), []);
+  const position = useMemo(() => camera.position.clone(), [camera]);
   const raycaster = useMemo(() => new Raycaster(), []);
 
   const [teleport, setTeleport] = useState(false);
 
   useEffect(() => {
     const onPointerMove = (event: PointerEvent) => {
-      if (!camera.current) {
-        return;
-      }
-
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-      raycaster.setFromCamera(new Vector2(x, y), camera.current);
+      raycaster.setFromCamera(new Vector2(x, y), camera);
 
       const floor = findFloor(raycaster, state.scene.children);
       const moveable = !!floor && !collisionDetection(floor.point, state.scene);
@@ -66,29 +57,25 @@ const Camera = ({ x, y, z }: cameraProps) => {
 
       count.current += 1;
 
-      euler.setFromQuaternion(camera.current.quaternion);
+      euler.setFromQuaternion(camera.quaternion);
 
       euler.y += event.movementX * 0.002;
       euler.x += event.movementY * 0.002;
 
-      camera.current.quaternion.setFromEuler(euler);
+      camera.quaternion.setFromEuler(euler);
     };
 
     const onPointerUp = () => {
-      if (!circle.current || !camera.current || count.current) {
+      if (!circle.current || !circle.current.visible || count.current) {
         return void (count.current = 0);
       }
 
       const x = circle.current.position.x;
-      const y = camera.current.position.y;
+      const y = camera.position.y;
       const z = circle.current.position.z;
 
       position.set(x, y, z);
     };
-
-    if (camera.current) {
-      camera.current.lookAt(new Vector3(0, 1.6, -1));
-    }
 
     document.addEventListener("pointermove", onPointerMove);
     document.addEventListener("pointerup", onPointerUp);
@@ -100,24 +87,19 @@ const Camera = ({ x, y, z }: cameraProps) => {
   }, []);
 
   useFrame((_, delta) => {
-    camera.current?.position.lerp(position, delta * 3);
+    camera.position.lerp(position, delta * 3);
   });
 
+  useEffect(() => {
+    document.body.style.cursor = teleport ? "pointer" : "default";
+  }, [teleport]);
+
   return (
-    <>
-      <PerspectiveCameraComponent
-        makeDefault
-        ref={camera}
-        position={position}
-      />
-      {teleport && (
-        <mesh ref={circle} rotation-x={-Math.PI / 2}>
-          <ringGeometry args={[0.16, 0.2]} />
-          <meshBasicMaterial color={0x0065bd} transparent opacity={0.5} />
-        </mesh>
-      )}
-    </>
+    <mesh ref={circle} rotation-x={-Math.PI / 2} visible={teleport}>
+      <ringGeometry args={[0.16, 0.2]} />
+      <meshBasicMaterial color={0x0065bd} transparent opacity={0.5} />
+    </mesh>
   );
 };
 
-export default Camera;
+export default CameraControl;
