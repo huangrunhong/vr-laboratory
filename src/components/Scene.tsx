@@ -21,12 +21,20 @@ const Scene = ({
   environmentIntensity,
 }: SceneProps) => (
   <main>
+    <div className="splash-screen">
+      <span className="spinner" />
+      <h1>
+        <strong>TUM.</strong>
+        <span>Additive</span>
+      </h1>
+      <h2>Virtual Reality Lab</h2>
+    </div>
     <IfSessionModeSupported mode="immersive-vr">
       <div className="vr">
         <button onClick={() => store.enterVR()}>Enter VR</button>
       </div>
     </IfSessionModeSupported>
-    <Canvas>
+    <Canvas fallback={<span className="loader"></span>}>
       <XR store={store}>
         <Camera x={origin[0]} y={1.6} z={origin[1]} />
         <Locomotion x={origin[0]} y={0} z={origin[1]} />
@@ -38,7 +46,6 @@ const Scene = ({
           backgroundRotation={[0, 1.05 * Math.PI, 0]}
         />
         <color attach="background" args={[0xffffff]} />
-        {/* <Stats /> */}
       </XR>
     </Canvas>
   </main>
