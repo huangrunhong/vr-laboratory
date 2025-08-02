@@ -25,7 +25,7 @@ const Welcome = ({ onClick, title, subtitle, cooperator }: WelcomeProps) => (
         {title}
       </Text>
     </Container>
-    <Container width="100%" flexDirection="row" alignItems="center">
+    <Container width="100%">
       <Container flexGrow={1} gap={6}>
         <Container>
           <Text fontSize={8} color="white" fontWeight={600}>

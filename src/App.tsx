@@ -10,11 +10,14 @@ const homeStore = createXRStore({
   controller: { teleportPointer: false, rayPointer: true },
 });
 
+const origin: [number, number] = [-6, -1];
+const environmentFile = "/vr-laboratory/outside_background.exr";
+
 const App = () => (
   <Scene
+    origin={origin}
     store={homeStore}
-    origin={[-6, -1]}
-    environmentFile="/vr-laboratory/outside_background.exr"
+    environmentFile={environmentFile}
     environmentIntensity={1.0}
   >
     <HomePage />

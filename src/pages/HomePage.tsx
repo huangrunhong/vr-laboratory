@@ -17,8 +17,6 @@ import playOnce from "../helpers/playOnce";
 import PowderBedFusionPanel from "../components/pbf/PowderBedFusionPanel";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.915);
-// const startButtonPosition = new Vector3(-1.8, 1.2, -0.925);
-// const vppButtonPosition = new Vector3(4, 1.35, -7.875);
 
 const modelPath = "/vr-laboratory/room.glb";
 const printerSkinPath = "/vr-laboratory/printerSkin.glb";
@@ -40,6 +38,13 @@ const vppMeshes = [
   "CuringUnit",
 ];
 
+const pbfMeshes = [
+  "BuildPlatform",
+  "Laser Scanning",
+  "Recoating Unit",
+  "Recirculating",
+];
+
 const HomePage = () => {
   const room = useGLTF(modelPath);
   const bjtSkin = useGLTF(printerSkinPath);
@@ -58,8 +63,6 @@ const HomePage = () => {
   const printerActions = useAnimations(bjt.animations, bjt.scene);
   const vppActions = useAnimations(vpp.animations, vpp.scene);
   const lobbyBoxActions = useAnimations(lobbyBox.animations, lobbyBox.scene);
-
-  console.log(vpp);
 
   const openDoor = () => playOnce(roomActions.actions["Door_entrance"], 2);
   const openSocialSpace = () =>
@@ -165,10 +168,6 @@ const HomePage = () => {
                 position={openDoorButtonPosition}
                 onClick={openBJT}
               />
-              {/* <CircleButton
-                position={startButtonPosition}
-                onClick={startPrinter}
-              /> */}
             </mesh>
             <mesh
               position={[5.6, 1.35, 0.12]}
@@ -209,7 +208,15 @@ const HomePage = () => {
         activeObject={
           <>
             <primitive object={pbf.scene} />
-            <PowderBedFusionPanel />
+            <mesh position={[7.9, 1.25, -6.6]} rotation-y={-(Math.PI * 3) / 4}>
+              <boxGeometry args={[2.5, 1.5, 0.01]} />
+              <meshBasicMaterial color={0xffffff} />
+            </mesh>
+            <PowderBedFusionPanel
+              onSelectComponent={highlightSelection(pbf, pbfMeshes)}
+              play={startVpp}
+              displayPart={displayPartVPP}
+            />
           </>
         }
         inactiveObject={<primitive object={pbfSkin.scene} />}
