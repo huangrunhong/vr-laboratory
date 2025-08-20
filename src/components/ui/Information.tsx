@@ -13,6 +13,7 @@ const Information = (props: ContainerProperties) => {
         width={12}
         cursor="pointer"
         onClick={() => setActive(!active)}
+        hover={{ opacity: 0.5 }}
         alignSelf="flex-end"
       />
       {active && (
@@ -24,7 +25,7 @@ const Information = (props: ContainerProperties) => {
           positionType="absolute"
           padding={8}
           backgroundColor={colors.white}
-          backgroundOpacity={0.92}
+          backgroundOpacity={1}
           borderColor={colors.black}
           borderWidth={0.5}
           borderRadius={8}

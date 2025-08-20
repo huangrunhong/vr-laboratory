@@ -27,6 +27,9 @@ const RoundedButton = ({
           ? colors.white
           : colors.primary
     }
+    hover={{
+      backgroundColor: colors.primaryHover,
+    }}
     borderColor={inverse ? colors.white : colors.primary}
     borderWidth={0.35}
     borderRadius={20}

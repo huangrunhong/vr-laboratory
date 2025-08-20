@@ -109,19 +109,21 @@ const Slides = ({
           <Container gap={6}>
             <Svg
               width={10}
-              color="#374151"
+              color={step === 1 ? colors.foregroundMuted : colors.foreground}
               src="/vr-laboratory/svg/arrow-left-circle-line.svg"
               cursor="pointer"
-              hover={{ color: "#0064c0" }}
-              onClick={() => setStep(Math.max(0, step - 1))}
+              hover={{ color: step === 1 ? undefined : colors.primary }}
+              onClick={() => setStep(Math.max(1, step - 1))}
             />
             <Svg
               width={10}
-              color="#374151"
+              color={
+                step === count ? colors.foregroundMuted : colors.foreground
+              }
               src="/vr-laboratory/svg/arrow-right-circle-line.svg"
               cursor="pointer"
-              hover={{ color: "#0064c0" }}
-              onClick={() => setStep((step + 1) % count)}
+              hover={{ color: step === count ? undefined : colors.primary }}
+              onClick={() => setStep(Math.min(count, step + 1))}
             />
           </Container>
         </Container>
