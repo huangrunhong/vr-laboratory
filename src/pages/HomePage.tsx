@@ -160,6 +160,11 @@ const HomePage = () => {
       </mesh>
       <InteractiveObject
         id="printer"
+        machineName="BJT"
+        positionX={300}
+        positionY={-130}
+        positionZ={70}
+        rotationY={57 * Math.PI}
         activeObject={
           <>
             <group>
@@ -189,10 +194,19 @@ const HomePage = () => {
             />
           </>
         }
-        inactiveObject={<primitive object={bjtSkin.scene} />}
+        inactiveObject={
+          <>
+            <primitive object={bjtSkin.scene} />
+          </>
+        }
       />
       <InteractiveObject
         id="vpp"
+        machineName="VPP"
+        positionX={415}
+        positionY={-130}
+        positionZ={-770}
+        rotationY={0}
         activeObject={
           <>
             <primitive object={vpp.scene} />
@@ -207,6 +221,11 @@ const HomePage = () => {
       />
       <InteractiveObject
         id="pbf"
+        machineName="PBF"
+        positionX={1100}
+        positionY={-130}
+        positionZ={-770}
+        rotationY={0}
         activeObject={
           <>
             <primitive object={pbf.scene} />
@@ -225,6 +244,11 @@ const HomePage = () => {
       />
       <InteractiveObject
         id="mex"
+        machineName="MEX"
+        positionX={1560}
+        positionY={-130}
+        positionZ={60}
+        rotationY={57 * Math.PI}
         activeObject={<></>}
         inactiveObject={<primitive object={mexSkin.scene} />}
       />

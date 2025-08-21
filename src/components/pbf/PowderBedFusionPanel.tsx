@@ -30,7 +30,7 @@ const slides: Slide[] = [
   {
     page: [5],
     icon: "/vr-laboratory/bjt/04_Icon_Take_Aways.png",
-    label: "Take Away",
+    label: "Takeaways",
   },
 ];
 
