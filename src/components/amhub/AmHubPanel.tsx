@@ -17,43 +17,36 @@ const slides: Slide[] = [
   },
   {
     abbr: "BJT",
-    icon: "/vr-laboratory/amHub/icons/AM-Hub_BJT_Icon.png",
     page: [10, 11, 12, 13, 14, 15],
     label: "Binder Jetting",
   },
   {
     abbr: "DED",
-    icon: "/vr-laboratory/amHub/icons/AM-Hub_DED_Icon.png",
     page: [16, 17, 18, 19],
     label: "Direct Energy Deposition",
   },
   {
     abbr: "MEX",
-    icon: "/vr-laboratory/amHub/icons/AM-Hub_MEX_Icon.png",
     page: [20, 21, 22, 23, 24, 25],
     label: "Material Extrusion",
   },
   {
     abbr: "MJT",
-    icon: "/vr-laboratory/amHub/icons/AM-Hub_MJT_Icon.png",
     page: [26, 27, 28, 29, 30],
     label: "Material Jetting",
   },
   {
     abbr: "PBF",
-    icon: "/vr-laboratory/amHub/icons/AM-Hub_PBF_Icon.png",
     page: [31, 32, 33, 34, 35],
     label: "Powder Bed Fusion",
   },
   {
     abbr: "SHL",
-    icon: "/vr-laboratory/amHub/icons/AM-Hub_SHL_Icon.png",
     page: [36, 37, 38, 39, 40],
     label: "Sheet Lamination",
   },
   {
     abbr: "VPP",
-    icon: "/vr-laboratory/amHub/icons/AM-Hub_VPP_Icon.png",
     page: [41, 42, 43, 44],
     label: "Vat Photopolymerization",
   },
@@ -85,6 +78,7 @@ const AmHubPanel = () => {
         showPageNumber
         step={page}
         setStep={setPage}
+        sidebarWidth={96}
       >
         <Container>
           <Image

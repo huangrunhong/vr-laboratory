@@ -19,6 +19,7 @@ interface SlidesProps {
   step: number;
   setStep: (step: number) => void;
   showPageNumber?: boolean;
+  sidebarWidth?: number;
 }
 
 interface MenuProps {
@@ -47,7 +48,7 @@ const Menu = ({ slide, step, setStep }: MenuProps) => (
       </Container>
     )}
     {slide.abbr && (
-      <Text fontSize={4} color="#fff" fontWeight={700}>
+      <Text width={8} fontSize={4} color="#fff" fontWeight={700}>
         {slide.abbr}
       </Text>
     )}
@@ -69,6 +70,7 @@ const Slides = ({
   showPageNumber,
   step,
   setStep,
+  sidebarWidth,
 }: SlidesProps) => (
   <Container
     width="100%"
@@ -78,7 +80,7 @@ const Slides = ({
     backgroundColor="#0064c0"
     borderRadius={4}
   >
-    <Container flexDirection="column" gap={1}>
+    <Container flexDirection="column" gap={1} width={sidebarWidth}>
       {slides.map((slide) => (
         <Menu key={slide.label} slide={slide} step={step} setStep={setStep} />
       ))}
@@ -104,7 +106,7 @@ const Slides = ({
       {showPageNumber && (
         <Container paddingX={0} justifyContent="space-between">
           <Text fontSize={4} fontWeight={400} flexGrow={1}>
-            {`${step.toString()} / ${count.toString()}`}
+            {step.toString()}
           </Text>
           <Container gap={6}>
             <Svg

@@ -1,11 +1,8 @@
 import { useState } from "react";
-import { Container, Image, Text } from "@react-three/uikit";
+import { Image } from "@react-three/uikit";
 
 import Panel from "../ui/Panel";
 import Slides, { Slide } from "../ui/Slides";
-import Heading from "../ui/Heading";
-import Span from "../ui/Span";
-
 const slides: Slide[] = [
   {
     page: [1],
@@ -43,87 +40,17 @@ const TutorialPanel = ({ onClick }: TutorialPanelProps) => {
       transformTranslateY={-160}
       transformTranslateZ={315}
     >
-      <Slides slides={slides} count={4} step={page} setStep={setPage}>
-        <Container flexDirection="column" width={200} gap={4}>
-          <Heading>Welcome to the Tutorial!</Heading>
-          <Span>
-            You will complete three mini-tutorials designed to help you
-            familiarize yourself with the basic functions of the Virtual Reality
-            environment.
-          </Span>
-        </Container>
-        <Container flexDirection="column" width={200} gap={4}>
-          <Heading>Walking around</Heading>
-          <Span>
-            Walk to the reception desk by following the blue line. Use the
-            joysticks to navigate, as shown below.
-          </Span>
-          <Container>
-            <Container
-              flexGrow={1}
-              flexShrink={0}
-              flexBasis={0}
-              flexDirection="column"
-              alignItems="center"
-              gap={2}
-            >
-              <Text fontSize={7} fontWeight={600}>
-                Left Joystick
-              </Text>
-              <Text fontSize={7} textAlign="center">
-                Move forward, backward or sideways.
-              </Text>
-            </Container>
-            <Container
-              flexGrow={1}
-              flexShrink={0}
-              flexBasis={0}
-              flexDirection="column"
-              alignItems="center"
-              gap={2}
-            >
-              <Text fontSize={7} fontWeight={600}>
-                Right Joystick
-              </Text>
-              <Text fontSize={7}>Turn around.</Text>
-            </Container>
-          </Container>
-          <Image
-            alignSelf="center"
-            width={120}
-            src="/vr-laboratory/move-controls.png"
-          />
-        </Container>
-        <Container flexDirection="column" width={200} gap={2}>
-          <Heading>Opening the door</Heading>
-          <Span>
-            Point at the button on the drawer and press either Trigger Control
-            to open it.
-          </Span>
-          <Image
-            marginTop={8}
-            alignSelf="center"
-            width={120}
-            src="/vr-laboratory/trigger-controls.png"
-          />
-        </Container>
-        <Container flexDirection="column" width={200} gap={6}>
-          <Container flexDirection="column" gap={2}>
-            <Heading>Activating the Model</Heading>
-            <Span>
-              Click the instruction button inside the drawer to activate the 3D
-              model and inspect it.
-            </Span>
-          </Container>
-          <Container flexDirection="column" gap={2}>
-            <Heading>Deactivating the Model</Heading>
-            <Span>
-              Click the instruction button again, then close the drawer by
-              pressing the button outside the drawer.
-            </Span>
-          </Container>
-          <Image width={120} src="/vr-laboratory/trigger-controls.png" />
-        </Container>
+      <Slides
+        slides={slides}
+        count={4}
+        step={page}
+        setStep={setPage}
+        sidebarWidth={60}
+      >
+        <Image src="/vr-laboratory/tutorials/Lobby_Page1.png" marginLeft={8} />
+        <Image src="/vr-laboratory/tutorials/Lobby_Page2.png" marginLeft={8} />
+        <Image src="/vr-laboratory/tutorials/Lobby_Page3.png" marginLeft={8} />
+        <Image src="/vr-laboratory/tutorials/Lobby_Page4.png" marginLeft={8} />
       </Slides>
     </Panel>
   );

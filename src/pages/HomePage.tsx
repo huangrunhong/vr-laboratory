@@ -160,7 +160,6 @@ const HomePage = () => {
       </mesh>
       <InteractiveObject
         id="printer"
-        machineName="BJT"
         positionX={300}
         positionY={-130}
         positionZ={70}
@@ -202,7 +201,6 @@ const HomePage = () => {
       />
       <InteractiveObject
         id="vpp"
-        machineName="VPP"
         positionX={415}
         positionY={-130}
         positionZ={-770}
@@ -221,7 +219,6 @@ const HomePage = () => {
       />
       <InteractiveObject
         id="pbf"
-        machineName="PBF"
         positionX={1100}
         positionY={-130}
         positionZ={-770}
@@ -244,7 +241,6 @@ const HomePage = () => {
       />
       <InteractiveObject
         id="mex"
-        machineName="MEX"
         positionX={1560}
         positionY={-130}
         positionZ={60}

@@ -11,7 +11,6 @@ interface InteractiveObjectProps {
   positionY: number;
   positionZ: number;
   rotationY: number;
-  machineName: string;
 }
 
 const InteractiveObject = ({
@@ -22,7 +21,6 @@ const InteractiveObject = ({
   positionY,
   positionZ,
   rotationY,
-  machineName,
 }: InteractiveObjectProps) => {
   const [selected, setSelected] = useContext(SelectionContext);
 
@@ -37,7 +35,6 @@ const InteractiveObject = ({
             positionY={positionY}
             positionZ={positionZ}
             rotationY={rotationY}
-            machineName={machineName}
           />
           {inactiveObject}
         </group>
