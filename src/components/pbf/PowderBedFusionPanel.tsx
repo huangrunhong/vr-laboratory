@@ -62,7 +62,7 @@ const PowderBedFusionPanel = ({
       showWelcome={page === 0}
       subtitle="Welcome to the Process Area"
       transformRotateY={45}
-      transformTranslateX={800}
+      transformTranslateX={960}
       transformTranslateY={-124}
       transformTranslateZ={-662.05}
     >
@@ -174,7 +174,7 @@ const PowderBedFusionPanel = ({
               Note: To see the detailed steps, check out the Post-processing
               Dashboard.
             </Span>
-            <Information flexDirection="column" height={134} positionTop={-134}>
+            <Information flexDirection="column" height={140} positionTop={-142}>
               <Span paddingY={4} fontSize={5.5}>
                 After printing, you cannot see the part yet; the Build Platform
                 has the powder bed with the part in it.
@@ -223,7 +223,7 @@ const PowderBedFusionPanel = ({
             />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>
-            <Image src="/vr-laboratory/vpp/Slide_13_AM-Studio.png" />
+            <Image src="/vr-laboratory/pbf/Slide_12_AM-Studio.png" />
             <Container flexDirection="column" gap={2}>
               <Span>Congratulations!</Span>
               <Span>

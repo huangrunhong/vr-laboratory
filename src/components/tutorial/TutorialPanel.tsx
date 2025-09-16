@@ -47,10 +47,10 @@ const TutorialPanel = ({ onClick }: TutorialPanelProps) => {
         setStep={setPage}
         sidebarWidth={60}
       >
-        <Image src="/vr-laboratory/tutorials/Lobby_Page1.png" marginLeft={8} />
-        <Image src="/vr-laboratory/tutorials/Lobby_Page2.png" marginLeft={8} />
-        <Image src="/vr-laboratory/tutorials/Lobby_Page3.png" marginLeft={8} />
-        <Image src="/vr-laboratory/tutorials/Lobby_Page4.png" marginLeft={8} />
+        <Image src="/vr-laboratory/tutorials/Lobby_Page1.png" marginLeft={7} />
+        <Image src="/vr-laboratory/tutorials/Lobby_Page2.png" marginLeft={7} />
+        <Image src="/vr-laboratory/tutorials/Lobby_Page3.png" marginLeft={7} />
+        <Image src="/vr-laboratory/tutorials/Lobby_Page4.png" marginLeft={7} />
       </Slides>
     </Panel>
   );
