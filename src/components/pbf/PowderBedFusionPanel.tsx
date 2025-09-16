@@ -62,7 +62,7 @@ const PowderBedFusionPanel = ({
       showWelcome={page === 0}
       subtitle="Welcome to the Process Area"
       transformRotateY={45}
-      transformTranslateX={800}
+      transformTranslateX={960}
       transformTranslateY={-124}
       transformTranslateZ={-662.05}
     >
@@ -174,22 +174,22 @@ const PowderBedFusionPanel = ({
               Note: To see the detailed steps, check out the Post-processing
               Dashboard.
             </Span>
-            <Information flexDirection="column" height={134} positionTop={-134}>
-              <Span paddingY={4} fontSize={5.5}>
+            <Information flexDirection="column" height={140} positionTop={-142}>
+              <Span paddingY={4} fontSize={6.5}>
                 After printing, you cannot see the part yet; the Build Platform
                 has the powder bed with the part in it.
               </Span>
-              <Span paddingY={4} fontSize={5.5}>
+              <Span paddingY={4} fontSize={6.5}>
                 The first step is to remove the Build Platform from the printer.
                 The loose powder is cleared using a brush.
               </Span>
 
-              <Span paddingY={4} fontSize={5.5}>
+              <Span paddingY={4} fontSize={6.5}>
                 The parts are attached to the Build Platform. They are separated
                 from the platform using Electrical Discharge Machining (EDM)
                 wire cutting.
               </Span>
-              <Span paddingY={4} fontSize={5.5}>
+              <Span paddingY={4} fontSize={6.5}>
                 The final parts obtained then undergo a heat treatment as
                 recommended by EOS for Aluminium AlSi10Mg. The parts are
                 solution annealed for 30 minutes at 530 °C and then water
@@ -223,7 +223,7 @@ const PowderBedFusionPanel = ({
             />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>
-            <Image src="/vr-laboratory/vpp/Slide_13_AM-Studio.png" />
+            <Image src="/vr-laboratory/pbf/Slide_12_AM-Studio.png" />
             <Container flexDirection="column" gap={2}>
               <Span>Congratulations!</Span>
               <Span>

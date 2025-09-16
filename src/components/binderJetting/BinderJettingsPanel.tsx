@@ -73,7 +73,13 @@ const BinderJettingPanel = ({
       transformTranslateY={-135}
       transformTranslateZ={10}
     >
-      <Slides slides={slides} count={4} step={page} setStep={setPage}>
+      <Slides
+        slides={slides}
+        count={4}
+        step={page}
+        setStep={setPage}
+        // sidebarWidth={86}
+      >
         <Container flexDirection="column" gap={8}>
           <Image
             src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png"
@@ -173,7 +179,12 @@ const BinderJettingPanel = ({
               />
             </Container>
           </Container>
-          <Information flexDirection="column" height={150} alignSelf="flex-end">
+          <Information
+            flexDirection="column"
+            height={146}
+            positionTop={-2}
+            alignSelf="flex-end"
+          >
             <Heading>Importance of Print Head cleaning:</Heading>
             <Span paddingTop={4} paddingBottom={8}>
               Print Head cleaning helps to keep the nozzles in the print head
@@ -228,7 +239,7 @@ const BinderJettingPanel = ({
               Note: To see the detailed steps, check out the Post-processing
               Dashboard.
             </Span>
-            <Information flexDirection="column" height={140} positionTop={-140}>
+            <Information flexDirection="column" height={138} positionTop={-142}>
               <Span paddingY={4}>
                 After printing, you cannot see the part yet; the build platform
                 has a print bed with the part in it.
@@ -264,7 +275,7 @@ const BinderJettingPanel = ({
             flexDirection="row"
             gap={4}
             alignItems="flex-end"
-            marginBottom={8}
+            marginBottom={18}
             justifyContent="space-between"
           >
             <RoundedButton
@@ -278,11 +289,16 @@ const BinderJettingPanel = ({
               width={129.5}
             />
           </Container>
-          <Information flexDirection="column" gap={8} height={140}>
+          <Information
+            flexDirection="column"
+            gap={8}
+            height={140}
+            positionTop={-2}
+          >
             <Image src="/vr-laboratory/bjt/Slide_13_AM_studio_Table.png" />
             <Container flexDirection="column" gap={2}>
               <Span>Congratulations!</Span>
-              <Span>
+              <Span width={180}>
                 You have successfully completed the Process Area. Now go to the
                 Post-processing Dashboard to have a detailed overview of the
                 Post-processing steps.

@@ -15,6 +15,7 @@ import isMesh from "../helpers/isMesh";
 import VppPanel from "../components/vpp/VppPanel";
 import playOnce from "../helpers/playOnce";
 import PowderBedFusionPanel from "../components/pbf/PowderBedFusionPanel";
+import MaterialExtrusionPanel from "../components/mex/MaterialExtrusionPanel";
 
 const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.915);
 
@@ -28,6 +29,7 @@ const lobbyBoxPath = "/vr-laboratory/lobbyBox.glb";
 const pbfSkinPath = "/vr-laboratory/pbfSkin.glb";
 const pbfPath = "/vr-laboratory/pbf.glb";
 const mexSkinPath = "/vr-laboratory/mexSkin.glb";
+const mexPath = "/vr-laboratory/mex.glb";
 
 const bjtMeshes = ["BuildPlatform", "PrintHead", "Recoater", "CleaningUnit"];
 
@@ -56,6 +58,7 @@ const HomePage = () => {
   const lobbyBox = useGLTF(lobbyBoxPath);
   const pbfSkin = useGLTF(pbfSkinPath);
   const mexSkin = useGLTF(mexSkinPath);
+  const mex = useGLTF(mexPath);
   const pbf = useGLTF(pbfPath);
 
   const [selected, setSelected] = useState("");
@@ -219,14 +222,14 @@ const HomePage = () => {
       />
       <InteractiveObject
         id="pbf"
-        positionX={1100}
+        positionX={1260}
         positionY={-130}
         positionZ={-770}
         rotationY={0}
         activeObject={
           <>
             <primitive object={pbf.scene} />
-            <mesh position={[7.9, 1.25, -6.6]} rotation-y={-(Math.PI * 3) / 4}>
+            <mesh position={[9.56, 1.25, -6.6]} rotation-y={-(Math.PI * 3) / 4}>
               <boxGeometry args={[2.5, 1.5, 0.01]} />
               <meshBasicMaterial color={0xffffff} />
             </mesh>
@@ -245,17 +248,26 @@ const HomePage = () => {
         positionY={-130}
         positionZ={60}
         rotationY={57 * Math.PI}
-        activeObject={<></>}
+        activeObject={
+          <>
+            <primitive object={mex.scene} />
+            <MaterialExtrusionPanel
+              onSelectComponent={highlightSelection(pbf, pbfMeshes)}
+              play={startVpp}
+              displayPart={displayPartVPP}
+            />
+          </>
+        }
         inactiveObject={<primitive object={mexSkin.scene} />}
       />
       {activeStart && (
         <>
-          <mesh rotation={[-Math.PI / 2, 0, 0]}>
+          <mesh rotation={[0, -Math.PI / 2, 0]}>
             <CircleButton
               onClick={openBox}
-              position={[-2.36, 0.1, 1.24]}
+              position={[-0.075, 1.125, 2.56]}
               color={0x707070}
-              innerSize={0.04}
+              innerSize={0.042}
               outSize={0.05}
             />
           </mesh>
