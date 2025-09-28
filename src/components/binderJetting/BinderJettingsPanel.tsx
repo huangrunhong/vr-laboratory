@@ -85,7 +85,7 @@ const BinderJettingPanel = ({
             src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png"
             flexGrow={1}
           />
-          <Span fontWeight={600} width={200}>
+          <Span fontWeight={700} width={200}>
             Click on the buttons below to locate the respective parts inside the
             printer!
           </Span>
@@ -152,7 +152,7 @@ const BinderJettingPanel = ({
             flexGrow={1}
           />
           <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span fontWeight={600} width={200}>
+            <Span fontWeight={700} width={200}>
               Clean the Print Head before you start printing!
             </Span>
             <RoundedButton onClick={() => cleanPrintHead()}>
@@ -160,7 +160,7 @@ const BinderJettingPanel = ({
             </RoundedButton>
           </Container>
           <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span fontWeight={600} width={200}>
+            <Span fontWeight={700} width={200}>
               Print the Test Patterns, to ensure the Print Head is cleaned and
               all the nozzles are working!
             </Span>
@@ -209,13 +209,13 @@ const BinderJettingPanel = ({
             layers need to be coated without any part printing on it.
           </Span>
           <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span fontWeight={600}>Coat Initial Layers! </Span>
+            <Span fontWeight={700}>Coat Initial Layers! </Span>
             <RoundedButton onClick={() => coatInitialLayers()}>
               Coat Initial Layers
             </RoundedButton>
           </Container>
           <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span width={200} fontWeight={600}>
+            <Span width={200} fontWeight={700}>
               Start Printing and observe the layer-by-layer build-up of the
               part!
             </Span>

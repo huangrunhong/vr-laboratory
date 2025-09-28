@@ -21,14 +21,14 @@ const Welcome = ({ onClick, title, subtitle, cooperator }: WelcomeProps) => (
       <Text fontSize={8} color="white" fontWeight={400}>
         {subtitle}
       </Text>
-      <Text fontSize={16} color="white" fontWeight={500}>
+      <Text fontSize={16} color="white" fontWeight={400}>
         {title}
       </Text>
     </Container>
     <Container width="100%">
       <Container flexGrow={1} gap={6}>
         <Container>
-          <Text fontSize={8} color="white" fontWeight={600}>
+          <Text fontSize={8} color="white" fontWeight={700}>
             TUM
           </Text>
           <Text fontSize={8} color="white" fontWeight={400}>

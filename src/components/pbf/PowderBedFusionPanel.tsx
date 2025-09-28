@@ -72,7 +72,7 @@ const PowderBedFusionPanel = ({
             src="/vr-laboratory/pbf/Slide_2_11_Process_Overview_Table.png"
             flexGrow={1}
           />
-          <Span fontWeight={600} width={200}>
+          <Span fontWeight={700} width={200}>
             Click on the buttons below to locate the respective parts inside the
             printer!
           </Span>
@@ -143,12 +143,12 @@ const PowderBedFusionPanel = ({
             printing parameters and have successfully set-up the printer. These
             optimized parameters have been uploaded to the printer.
           </Span>
-          <Span fontWeight={600} width={200}>
+          <Span fontWeight={700} width={200}>
             With these parameters, you can now commence the printing job!
           </Span>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Span fontWeight={600} width={200}>
+          <Span fontWeight={700} width={200}>
             Start Printing and observe the layer-by-layer build-up of the print
             job, which is an arrangement of 18 parts!
           </Span>

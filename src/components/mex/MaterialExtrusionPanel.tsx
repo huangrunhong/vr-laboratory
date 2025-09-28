@@ -71,7 +71,7 @@ const MaterialExtrusionPanel = ({
             src="/vr-laboratory/mex/Slide_2_Table_Processoverview_MEX.png"
             flexGrow={1}
           />
-          <Span fontWeight={600} width={200}>
+          <Span fontWeight={700} width={200}>
             Click on the buttons below to locate the respective parts inside the
             printer!
           </Span>
@@ -154,20 +154,20 @@ const MaterialExtrusionPanel = ({
         <Container flexDirection="column" gap={8}>
           <Image src="/vr-laboratory/mex/Slide_7_Table_Printing_Parameters_MEX.png" />
           <Container alignItems="center" justifyContent="space-between">
-            <Span width={120} fontWeight={600}>
+            <Span width={120} fontWeight={700}>
               Level the Build Platform using the Automatic Bed Leveling
               function!
             </Span>
             <RoundedButton>Automatic Bed Leveling</RoundedButton>
           </Container>
           <Container alignItems="center" justifyContent="space-between">
-            <Span width={120} fontWeight={600}>
+            <Span width={120} fontWeight={700}>
               Load the Printing Material!
             </Span>
             <RoundedButton>Filament Loading</RoundedButton>
           </Container>
           <Container alignItems="center" justifyContent="space-between">
-            <Span width={160} fontWeight={600}>
+            <Span width={160} fontWeight={700}>
               Preheat the nozzle and the Build Plate!
             </Span>
             <RoundedButton>Preheating</RoundedButton>
@@ -211,7 +211,7 @@ const MaterialExtrusionPanel = ({
           </Information>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Span fontWeight={600} width={200}>
+          <Span fontWeight={700} width={200}>
             Start Printing and observe the layer-by-layer build-up of the part!
           </Span>
           <RoundedButton outline={component === 1} onClick={() => play()}>

@@ -18,7 +18,7 @@ const NaviItem = ({ active, icon, label, onClick }: NaviItemProps) => {
       onClick={onClick}
     >
       <Svg width={6} height={6} src={icon} color="#fff" />
-      <Text fontSize={5} color="#fff" fontWeight={500}>
+      <Text fontSize={5} color="#fff" fontWeight={400}>
         {label}
       </Text>
     </Container>

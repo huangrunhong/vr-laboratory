@@ -1,4 +1,4 @@
-import { Root, RootProperties } from "@react-three/uikit";
+import { FontFamilyProvider, Root, RootProperties } from "@react-three/uikit";
 
 import colors from "../../shared/colors";
 
@@ -29,15 +29,23 @@ const Panel = ({
     sizeY={1.8}
     {...rest}
   >
-    {showWelcome && (
-      <Welcome
-        title={title}
-        subtitle={subtitle}
-        cooperator={cooperator}
-        onClick={onClick}
-      />
-    )}
-    {!showWelcome && children}
+    <FontFamilyProvider
+      helvetica={{
+        bold: "fonts/helvetica-bold-msdf.json",
+        normal: "fonts/helvetica-regular-msdf.json",
+      }}
+    >
+      {showWelcome ? (
+        <Welcome
+          title={title}
+          subtitle={subtitle}
+          cooperator={cooperator}
+          onClick={onClick}
+        />
+      ) : (
+        children
+      )}
+    </FontFamilyProvider>
   </Root>
 );
 

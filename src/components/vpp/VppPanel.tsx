@@ -69,7 +69,7 @@ const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
             flexGrow={1}
             width={196}
           />
-          <Span fontWeight={600} width={200}>
+          <Span fontWeight={700} width={200}>
             Click on the buttons below to locate the respective parts inside the
             printer!
           </Span>
@@ -162,12 +162,12 @@ const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
             printing parameters and have successfully set up the printer. These
             optimized parameters have been uploaded to the printer.
           </Span>
-          <Span fontWeight={600} width={200}>
+          <Span fontWeight={700} width={200}>
             With these parameters, you can now commence the printing job!
           </Span>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Span fontWeight={600} width={200}>
+          <Span fontWeight={700} width={200}>
             Start Printing and observe the layer-by-layer build-up of the Part!
           </Span>
           <RoundedButton outline={component === 1} onClick={() => play()}>
@@ -199,7 +199,7 @@ const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
               Dashboard.
             </Span>
             <Information flexDirection="column" height={144} positionTop={-150}>
-              <Span paddingY={4} fontWeight={600} fontSize={5.5}>
+              <Span paddingY={4} fontWeight={700} fontSize={5.5}>
                 Cleanning:
               </Span>
               <Span paddingY={4} fontSize={5.5}>
@@ -214,7 +214,7 @@ const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
                 it ensures the Part is clean and ready for curing, maintaining
                 both mechanical and aesthetic quality.
               </Span>
-              <Span paddingY={4} fontSize={5.5} fontWeight={600} marginTop={4}>
+              <Span paddingY={4} fontSize={5.5} fontWeight={700} marginTop={4}>
                 Curing:
               </Span>
               <Span paddingY={4} fontSize={5.5}>

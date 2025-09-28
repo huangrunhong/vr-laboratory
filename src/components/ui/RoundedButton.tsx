@@ -42,7 +42,7 @@ const RoundedButton = ({
     <Text
       textAlign="center"
       fontSize={6}
-      fontWeight={600}
+      fontWeight={700}
       color={inverse || !outline ? colors.white : colors.primary}
     >
       {children}
