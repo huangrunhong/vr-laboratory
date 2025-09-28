@@ -78,7 +78,6 @@ const AmHubPanel = () => {
         showPageNumber
         step={page}
         setStep={setPage}
-        sidebarWidth={96}
       >
         <Container>
           <Image

@@ -40,13 +40,7 @@ const TutorialPanel = ({ onClick }: TutorialPanelProps) => {
       transformTranslateY={-160}
       transformTranslateZ={315}
     >
-      <Slides
-        slides={slides}
-        count={4}
-        step={page}
-        setStep={setPage}
-        sidebarWidth={60}
-      >
+      <Slides slides={slides} count={4} step={page} setStep={setPage}>
         <Image src="/vr-laboratory/tutorials/Lobby_Page1.png" marginLeft={7} />
         <Image src="/vr-laboratory/tutorials/Lobby_Page2.png" marginLeft={7} />
         <Image src="/vr-laboratory/tutorials/Lobby_Page3.png" marginLeft={7} />

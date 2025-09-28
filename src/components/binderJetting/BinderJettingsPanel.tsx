@@ -73,19 +73,13 @@ const BinderJettingPanel = ({
       transformTranslateY={-135}
       transformTranslateZ={10}
     >
-      <Slides
-        slides={slides}
-        count={4}
-        step={page}
-        setStep={setPage}
-        // sidebarWidth={86}
-      >
+      <Slides slides={slides} count={4} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
           <Image
+            width={100}
             src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png"
-            flexGrow={1}
           />
-          <Span fontWeight={700} width={200}>
+          <Span fontWeight={700}>
             Click on the buttons below to locate the respective parts inside the
             printer!
           </Span>
@@ -115,7 +109,7 @@ const BinderJettingPanel = ({
               Cleaning Unit
             </RoundedButton>
           </Container>
-          <Container width={204}>
+          <Container>
             {component === 0 && (
               <Span>
                 The Build Platform is a metal plate on which the printing is
@@ -152,7 +146,7 @@ const BinderJettingPanel = ({
             flexGrow={1}
           />
           <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span fontWeight={700} width={200}>
+            <Span fontWeight={700}>
               Clean the Print Head before you start printing!
             </Span>
             <RoundedButton onClick={() => cleanPrintHead()}>
@@ -160,7 +154,7 @@ const BinderJettingPanel = ({
             </RoundedButton>
           </Container>
           <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span fontWeight={700} width={200}>
+            <Span fontWeight={700}>
               Print the Test Patterns, to ensure the Print Head is cleaned and
               all the nozzles are working!
             </Span>
@@ -173,10 +167,7 @@ const BinderJettingPanel = ({
               <RoundedButton onClick={() => printTestPatterns()}>
                 Print Test Patterns
               </RoundedButton>
-              <Image
-                src="/vr-laboratory/bjt/Slide_7_BJT_Test_Patterns.png"
-                width={60}
-              />
+              <Image src="/vr-laboratory/bjt/Slide_7_BJT_Test_Patterns.png" />
             </Container>
           </Container>
           <Information
@@ -204,7 +195,7 @@ const BinderJettingPanel = ({
           </Information>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Span width={200}>
+          <Span>
             To create an interface between the build platform and the part, few
             layers need to be coated without any part printing on it.
           </Span>
@@ -215,7 +206,7 @@ const BinderJettingPanel = ({
             </RoundedButton>
           </Container>
           <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span width={200} fontWeight={700}>
+            <Span fontWeight={700}>
               Start Printing and observe the layer-by-layer build-up of the
               part!
             </Span>
@@ -223,19 +214,19 @@ const BinderJettingPanel = ({
               Start Printing
             </RoundedButton>
           </Container>
-          <Span color="#C00000" width={200} marginTop={34}>
+          <Span color="#C00000" marginTop={34}>
             Note: The printing process is compacted to avoid extended exposure
             to the VR environment.
           </Span>
         </Container>
         <Container flexDirection="column" gap={8} positionType="relative">
-          <Span width={200}>
+          <Span>
             Printing is followed by multiple Post-processing steps. These steps
             help extract the part from the print bed.
           </Span>
           <Image src="/vr-laboratory/bjt/Slide_10_Postprocessing.png" />
           <Container marginBottom={4} justifyContent="space-between">
-            <Span color="#C00000" width={180} marginTop={0}>
+            <Span color="#C00000" marginTop={0}>
               Note: To see the detailed steps, check out the Post-processing
               Dashboard.
             </Span>
@@ -284,10 +275,7 @@ const BinderJettingPanel = ({
             >
               Display Part
             </RoundedButton>
-            <Image
-              src="/vr-laboratory/bjt/Slide_12_Table_BJT_Takeaways.png"
-              width={129.5}
-            />
+            <Image src="/vr-laboratory/bjt/Slide_12_Table_BJT_Takeaways.png" />
           </Container>
           <Information
             flexDirection="column"
@@ -298,7 +286,7 @@ const BinderJettingPanel = ({
             <Image src="/vr-laboratory/bjt/Slide_13_AM_studio_Table.png" />
             <Container flexDirection="column" gap={2}>
               <Span>Congratulations!</Span>
-              <Span width={180}>
+              <Span>
                 You have successfully completed the Process Area. Now go to the
                 Post-processing Dashboard to have a detailed overview of the
                 Post-processing steps.

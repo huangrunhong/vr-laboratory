@@ -19,7 +19,6 @@ interface SlidesProps {
   step: number;
   setStep: (step: number) => void;
   showPageNumber?: boolean;
-  sidebarWidth?: number;
 }
 
 interface MenuProps {
@@ -52,12 +51,7 @@ const Menu = ({ slide, step, setStep }: MenuProps) => (
         {slide.abbr}
       </Text>
     )}
-    <Text
-      wordBreak="keep-all"
-      fontSize={6}
-      color="#fff"
-      fontWeight={slide.page.includes(step) ? 700 : 500}
-    >
+    <Text wordBreak="keep-all" fontSize={6} color="#fff">
       {slide.label}
     </Text>
   </Container>
@@ -70,7 +64,6 @@ const Slides = ({
   showPageNumber,
   step,
   setStep,
-  sidebarWidth,
 }: SlidesProps) => (
   <Container
     width="100%"
@@ -80,7 +73,7 @@ const Slides = ({
     backgroundColor="#0064c0"
     borderRadius={4}
   >
-    <Container flexDirection="column" gap={1} width={sidebarWidth}>
+    <Container flexDirection="column" gap={1}>
       {slides.map((slide) => (
         <Menu key={slide.label} slide={slide} step={step} setStep={setStep} />
       ))}
@@ -99,6 +92,7 @@ const Slides = ({
       justifyContent="space-between"
       backgroundColor="#fff"
       borderRadius={2}
+      width={200}
     >
       {Children.map(children, (child, index) =>
         step === index + 1 ? child : null
