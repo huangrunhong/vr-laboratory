@@ -1,7 +1,7 @@
-import { Container, ContainerProperties, Image } from "@react-three/uikit";
-import { useState } from "react";
+import { Container, ContainerProperties, Image } from '@react-three/uikit';
+import { useState } from 'react';
 
-import colors from "../../shared/colors";
+import colors from '../../shared/colors';
 
 const Information = (props: ContainerProperties) => {
   const [active, setActive] = useState(false);

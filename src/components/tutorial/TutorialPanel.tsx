@@ -1,24 +1,24 @@
-import { useState } from "react";
-import { Image } from "@react-three/uikit";
+import { useState } from 'react';
+import { Image } from '@react-three/uikit';
 
-import Panel from "../ui/Panel";
-import Slides, { Slide } from "../ui/Slides";
+import Panel from '../ui/Panel';
+import Slides, { Slide } from '../ui/Slides';
 const slides: Slide[] = [
   {
     page: [1],
-    icon: "/vr-laboratory/icon/shake-hands-line.png",
-    label: "Welcome",
+    icon: '/vr-laboratory/icon/shake-hands-line.png',
+    label: 'Welcome',
   },
   {
     page: [2],
-    icon: "/vr-laboratory/icon/footprint-line.png",
-    label: "Movement",
+    icon: '/vr-laboratory/icon/footprint-line.png',
+    label: 'Movement',
   },
-  { page: [3], icon: "/vr-laboratory/icon/cursor-line.png", label: "Clicking" },
+  { page: [3], icon: '/vr-laboratory/icon/cursor-line.png', label: 'Clicking' },
   {
     page: [4],
-    icon: "/vr-laboratory/icon/search-line.png",
-    label: "Inspection",
+    icon: '/vr-laboratory/icon/search-line.png',
+    label: 'Inspection',
   },
 ];
 

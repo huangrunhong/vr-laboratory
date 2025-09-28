@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import SelectionContext from "../contexts/SelectionContext";
-import ActiveButton from "./ActiveButton";
+import SelectionContext from '../contexts/SelectionContext';
+import ActiveButton from './ActiveButton';
 
 interface InteractiveObjectProps {
   id: string;

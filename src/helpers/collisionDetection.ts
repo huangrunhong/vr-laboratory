@@ -1,6 +1,6 @@
-import { Box3, Object3D, Vector3 } from "three";
+import { Box3, Object3D, Vector3 } from 'three';
 
-import isMesh from "./isMesh";
+import isMesh from './isMesh';
 
 const size = new Vector3(0.25, 0.25, 0.25);
 
@@ -14,8 +14,7 @@ const collisionDetection = (origin: Vector3, scene: Object3D, box = size) => {
 
     const box = new Box3().setFromObject(object);
 
-    collided ||=
-      !box.isEmpty() && !box.containsBox(body) && box.intersectsBox(body);
+    collided ||= !box.isEmpty() && !box.containsBox(body) && box.intersectsBox(body);
   });
 
   return collided;

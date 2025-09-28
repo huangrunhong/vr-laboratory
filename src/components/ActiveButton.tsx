@@ -1,4 +1,4 @@
-import { Container, Root, Text } from "@react-three/uikit";
+import { Container, Root, Text } from '@react-three/uikit';
 
 interface ActiveButtonProps {
   positionX: number;
@@ -27,7 +27,7 @@ const ActiveButton = ({
     justifyContent="center"
     onPointerDown={onPointerDown}
     cursor="pointer"
-    hover={{ backgroundColor: "#0065bd" }}
+    hover={{ backgroundColor: '#0065bd' }}
   >
     <Container>
       <Text fontSize={5} color="#fff" fontWeight={700}>

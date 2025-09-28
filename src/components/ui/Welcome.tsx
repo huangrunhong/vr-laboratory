@@ -1,6 +1,6 @@
-import { Container, Text, Image } from "@react-three/uikit";
+import { Container, Text, Image } from '@react-three/uikit';
 
-import RoundedButton from "./RoundedButton";
+import RoundedButton from './RoundedButton';
 
 interface WelcomeProps {
   title: string;
@@ -10,13 +10,7 @@ interface WelcomeProps {
 }
 
 const Welcome = ({ onClick, title, subtitle, cooperator }: WelcomeProps) => (
-  <Container
-    flexDirection="column"
-    gap={4}
-    padding={20}
-    alignItems="flex-start"
-    width="100%"
-  >
+  <Container flexDirection="column" gap={4} padding={20} alignItems="flex-start" width="100%">
     <Container flexDirection="column" gap={4} flexGrow={1}>
       <Text fontSize={8} color="white" fontWeight={400}>
         {subtitle}

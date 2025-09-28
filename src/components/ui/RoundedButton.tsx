@@ -1,6 +1,6 @@
-import { Container, Text } from "@react-three/uikit";
+import { Container, Text } from '@react-three/uikit';
 
-import colors from "../../shared/colors";
+import colors from '../../shared/colors';
 
 interface RoundedButtonProps {
   children: string;
@@ -9,23 +9,12 @@ interface RoundedButtonProps {
   inverse?: boolean;
 }
 
-const RoundedButton = ({
-  children,
-  onClick,
-  outline,
-  inverse,
-}: RoundedButtonProps) => (
+const RoundedButton = ({ children, onClick, outline, inverse }: RoundedButtonProps) => (
   <Container
     paddingY={2}
     paddingX={4}
     backgroundColor={
-      inverse
-        ? outline
-          ? colors.primary
-          : colors.white
-        : outline
-          ? colors.white
-          : colors.primary
+      inverse ? (outline ? colors.primary : colors.white) : outline ? colors.white : colors.primary
     }
     hover={{
       backgroundColor: colors.primaryHover,

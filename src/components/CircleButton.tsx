@@ -1,9 +1,9 @@
-import { animated } from "@react-spring/three";
-import { ThreeElements } from "@react-three/fiber";
+import { animated } from '@react-spring/three';
+import { ThreeElements } from '@react-three/fiber';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-type CircleButtonProps = ThreeElements["group"] & {
+type CircleButtonProps = ThreeElements['group'] & {
   color?: number;
   innerSize?: number;
   outSize?: number;
@@ -33,11 +33,7 @@ const CircleButton = ({
       </mesh>
       <mesh>
         <circleGeometry args={[innerSize]} />
-        <meshBasicMaterial
-          color={hovered ? 0x0065bd : color}
-          transparent
-          opacity={0.6}
-        />
+        <meshBasicMaterial color={hovered ? 0x0065bd : color} transparent opacity={0.6} />
       </mesh>
     </group>
   );

@@ -18,11 +18,7 @@ const TransparentButton = ({
   onClick,
 }: transparentButtonProps) => {
   return (
-    <mesh
-      position={[x, y, z]}
-      rotation={[rotationX, rotationY, rotationZ]}
-      onClick={onClick}
-    >
+    <mesh position={[x, y, z]} rotation={[rotationX, rotationY, rotationZ]} onClick={onClick}>
       <planeGeometry args={[0.08, 0.2]} />
       <meshBasicMaterial color={0x000000} transparent={true} opacity={0.0001} />
     </mesh>

@@ -1,7 +1,7 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 type Selection = [selected: string, setSelected: (next: string) => void];
 
-const SelectionContext = createContext<Selection>(["", () => {}]);
+const SelectionContext = createContext<Selection>(['', () => {}]);
 
 export default SelectionContext;

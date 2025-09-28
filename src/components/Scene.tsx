@@ -1,11 +1,11 @@
-import { useMemo } from "react";
-import { PerspectiveCamera, Vector3 } from "three";
-import { Canvas } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
-import { IfSessionModeSupported, XR, XRStore } from "@react-three/xr";
+import { useMemo } from 'react';
+import { PerspectiveCamera, Vector3 } from 'three';
+import { Canvas } from '@react-three/fiber';
+import { Environment } from '@react-three/drei';
+import { IfSessionModeSupported, XR, XRStore } from '@react-three/xr';
 
-import CameraControl from "./CameraControl";
-import Locomotion from "./Locomotion";
+import CameraControl from './CameraControl';
+import Locomotion from './Locomotion';
 
 const createPerspectiveCamera = (x: number, z: number) => {
   const camera = new PerspectiveCamera();
@@ -24,13 +24,7 @@ interface SceneProps {
   environmentIntensity?: number;
 }
 
-const Scene = ({
-  children,
-  origin,
-  store,
-  environmentFile,
-  environmentIntensity,
-}: SceneProps) => {
+const Scene = ({ children, origin, store, environmentFile, environmentIntensity }: SceneProps) => {
   const camera = useMemo(() => createPerspectiveCamera(...origin), [origin]);
 
   return (

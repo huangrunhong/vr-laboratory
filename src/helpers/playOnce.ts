@@ -1,4 +1,4 @@
-import { AnimationAction, LoopOnce } from "three";
+import { AnimationAction, LoopOnce } from 'three';
 
 const playOnce = (action: AnimationAction | null, endTimeScale = 1) => {
   if (!action) return;

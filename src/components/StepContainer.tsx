@@ -1,5 +1,5 @@
-import { Container, Svg } from "@react-three/uikit";
-import { Children } from "react";
+import { Container, Svg } from '@react-three/uikit';
+import { Children } from 'react';
 
 interface StepContainerProps {
   children: React.ReactNode;
@@ -24,7 +24,7 @@ const StepContainer = ({ children, step, setStep }: StepContainerProps) => (
         color="#374151"
         src="/vr-laboratory/svg/arrow-left-circle-line.svg"
         cursor="pointer"
-        hover={{ color: "#0064c0" }}
+        hover={{ color: '#0064c0' }}
         onClick={() => setStep(Math.max(0, step - 1))}
       />
       <Svg
@@ -32,7 +32,7 @@ const StepContainer = ({ children, step, setStep }: StepContainerProps) => (
         color="#374151"
         src="/vr-laboratory/svg/arrow-right-circle-line.svg"
         cursor="pointer"
-        hover={{ color: "#0064c0" }}
+        hover={{ color: '#0064c0' }}
         onClick={() => setStep((step + 1) % 5)}
       />
     </Container>

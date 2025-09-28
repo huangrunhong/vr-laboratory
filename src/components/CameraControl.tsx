@@ -1,19 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  Euler,
-  Intersection,
-  Mesh,
-  Object3D,
-  PerspectiveCamera,
-  Raycaster,
-  Vector2,
-} from "three";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Euler, Intersection, Mesh, Object3D, PerspectiveCamera, Raycaster, Vector2 } from 'three';
+import { useFrame, useThree } from '@react-three/fiber';
 
-import collisionDetection from "../helpers/collisionDetection";
+import collisionDetection from '../helpers/collisionDetection';
 
 const isGroundObject = (intersection?: Intersection<Object3D>) =>
-  intersection?.object.name.toLowerCase().startsWith("ground");
+  intersection?.object.name.toLowerCase().startsWith('ground');
 
 const findFloor = (raycaster: Raycaster, objects: Object3D[]) => {
   const [intersection] = raycaster.intersectObjects(objects);
@@ -31,7 +23,7 @@ const CameraControl = ({ camera }: CameraControlProps) => {
   const circle = useRef<Mesh>(null);
 
   const count = useRef(0);
-  const euler = useMemo(() => new Euler(0, 0, 0, "YXZ"), []);
+  const euler = useMemo(() => new Euler(0, 0, 0, 'YXZ'), []);
   const position = useMemo(() => camera.position.clone(), [camera]);
   const raycaster = useMemo(() => new Raycaster(), []);
 
@@ -77,12 +69,12 @@ const CameraControl = ({ camera }: CameraControlProps) => {
       position.set(x, y, z);
     };
 
-    document.addEventListener("pointermove", onPointerMove);
-    document.addEventListener("pointerup", onPointerUp);
+    document.addEventListener('pointermove', onPointerMove);
+    document.addEventListener('pointerup', onPointerUp);
 
     return () => {
-      document.removeEventListener("pointermove", onPointerMove);
-      document.removeEventListener("pointerup", onPointerUp);
+      document.removeEventListener('pointermove', onPointerMove);
+      document.removeEventListener('pointerup', onPointerUp);
     };
   }, []);
 
@@ -91,7 +83,7 @@ const CameraControl = ({ camera }: CameraControlProps) => {
   });
 
   useEffect(() => {
-    document.body.style.cursor = teleport ? "pointer" : "default";
+    document.body.style.cursor = teleport ? 'pointer' : 'default';
   }, [teleport]);
 
   return (

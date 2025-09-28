@@ -1,9 +1,9 @@
-import { createXRStore } from "@react-three/xr";
+import { createXRStore } from '@react-three/xr';
 
-import HomePage from "./pages/HomePage";
-import Scene from "./components/Scene";
+import HomePage from './pages/HomePage';
+import Scene from './components/Scene';
 
-import "./styles/app.scss";
+import './styles/app.scss';
 
 const homeStore = createXRStore({
   hand: false,
@@ -11,7 +11,7 @@ const homeStore = createXRStore({
 });
 
 const origin: [number, number] = [-6, -1];
-const environmentFile = "/vr-laboratory/outside_background.exr";
+const environmentFile = '/vr-laboratory/outside_background.exr';
 
 const App = () => (
   <Scene

@@ -1,6 +1,6 @@
-import { Text, TextProperties } from "@react-three/uikit";
+import { Text, TextProperties } from '@react-three/uikit';
 
-import colors from "../../shared/colors";
+import colors from '../../shared/colors';
 
 interface SpanProps extends TextProperties {
   primary?: boolean;

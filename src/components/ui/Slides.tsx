@@ -1,9 +1,9 @@
-import React, { Children } from "react";
-import { Container, Image, Svg, Text } from "@react-three/uikit";
+import React, { Children } from 'react';
+import { Container, Image, Svg, Text } from '@react-three/uikit';
 
-import colors from "../../shared/colors";
+import colors from '../../shared/colors';
 
-import RoundedButton from "./RoundedButton";
+import RoundedButton from './RoundedButton';
 
 export interface Slide {
   page: number[];
@@ -35,9 +35,7 @@ const Menu = ({ slide, step, setStep }: MenuProps) => (
     gap={4}
     borderRadius={2}
     cursor="pointer"
-    backgroundColor={
-      slide.page.includes(step) ? colors.primaryHover : undefined
-    }
+    backgroundColor={slide.page.includes(step) ? colors.primaryHover : undefined}
     hover={{ backgroundColor: colors.primaryHover }}
     onClick={() => setStep(slide.page[0])}
   >
@@ -57,14 +55,7 @@ const Menu = ({ slide, step, setStep }: MenuProps) => (
   </Container>
 );
 
-const Slides = ({
-  children,
-  count,
-  slides,
-  showPageNumber,
-  step,
-  setStep,
-}: SlidesProps) => (
+const Slides = ({ children, count, slides, showPageNumber, step, setStep }: SlidesProps) => (
   <Container
     width="100%"
     height="100%"
@@ -94,9 +85,7 @@ const Slides = ({
       borderRadius={2}
       width={200}
     >
-      {Children.map(children, (child, index) =>
-        step === index + 1 ? child : null
-      )}
+      {Children.map(children, (child, index) => (step === index + 1 ? child : null))}
       {showPageNumber && (
         <Container paddingX={0} justifyContent="space-between">
           <Text fontSize={4} fontWeight={400} flexGrow={1}>
@@ -113,9 +102,7 @@ const Slides = ({
             />
             <Svg
               width={10}
-              color={
-                step === count ? colors.foregroundMuted : colors.foreground
-              }
+              color={step === count ? colors.foregroundMuted : colors.foreground}
               src="/vr-laboratory/svg/arrow-right-circle-line.svg"
               cursor="pointer"
               hover={{ color: step === count ? undefined : colors.primary }}
