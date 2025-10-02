@@ -35,12 +35,18 @@ const slides: Slide[] = [
 ];
 
 interface MaterialExtrusionProps {
+  automaticBedLeveling: () => void;
+  filamentLoading: () => void;
+  preheating: () => void;
   displayPart: () => void;
   play: () => void;
   onSelectComponent: (index: number) => void;
 }
 
 const MaterialExtrusionPanel = ({
+  automaticBedLeveling,
+  filamentLoading,
+  preheating,
   displayPart,
   play,
   onSelectComponent,
@@ -61,9 +67,9 @@ const MaterialExtrusionPanel = ({
       showWelcome={page === 0}
       subtitle="Welcome to the Process Area"
       transformRotateY={-135}
-      transformTranslateX={1800}
+      transformTranslateX={1780}
       transformTranslateY={-135}
-      transformTranslateZ={10}
+      transformTranslateZ={-40}
     >
       <Slides slides={slides} count={5} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
@@ -71,7 +77,7 @@ const MaterialExtrusionPanel = ({
           <Span fontWeight={700} width={200}>
             Click on the buttons below to locate the respective parts inside the printer!
           </Span>
-          <Container justifyContent="space-between" gap={3} width={196}>
+          <Container justifyContent="space-between" gap={3}>
             <RoundedButton
               outline={component === 0}
               onClick={() => (setComponent(0), onSelectComponent(0))}
@@ -99,19 +105,12 @@ const MaterialExtrusionPanel = ({
           </Container>
           <Container width={204}>
             {component === 0 && (
-              <>
-                <Span>
-                  The Build Platform is the structural component of the printer that supports and
-                  moves the Build Plate, enabling precise mechanical motion along the X and Y axes
-                  while maintaining stability. It is often heated to improve adhesion and prevent
-                  warping.
-                </Span>
-                <Span>
-                  On the snapmaker Artisan, the Build Platform consists of a solid metal base to
-                  which the Build Plate is magnetically attached. This part of the printer is
-                  typically not removed or adjusted during printing.
-                </Span>
-              </>
+              <Span>
+                The Build Platform is the structural component of the printer that supports and
+                moves the Build Plate, enabling precise mechanical motion along the X and Y axes
+                while maintaining stability. It is often heated to improve adhesion and prevent
+                warping.
+              </Span>
             )}
             {component === 1 && (
               <Span>
@@ -131,12 +130,11 @@ const MaterialExtrusionPanel = ({
             )}
             {component === 3 && (
               <Span>
-                Printing Material in Material Extrusion (MEX) 3D printing is typically a
-                thermoplastic filament that is melted and extruded to form each layer of the 3D
-                object. The filament is supplied on spools and is available in different material
-                categories, such as ABS, PETG, PLA, TPU, and Nylon, each offering different
-                mechanical, thermal, and aesthetic properties. The choice of filament influences
-                print quality, strength, flexibility, and ease of printing.
+                Printing Material in MEX is typically a thermoplastic filament that is melted and
+                extruded to form each layer of the 3D object. The filament is supplied on spools and
+                is available in different materials (ABS, PETG, PLA, or TPU), each offering
+                different mechanical, thermal, and aesthetic properties. The choice of filament
+                influences print quality, strength, flexibility, and ease of printing.
               </Span>
             )}
           </Container>
@@ -147,19 +145,25 @@ const MaterialExtrusionPanel = ({
             <Span width={120} fontWeight={700}>
               Level the Build Platform using the Automatic Bed Leveling function!
             </Span>
-            <RoundedButton>Automatic Bed Leveling</RoundedButton>
+            <RoundedButton outline={component === 1} onClick={() => automaticBedLeveling()}>
+              Automatic Bed Leveling
+            </RoundedButton>
           </Container>
           <Container alignItems="center" justifyContent="space-between">
             <Span width={120} fontWeight={700}>
               Load the Printing Material!
             </Span>
-            <RoundedButton>Filament Loading</RoundedButton>
+            <RoundedButton outline={component === 1} onClick={() => filamentLoading()}>
+              Filament Loading
+            </RoundedButton>
           </Container>
           <Container alignItems="center" justifyContent="space-between">
             <Span width={160} fontWeight={700}>
               Preheat the nozzle and the Build Plate!
             </Span>
-            <RoundedButton>Preheating</RoundedButton>
+            <RoundedButton outline={component === 1} onClick={() => preheating()}>
+              Preheating
+            </RoundedButton>
           </Container>
           <Information flexDirection="column" height={146} positionTop={-2} alignSelf="flex-end">
             <Span fontSize={6} fontWeight={700}>
@@ -168,8 +172,8 @@ const MaterialExtrusionPanel = ({
             <Span fontSize={5.5} paddingTop={4} paddingBottom={8}>
               Automatic Bed Leveling ensures that the nozzle maintains a consistent, optimal
               distance from the Build Plate across the entire build surface. It uses sensors to
-              measure the plate’s height at multiple points and compensates for any variations by
-              dynamically adjusting the nozzle’s height during printing. Even slight unevenness can
+              measure the plates height at multiple points and compensates for any variations by
+              dynamically adjusting the nozzles height during printing. Even slight unevenness can
               cause first-layer issues such as poor adhesion, warping, or complete print failure.
             </Span>
             <Span fontSize={6} fontWeight={700}>
@@ -211,9 +215,9 @@ const MaterialExtrusionPanel = ({
             <Span color="#C00000" width={180} marginTop={0}>
               NOTE: To see the detailed steps, check out the Post-processing Dashboard.
             </Span>
-            <Information flexDirection="column" height={146} positionTop={-144}>
+            <Information flexDirection="column" paddingY={4} height={140} positionTop={-144}>
               <Span fontWeight={700} fontSize={5}>
-                Cooldown
+                Cooldown:
               </Span>
               <Span paddingTop={6} fontSize={5}>
                 After printing is finished, it is important to let the model cool down gradually
@@ -255,7 +259,7 @@ const MaterialExtrusionPanel = ({
             flexDirection="row"
             gap={4}
             alignItems="flex-end"
-            marginBottom={18}
+            marginBottom={18.5}
             justifyContent="space-between"
           >
             <RoundedButton outline={component === 1} onClick={() => displayPart()}>

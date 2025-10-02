@@ -62,7 +62,7 @@ const PowderBedFusionPanel = ({
       showWelcome={page === 0}
       subtitle="Welcome to the Process Area"
       transformRotateY={45}
-      transformTranslateX={960}
+      transformTranslateX={950}
       transformTranslateY={-124}
       transformTranslateZ={-662.05}
     >
@@ -72,7 +72,7 @@ const PowderBedFusionPanel = ({
           <Span fontWeight={700} width={200}>
             Click on the buttons below to locate the respective parts inside the printer!
           </Span>
-          <Container justifyContent="space-between" gap={3} width={196}>
+          <Container justifyContent="space-between" gap={3}>
             <RoundedButton
               outline={component === 0}
               onClick={() => (setComponent(0), onSelectComponent(0))}
@@ -200,7 +200,7 @@ const PowderBedFusionPanel = ({
             <RoundedButton outline={component === 1} onClick={() => displayPart()}>
               Display Part
             </RoundedButton>
-            <Image src="/vr-laboratory/pbf/Slide_11_Takeaways_Table.png" width={129.5} />
+            <Image src="/vr-laboratory/pbf/Slide_11_Takeaways_Table.png" width={132} />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>
             <Image src="/vr-laboratory/pbf/Slide_12_AM-Studio.png" />

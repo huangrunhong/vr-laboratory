@@ -234,7 +234,7 @@ const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
             <RoundedButton outline={component === 1} onClick={() => displayPart()}>
               Display Part
             </RoundedButton>
-            <Image src="/vr-laboratory/vpp/Slide_13_Takeaways.png" width={129.5} />
+            <Image src="/vr-laboratory/vpp/Slide_13_Takeaways.png" width={132} />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>
             <Image src="/vr-laboratory/vpp/Slide_13_AM-Studio.png" />

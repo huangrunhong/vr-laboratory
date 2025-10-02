@@ -75,7 +75,7 @@ const BinderJettingPanel = ({
     >
       <Slides slides={slides} count={4} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
-          <Image width={100} src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png" />
+          <Image src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png" />
           <Span fontWeight={700}>
             Click on the buttons below to locate the respective parts inside the printer!
           </Span>
@@ -155,7 +155,7 @@ const BinderJettingPanel = ({
               gap={12}
             >
               <RoundedButton onClick={() => printTestPatterns()}>Print Test Patterns</RoundedButton>
-              <Image src="/vr-laboratory/bjt/Slide_7_BJT_Test_Patterns.png" />
+              <Image src="/vr-laboratory/bjt/Slide_7_BJT_Test_Patterns.png" width={70} />
             </Container>
           </Container>
           <Information flexDirection="column" height={146} positionTop={-2} alignSelf="flex-end">
@@ -241,7 +241,7 @@ const BinderJettingPanel = ({
             <RoundedButton outline={component === 1} onClick={() => displayPart()}>
               Display Part
             </RoundedButton>
-            <Image src="/vr-laboratory/bjt/Slide_12_Table_BJT_Takeaways.png" />
+            <Image src="/vr-laboratory/bjt/Slide_12_Table_BJT_Takeaways.png" width={132} />
           </Container>
           <Information flexDirection="column" gap={8} height={140} positionTop={-2}>
             <Image src="/vr-laboratory/bjt/Slide_13_AM_studio_Table.png" />

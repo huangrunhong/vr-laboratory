@@ -17,7 +17,7 @@ import playOnce from '../helpers/playOnce';
 import PowderBedFusionPanel from '../components/pbf/PowderBedFusionPanel';
 import MaterialExtrusionPanel from '../components/mex/MaterialExtrusionPanel';
 
-const openDoorButtonPosition = new Vector3(-2.9, 1.3, -0.915);
+const openDoorButtonPosition = new Vector3(-2.9, 1.25, -0.915);
 
 const modelPath = '/vr-laboratory/room.glb';
 const printerSkinPath = '/vr-laboratory/printerSkin.glb';
@@ -41,7 +41,8 @@ const vppMeshes = [
   'CuringUnit',
 ];
 
-const pbfMeshes = ['BuildPlatform', 'Laser Scanning', 'Recoating Unit', 'Recirculating'];
+const pbfMeshes = ['BuildPlatform', 'LaserScanning', 'RecoatingUnit', 'Recirculating'];
+const mexMeshes = ['BuildPlatform', 'BuildPlate', 'Extruder', 'PrintingMaterial'];
 
 const HomePage = () => {
   const room = useGLTF(modelPath);
@@ -62,6 +63,8 @@ const HomePage = () => {
   const roomActions = useAnimations(room.animations, room.scene);
   const printerActions = useAnimations(bjt.animations, bjt.scene);
   const vppActions = useAnimations(vpp.animations, vpp.scene);
+  const mexActions = useAnimations(mex.animations, mex.scene);
+  const pbfActions = useAnimations(pbf.animations, pbf.scene);
   const lobbyBoxActions = useAnimations(lobbyBox.animations, lobbyBox.scene);
 
   const openDoor = () => playOnce(roomActions.actions['Door_entrance'], 2);
@@ -79,6 +82,7 @@ const HomePage = () => {
   const activeFraunhofer = () => playOnce(roomActions.actions['Hub_2'], 2);
   const activeEos = () => playOnce(roomActions.actions['Hub_3'], 2);
   const activeMicroFactory = () => playOnce(roomActions.actions['Hub_1'], 2);
+  const activeSnapmaker = () => playOnce(roomActions.actions['Hub_4'], 2);
 
   const cleanPrintHead = () => playOnce(printerActions.actions['CleanPrintHead'], 2);
   const printTestPatterns = () => playOnce(printerActions.actions['PrintTestPatterns'], 2);
@@ -87,6 +91,17 @@ const HomePage = () => {
   const displayPart = () => playOnce(printerActions.actions['DisplayPart'], 1);
   const openBJT = () => playBack(printerActions.actions['DoorOpen']);
   const startVpp = () => playOnce(vppActions.actions['Play'], 2);
+  const displayPartVPP = () => playOnce(vppActions.actions['DisplayPart'], 1);
+
+  const automaticBedLeveling = () => playOnce(mexActions.actions['Automatic Bed']);
+  const filamentLoading = () => playOnce(mexActions.actions[' Filament Loading']);
+  const preheating = () => playOnce(mexActions.actions['PreHeating']);
+  const startMex = () => playOnce(mexActions.actions['Start Printing']);
+  const displayPartMex = () => playOnce(mexActions.actions['Display Part'], 1);
+
+  const startPbf = () => playOnce(pbfActions.actions['Start Printing']);
+  const displayPartPbf = () => playOnce(pbfActions.actions['Display Part']);
+  console.log(pbf.animations);
 
   const highlightSelection = (object: ObjectMap, targets: string[]) => (selected: number) =>
     targets.forEach((target, index) => {
@@ -103,8 +118,6 @@ const HomePage = () => {
         mesh.material = material;
       });
     });
-
-  const displayPartVPP = () => playOnce(vppActions.actions['DisplayPart'], 1);
 
   return (
     <SelectionContext.Provider value={[selected, setSelected]}>
@@ -208,14 +221,10 @@ const HomePage = () => {
         activeObject={
           <>
             <primitive object={pbf.scene} />
-            <mesh position={[9.56, 1.25, -6.6]} rotation-y={-(Math.PI * 3) / 4}>
-              <boxGeometry args={[2.5, 1.5, 0.01]} />
-              <meshBasicMaterial color={0xffffff} />
-            </mesh>
             <PowderBedFusionPanel
               onSelectComponent={highlightSelection(pbf, pbfMeshes)}
-              play={startVpp}
-              displayPart={displayPartVPP}
+              play={startPbf}
+              displayPart={displayPartPbf}
             />
           </>
         }
@@ -231,9 +240,12 @@ const HomePage = () => {
           <>
             <primitive object={mex.scene} />
             <MaterialExtrusionPanel
-              onSelectComponent={highlightSelection(pbf, pbfMeshes)}
-              play={startVpp}
-              displayPart={displayPartVPP}
+              automaticBedLeveling={automaticBedLeveling}
+              filamentLoading={filamentLoading}
+              preheating={preheating}
+              onSelectComponent={highlightSelection(mex, mexMeshes)}
+              play={startMex}
+              displayPart={displayPartMex}
             />
           </>
         }
@@ -290,6 +302,15 @@ const HomePage = () => {
         rotationY={-Math.PI / 2}
         rotationZ={Math.PI / 2}
         onClick={activeMicroFactory}
+      />
+      <TransparentButton
+        x={12.767}
+        y={1.63}
+        z={7.485}
+        rotationX={0}
+        rotationY={-Math.PI / 2}
+        rotationZ={Math.PI / 2}
+        onClick={activeSnapmaker}
       />
       <TutorialPanel onClick={appearBlueLine} />
       <AmHubPanel />

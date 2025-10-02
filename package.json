@@ -13,7 +13,7 @@
   "dependencies": {
     "@react-spring/three": "^10.0.1",
     "@react-three/csg": "^3.2.0",
-    "@react-three/drei": "^10.1.2",
+    "@react-three/drei": "^10.7.6",
     "@react-three/fiber": "^9.1.2",
     "@react-three/postprocessing": "^3.0.4",
     "@react-three/uikit": "^0.8.7",
