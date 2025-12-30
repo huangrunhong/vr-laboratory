@@ -1,10 +1,17 @@
-import { FontFamilyProvider, Root, RootProperties } from '@react-three/uikit';
+import { Container, ContainerProperties } from '@react-three/uikit';
 
 import colors from '../../shared/colors';
 
 import Welcome from './Welcome';
 
-interface PanelProps extends RootProperties {
+const fontFamilies = {
+  helvetica: {
+    bold: 'fonts/helvetica-bold-msdf.json',
+    normal: 'fonts/helvetica-regular-msdf.json',
+  },
+};
+
+interface PanelProps extends ContainerProperties {
   showWelcome: boolean;
   children: React.ReactNode;
   onClick: () => void;
@@ -22,26 +29,20 @@ const Panel = ({
   cooperator,
   ...rest
 }: PanelProps) => (
-  <Root
+  <Container
+    fontFamilies={fontFamilies}
     backgroundColor={showWelcome ? colors.primary : colors.white}
     borderRadius={4}
     sizeX={3}
     sizeY={1.8}
     {...rest}
   >
-    <FontFamilyProvider
-      helvetica={{
-        bold: 'fonts/helvetica-bold-msdf.json',
-        normal: 'fonts/helvetica-regular-msdf.json',
-      }}
-    >
-      {showWelcome ? (
-        <Welcome title={title} subtitle={subtitle} cooperator={cooperator} onClick={onClick} />
-      ) : (
-        children
-      )}
-    </FontFamilyProvider>
-  </Root>
+    {showWelcome ? (
+      <Welcome title={title} subtitle={subtitle} cooperator={cooperator} onClick={onClick} />
+    ) : (
+      children
+    )}
+  </Container>
 );
 
 export default Panel;

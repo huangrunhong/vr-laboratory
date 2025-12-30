@@ -1,10 +1,11 @@
+import { useEffect, useState } from 'react';
 import { Container, Image } from '@react-three/uikit';
+
 import Slides, { Slide } from '../ui/Slides';
 import Span from '../ui/Span';
 import RoundedButton from '../ui/RoundedButton';
 import Panel from '../ui/Panel';
 import Information from '../ui/Information';
-import { useEffect, useState } from 'react';
 
 const slides: Slide[] = [
   {

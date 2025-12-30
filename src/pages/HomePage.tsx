@@ -101,7 +101,6 @@ const HomePage = () => {
 
   const startPbf = () => playOnce(pbfActions.actions['Start Printing']);
   const displayPartPbf = () => playOnce(pbfActions.actions['Display Part']);
-  console.log(pbf.animations);
 
   const highlightSelection = (object: ObjectMap, targets: string[]) => (selected: number) =>
     targets.forEach((target, index) => {

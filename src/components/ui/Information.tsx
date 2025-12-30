@@ -25,7 +25,6 @@ const Information = (props: ContainerProperties) => {
           positionType="absolute"
           padding={8}
           backgroundColor={colors.white}
-          backgroundOpacity={1}
           borderColor={colors.black}
           borderWidth={0.5}
           borderRadius={8}
