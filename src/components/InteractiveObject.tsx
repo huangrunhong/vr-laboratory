@@ -26,18 +26,16 @@ const InteractiveObject = ({
 
   return (
     <>
-      <group>
-        <group visible={selected === id}>{activeObject}</group>
-        <group visible={selected !== id}>
-          <ActiveButton
-            onPointerDown={() => setSelected(id)}
-            positionX={positionX}
-            positionY={positionY}
-            positionZ={positionZ}
-            rotationY={rotationY}
-          />
-          {inactiveObject}
-        </group>
+      <group visible={selected === id}>{activeObject}</group>
+      <group visible={selected !== id}>
+        <ActiveButton
+          onPointerDown={() => setSelected(id)}
+          positionX={positionX}
+          positionY={positionY}
+          positionZ={positionZ}
+          rotationY={rotationY}
+        />
+        {inactiveObject}
       </group>
     </>
   );

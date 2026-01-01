@@ -1,23 +1,20 @@
-import { Box3, Object3D, Vector3 } from 'three';
+import { RootState } from '@react-three/fiber';
+import { Raycaster, Vector3 } from 'three';
 
-import isMesh from './isMesh';
+const gap = 1;
+const raycaster = new Raycaster();
 
-const size = new Vector3(0.25, 0.25, 0.25);
+const collisionDetection = (origin: Vector3, state: RootState, desiredMove: Vector3, speed = 3) => {
+  if (!desiredMove.lengthSq()) {
+    return 0;
+  }
 
-const collisionDetection = (origin: Vector3, scene: Object3D, box = size) => {
-  let collided = false;
+  desiredMove.normalize();
+  raycaster.set(origin, desiredMove);
 
-  const body = new Box3().setFromCenterAndSize(origin.clone().setY(0.5), box);
+  const [intersection] = raycaster.intersectObjects(state.scene.children, true);
 
-  scene.traverse((object) => {
-    if (!isMesh(object) || !object.geometry.boundingBox) return;
-
-    const box = new Box3().setFromObject(object);
-
-    collided ||= !box.isEmpty() && !box.containsBox(body) && box.intersectsBox(body);
-  });
-
-  return collided;
+  return intersection ? Math.min(speed, Math.max(0, intersection.distance - gap)) : speed;
 };
 
 export default collisionDetection;

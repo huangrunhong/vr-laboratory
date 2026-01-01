@@ -46,16 +46,21 @@ const mexMeshes = ['BuildPlatform', 'BuildPlate', 'Extruder', 'PrintingMaterial'
 
 const HomePage = () => {
   const room = useGLTF(modelPath);
-  const bjtSkin = useGLTF(printerSkinPath);
-  const vppSkin = useGLTF(vppSkinPath);
-  const vpp = useGLTF(vppPath);
-  const bjt = useGLTF(printerPath);
+
   const logo = useGLTF(logoPath);
   const lobbyBox = useGLTF(lobbyBoxPath);
-  const pbfSkin = useGLTF(pbfSkinPath);
-  const mexSkin = useGLTF(mexSkinPath);
+
+  const vpp = useGLTF(vppPath);
+  const vppSkin = useGLTF(vppSkinPath);
+
   const mex = useGLTF(mexPath);
+  const mexSkin = useGLTF(mexSkinPath);
+
   const pbf = useGLTF(pbfPath);
+  const pbfSkin = useGLTF(pbfSkinPath);
+
+  const bjt = useGLTF(printerPath);
+  const bjtSkin = useGLTF(printerSkinPath);
 
   const [selected, setSelected] = useState('');
   const [activeStart, setActiveStart] = useState(false);

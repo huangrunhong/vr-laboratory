@@ -1,5 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Euler, Intersection, Mesh, Object3D, PerspectiveCamera, Raycaster, Vector2 } from 'three';
+import {
+  Euler,
+  Intersection,
+  Mesh,
+  Object3D,
+  PerspectiveCamera,
+  Raycaster,
+  Vector2,
+  Vector3,
+} from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 
 import collisionDetection from '../helpers/collisionDetection';
@@ -23,6 +32,7 @@ const CameraControl = ({ camera }: CameraControlProps) => {
   const circle = useRef<Mesh>(null);
 
   const count = useRef(0);
+  const moving = useRef(false);
   const euler = useMemo(() => new Euler(0, 0, 0, 'YXZ'), []);
   const position = useMemo(() => camera.position.clone(), [camera]);
   const raycaster = useMemo(() => new Raycaster(), []);
@@ -30,6 +40,46 @@ const CameraControl = ({ camera }: CameraControlProps) => {
   const [teleport, setTeleport] = useState(false);
 
   useEffect(() => {
+    const onKeydown = (event: KeyboardEvent) => {
+      if (moving.current) {
+        return;
+      }
+
+      const move = new Vector3();
+      const side = new Vector3();
+      const worldUp = new Vector3(0, 1, 0);
+      const desiredMove = new Vector3(0, 0, 0);
+
+      camera.getWorldDirection(move);
+
+      move.setY(0);
+      move.normalize();
+
+      side.crossVectors(move, worldUp);
+      side.normalize();
+
+      if (['ArrowUp', 'w'].includes(event.key)) {
+        desiredMove.add(move);
+      }
+
+      if (['ArrowDown', 's'].includes(event.key)) {
+        desiredMove.sub(move);
+      }
+
+      if (['ArrowRight', 'd'].includes(event.key)) {
+        desiredMove.add(side);
+      }
+
+      if (['ArrowLeft', 'a'].includes(event.key)) {
+        desiredMove.sub(side);
+      }
+
+      position.addScaledVector(
+        desiredMove,
+        collisionDetection(camera.position, state, desiredMove)
+      );
+    };
+
     const onPointerMove = (event: PointerEvent) => {
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -37,11 +87,10 @@ const CameraControl = ({ camera }: CameraControlProps) => {
       raycaster.setFromCamera(new Vector2(x, y), camera);
 
       const floor = findFloor(raycaster, state.scene.children);
-      const moveable = !!floor && !collisionDetection(floor.point, state.scene);
 
-      setTeleport(moveable);
+      setTeleport(!!floor);
 
-      if (moveable && circle.current) {
+      if (floor && circle.current) {
         circle.current.position.set(floor.point.x, 0.01, floor.point.z);
       }
 
@@ -69,16 +118,20 @@ const CameraControl = ({ camera }: CameraControlProps) => {
       position.set(x, y, z);
     };
 
+    document.addEventListener('keydown', onKeydown);
     document.addEventListener('pointermove', onPointerMove);
     document.addEventListener('pointerup', onPointerUp);
 
     return () => {
+      document.removeEventListener('keydown', onKeydown);
       document.removeEventListener('pointermove', onPointerMove);
       document.removeEventListener('pointerup', onPointerUp);
     };
   }, []);
 
   useFrame((_, delta) => {
+    moving.current = camera.position.distanceTo(position) > 1;
+
     camera.position.lerp(position, delta * 3);
   });
 
