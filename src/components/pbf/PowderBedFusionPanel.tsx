@@ -62,9 +62,9 @@ const PowderBedFusionPanel = ({
       showWelcome={page === 0}
       subtitle="Welcome to the Process Area"
       transformRotateY={45}
-      transformTranslateX={950}
+      transformTranslateX={962}
       transformTranslateY={-124}
-      transformTranslateZ={-662.05}
+      transformTranslateZ={-680.55}
     >
       <Slides slides={slides} count={5} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>

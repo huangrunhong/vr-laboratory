@@ -106,6 +106,7 @@ const HomePage = () => {
 
   const startPbf = () => playOnce(pbfActions.actions['Start Printing']);
   const displayPartPbf = () => playOnce(pbfActions.actions['Display Part']);
+  console.log(pbfActions, roomActions);
 
   const highlightSelection = (object: ObjectMap, targets: string[]) => (selected: number) =>
     targets.forEach((target, index) => {
@@ -225,6 +226,7 @@ const HomePage = () => {
         activeObject={
           <>
             <primitive object={pbf.scene} />
+
             <PowderBedFusionPanel
               onSelectComponent={highlightSelection(pbf, pbfMeshes)}
               play={startPbf}
