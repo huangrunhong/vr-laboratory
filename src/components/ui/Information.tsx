@@ -28,7 +28,7 @@ const Information = (props: ContainerProperties) => {
           borderColor={colors.black}
           borderWidth={0.5}
           borderRadius={8}
-          zIndexOffset={1}
+          zIndex={100}
           {...props}
         />
       )}
