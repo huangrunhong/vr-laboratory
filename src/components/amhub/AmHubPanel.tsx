@@ -63,9 +63,9 @@ const AmHubPanel = () => {
 
   return (
     <Panel
-      title="AM Hub"
+      title="Additive Manufacturing Hub"
       showWelcome={page === 0}
-      subtitle="Welcome to the Virtual Reality Lab Additive Manufacturing"
+      subtitle="Welcome to the"
       onClick={() => setPage(1)}
       transformRotateY={-180}
       transformTranslateX={1048}
@@ -74,145 +74,333 @@ const AmHubPanel = () => {
     >
       <Slides slides={slides} count={47} showPageNumber step={page} setStep={setPage}>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Definition_Slide_1.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Definition_Slide_1.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_1.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_1.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_2.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_2.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_3.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_3.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_4.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_4.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_5.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_5.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_6.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_6.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_7.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_7.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_8.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Chronology_Slide_8.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_1.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_1.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_2.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_2.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_3.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_3.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_4.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_4.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_5.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_5.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_6.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_BJT_Slide_6.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_DED_Slide_1.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_DED_Slide_1.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_DED_Slide_2.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_DED_Slide_2.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_DED_Slide_3.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_DED_Slide_3.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_DED_Slide_4.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_DED_Slide_4.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_1.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_1.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_2.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_2.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_3.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_3.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_4.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_4.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_5.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_5.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_6.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MEX_Slide_6.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MJT_Slide_1.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MJT_Slide_1.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MJT_Slide_2.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MJT_Slide_2.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MJT_Slide_3.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MJT_Slide_3.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MJT_Slide_4.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MJT_Slide_4.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_MJT_Slide_5.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_MJT_Slide_5.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_PBF_Slide_1.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_PBF_Slide_1.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_PBF_Slide_2.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_PBF_Slide_2.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_PBF_Slide_3.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_PBF_Slide_3.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_PBF_Slide_4.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_PBF_Slide_4.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_PBF_Slide_5.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_PBF_Slide_5.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_SHL_Slide_1.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_SHL_Slide_1.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_SHL_Slide_2.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_SHL_Slide_2.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_SHL_Slide_3.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_SHL_Slide_3.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_SHL_Slide_4.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_SHL_Slide_4.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_SHL_Slide_5.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_SHL_Slide_5.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_VPP_Slide_1.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_VPP_Slide_1.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_VPP_Slide_2.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_VPP_Slide_2.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_VPP_Slide_3.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_VPP_Slide_3.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_VPP_Slide_4.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_VPP_Slide_4.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Future_Trends_Slide_1.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Future_Trends_Slide_1.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Future_Trends_Slide_2.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Future_Trends_Slide_2.png"
+          />
         </Container>
         <Container>
-          <Image flexGrow={1} src="/vr-laboratory/amHub/images/AM-Hub_Future_Trends_Slide_3.png" />
+          <Image
+            height={150}
+            flexGrow={1}
+            src="/vr-laboratory/amHub/images/AM-Hub_Future_Trends_Slide_3.png"
+          />
         </Container>
       </Slides>
     </Panel>

@@ -87,7 +87,7 @@ const Slides = ({ children, count, slides, showPageNumber, step, setStep }: Slid
     >
       {Children.map(children, (child, index) => (step === index + 1 ? child : null))}
       {showPageNumber && (
-        <Container paddingX={0} justifyContent="space-between">
+        <Container paddingX={0} marginTop={40} justifyContent="space-between">
           <Text fontSize={4} fontWeight={400} flexGrow={1}>
             {step.toString()}
           </Text>

@@ -67,7 +67,7 @@ const BinderJettingPanel = ({
       onClick={() => setPage(1)}
       title="Binder Jetting"
       showWelcome={page === 0}
-      subtitle="Welcome to the Pre-processing Dashboard"
+      subtitle="Welcome to the Process Area"
       transformRotateY={-135}
       transformTranslateX={560}
       transformTranslateY={-135}
@@ -190,7 +190,7 @@ const BinderJettingPanel = ({
             </Span>
             <RoundedButton onClick={() => startPrinting()}>Start Printing</RoundedButton>
           </Container>
-          <Span color="#C00000" marginTop={34}>
+          <Span color="#C00000" marginTop={42}>
             Note: The printing process is compacted to avoid extended exposure to the VR
             environment.
           </Span>

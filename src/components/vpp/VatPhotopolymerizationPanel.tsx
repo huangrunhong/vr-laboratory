@@ -35,13 +35,17 @@ const slides: Slide[] = [
   },
 ];
 
-interface VppPanelProps {
+interface VatPhotopolymerizationPanelProps {
   displayPart: () => void;
   play: () => void;
   onSelectComponent: (index: number) => void;
 }
 
-const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
+const VatPhotopolymerizationPanel = ({
+  displayPart,
+  play,
+  onSelectComponent,
+}: VatPhotopolymerizationPanelProps) => {
   const [page, setPage] = useState(0);
   const [component, setComponent] = useState<number>();
 
@@ -120,8 +124,9 @@ const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
             )}
             {component === 1 && (
               <Span>
-                The Build Platform is a metal plate on which the printing is done, and the part is
-                built.
+                The Build Platform holds the magnetic Build Plate, onto which the part is printed.
+                The magnetic Build Plate is easily removable, allowing for quick part removal and
+                replacement with each print.
               </Span>
             )}
             {component === 2 && (
@@ -168,7 +173,7 @@ const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
           <RoundedButton outline={component === 1} onClick={() => play()}>
             Start Printing
           </RoundedButton>
-          <Span color="#C00000" width={200} marginTop={98}>
+          <Span color="#C00000" width={200} marginTop={99} fontSize={6}>
             Note: The printing process is compacted to avoid extended exposure to the VR
             environment.
           </Span>
@@ -228,7 +233,7 @@ const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
             flexDirection="row"
             gap={4}
             alignItems="flex-end"
-            marginBottom={18}
+            marginBottom={16}
             justifyContent="space-between"
           >
             <RoundedButton outline={component === 1} onClick={() => displayPart()}>
@@ -252,4 +257,4 @@ const VppPanel = ({ displayPart, play, onSelectComponent }: VppPanelProps) => {
   );
 };
 
-export default VppPanel;
+export default VatPhotopolymerizationPanel;

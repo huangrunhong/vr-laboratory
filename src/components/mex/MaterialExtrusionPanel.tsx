@@ -35,13 +35,13 @@ const slides: Slide[] = [
   },
 ];
 
-interface MaterialExtrusionProps {
+interface MaterialExtrusionPanelProps {
   automaticBedLeveling: () => void;
   filamentLoading: () => void;
   preheating: () => void;
   displayPart: () => void;
   play: () => void;
-  onSelectComponent: (index: number) => void;
+  onSelectComponent: (...index: number[]) => void;
 }
 
 const MaterialExtrusionPanel = ({
@@ -51,7 +51,7 @@ const MaterialExtrusionPanel = ({
   displayPart,
   play,
   onSelectComponent,
-}: MaterialExtrusionProps) => {
+}: MaterialExtrusionPanelProps) => {
   const [page, setPage] = useState(0);
   const [component, setComponent] = useState<number>();
 
@@ -99,7 +99,7 @@ const MaterialExtrusionPanel = ({
             </RoundedButton>
             <RoundedButton
               outline={component === 3}
-              onClick={() => (setComponent(3), onSelectComponent(3))}
+              onClick={() => (setComponent(3), onSelectComponent(3, 4))}
             >
               Printing Material
             </RoundedButton>
@@ -203,7 +203,7 @@ const MaterialExtrusionPanel = ({
             Start Printing
           </RoundedButton>
           <Span color="#C00000" width={200} marginTop={98}>
-            NOTE: The process is compacted to avoid extended exposure to VR environment.
+            Note: The process is compacted to avoid extended exposure to VR environment.
           </Span>
         </Container>
         <Container flexDirection="column" gap={8}>
@@ -214,7 +214,7 @@ const MaterialExtrusionPanel = ({
           />
           <Container marginTop={8} justifyContent="space-between">
             <Span color="#C00000" width={180} marginTop={0}>
-              NOTE: To see the detailed steps, check out the Post-processing Dashboard.
+              Note: To see the detailed steps, check out the Post-processing Dashboard.
             </Span>
             <Information flexDirection="column" paddingY={4} height={140} positionTop={-144}>
               <Span fontWeight={700} fontSize={5}>
