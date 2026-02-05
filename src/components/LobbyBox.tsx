@@ -11,7 +11,7 @@ const path = '/vr-laboratory/lobbyBox.glb';
 const LobbyBox = () => {
   const lobby = useGLTF(path);
   const animations = useAnimations(lobby.animations, lobby.scene);
-  const playOnce = usePlayOnce(animations.actions);
+  const playOnce = usePlayOnce(animations.actions, false);
 
   const openBox = () => playOnce('Lobby_2', 2);
   const activeTum = () => playOnce('Lobby_3', 2);

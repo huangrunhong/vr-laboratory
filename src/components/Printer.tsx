@@ -27,21 +27,22 @@ const Printer = ({ children, name, position, rotation }: PrinterProps) => {
   const animations = useAnimations(gltf.animations, gltf.scene);
   const playOnce = usePlayOnce(animations.actions);
   const [selected, setSelected] = useContext(SelectionContext);
-  console.log(useGLTF(`/vr-laboratory/${'mex'}.glb`));
 
   return (
     <Fragment>
-      <group visible={selected === name}>
-        <primitive object={gltf.scene} />
-        {children({ animations, playOnce, gltf })}
-      </group>
-      <group visible={selected !== name}>
-        <ActiveButton
-          position={position}
-          rotation={rotation}
-          onPointerDown={() => setSelected(name)}
-        />
-        <primitive object={skin.scene} />
+      <group position={[0, 0.00001, 0]}>
+        <group visible={selected === name}>
+          <primitive object={gltf.scene} />
+          {children({ animations, playOnce, gltf })}
+        </group>
+        <group visible={selected !== name}>
+          <ActiveButton
+            position={position}
+            rotation={rotation}
+            onPointerDown={() => setSelected(name)}
+          />
+          <primitive object={skin.scene} />
+        </group>
       </group>
     </Fragment>
   );

@@ -13,7 +13,7 @@ const path = '/vr-laboratory/room.glb';
 const Room = () => {
   const room = useGLTF(path);
   const animations = useAnimations(room.animations, room.scene);
-  const playOnce = usePlayOnce(animations.actions);
+  const playOnce = usePlayOnce(animations.actions, false);
 
   const [showBox, setShowBox] = useState(false);
 

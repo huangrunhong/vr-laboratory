@@ -1,7 +1,10 @@
 import { useRef } from 'react';
 import { AnimationAction, LoopOnce } from 'three';
 
-const usePlayOnce = <T extends string>(actions: Record<T, AnimationAction | null>) => {
+const usePlayOnce = <T extends string>(
+  actions: Record<T, AnimationAction | null>,
+  crossFade = true
+) => {
   const ref = useRef<AnimationAction>(null);
 
   const playOnce = (name: T, endTimeScale = 1) => {
@@ -11,7 +14,7 @@ const usePlayOnce = <T extends string>(actions: Record<T, AnimationAction | null
 
     action.clampWhenFinished = true;
 
-    if (ref.current) {
+    if (ref.current && crossFade) {
       action.crossFadeFrom(ref.current, 0.5, true);
     }
 

@@ -48,7 +48,6 @@ interface BinderJettingPanelProps {
 const BinderJettingPanel = ({
   cleanPrintHead,
   printTestPatterns,
-  coatInitialLayers,
   startPrinting,
   displayPart,
   onSelectComponent,
@@ -69,9 +68,9 @@ const BinderJettingPanel = ({
       showWelcome={page === 0}
       subtitle="Welcome to the Process Area"
       transformRotateY={-135}
-      transformTranslateX={560}
+      transformTranslateX={549.495}
       transformTranslateY={-135}
-      transformTranslateZ={10}
+      transformTranslateZ={-0.925}
     >
       <Slides slides={slides} count={4} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
@@ -180,17 +179,16 @@ const BinderJettingPanel = ({
             To create an interface between the build platform and the part, few layers need to be
             coated without any part printing on it.
           </Span>
-          <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span fontWeight={700}>Coat Initial Layers! </Span>
-            <RoundedButton onClick={() => coatInitialLayers()}>Coat Initial Layers</RoundedButton>
-          </Container>
+
           <Container flexDirection="column" gap={4} alignItems="flex-start">
             <Span fontWeight={700}>
-              Start Printing and observe the layer-by-layer build-up of the part!
+              Coat the Initial Layers, and obserce the layer-by-layer build-up of the part!
             </Span>
-            <RoundedButton onClick={() => startPrinting()}>Start Printing</RoundedButton>
+            <RoundedButton onClick={() => startPrinting()}>
+              Coat Initial Layers and Start Printing
+            </RoundedButton>
           </Container>
-          <Span color="#C00000" marginTop={42}>
+          <Span color="#C00000" marginTop={75}>
             Note: The printing process is compacted to avoid extended exposure to the VR
             environment.
           </Span>
