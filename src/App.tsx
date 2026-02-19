@@ -11,7 +11,7 @@ const homeStore = createXRStore({
 });
 
 const origin: [number, number] = [-6, -1];
-const environmentFile = '/vr-laboratory/outside_background.exr';
+const environmentFile = import.meta.env.BASE_URL + '/outside_background.exr';
 
 const App = () => (
   <Scene

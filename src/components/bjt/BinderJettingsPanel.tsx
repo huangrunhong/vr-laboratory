@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container, Image } from '@react-three/uikit';
+import { Container } from '@react-three/uikit';
 
 import Panel from '../ui/Panel';
 import Slides, { Slide } from '../ui/Slides';
@@ -7,31 +7,32 @@ import RoundedButton from '../ui/RoundedButton';
 import Span from '../ui/Span';
 import Heading from '../ui/Heading';
 import Information from '../ui/Information';
+import Image from '../ui/Image';
 
 const slides: Slide[] = [
   {
     page: [1],
-    icon: '/vr-laboratory/bjt/00_Icon_Printer_Components.png',
+    icon: '/bjt/00_Icon_Printer_Components.png',
     label: 'Printer Components',
   },
   {
     page: [2],
-    icon: '/vr-laboratory/bjt/01_Icon_Pre-processing.png',
+    icon: '/bjt/01_Icon_Pre-processing.png',
     label: 'Pre-processing',
   },
   {
     page: [3],
-    icon: '/vr-laboratory/bjt/02_Icon_Printing.png',
+    icon: '/bjt/02_Icon_Printing.png',
     label: 'Printing',
   },
   {
     page: [4],
-    icon: '/vr-laboratory/bjt/03_Icon_Post-processing.png',
+    icon: '/bjt/03_Icon_Post-processing.png',
     label: 'Post-processing',
   },
   {
     page: [5],
-    icon: '/vr-laboratory/bjt/04_Icon_Take_Aways.png',
+    icon: '/bjt/04_Icon_Take_Aways.png',
     label: 'Takeaways',
   },
 ];
@@ -62,7 +63,7 @@ const BinderJettingPanel = ({
 
   return (
     <Panel
-      cooperator="/vr-laboratory/bjt/igcv.png"
+      cooperator="/bjt/igcv.png"
       onClick={() => setPage(1)}
       title="Binder Jetting"
       showWelcome={page === 0}
@@ -74,7 +75,7 @@ const BinderJettingPanel = ({
     >
       <Slides slides={slides} count={4} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png" />
+          <Image src="/bjt/Slide_2_Table_Processoverview_BJT.png" />
           <Span fontWeight={700}>
             Click on the buttons below to locate the respective parts inside the printer!
           </Span>
@@ -134,10 +135,7 @@ const BinderJettingPanel = ({
           </Container>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Image
-            src="/vr-laboratory/bjt/Slide_7_Table_Pre-processing_Parameters_New.png"
-            flexGrow={1}
-          />
+          <Image src="/bjt/Slide_7_Table_Pre-processing_Parameters_New.png" flexGrow={1} />
           <Container flexDirection="column" gap={4} alignItems="flex-start">
             <Span fontWeight={700}>Clean the Print Head before you start printing!</Span>
             <RoundedButton onClick={() => cleanPrintHead()}>Clean Print Head</RoundedButton>
@@ -154,7 +152,7 @@ const BinderJettingPanel = ({
               gap={12}
             >
               <RoundedButton onClick={() => printTestPatterns()}>Print Test Patterns</RoundedButton>
-              <Image src="/vr-laboratory/bjt/Slide_7_BJT_Test_Patterns.png" width={70} />
+              <Image src="/bjt/Slide_7_BJT_Test_Patterns.png" width={70} />
             </Container>
           </Container>
           <Information flexDirection="column" height={146} positionTop={-2} alignSelf="flex-end">
@@ -198,7 +196,7 @@ const BinderJettingPanel = ({
             Printing is followed by multiple Post-processing steps. These steps help extract the
             part from the print bed.
           </Span>
-          <Image src="/vr-laboratory/bjt/Slide_10_Postprocessing.png" />
+          <Image src="/bjt/Slide_10_Postprocessing.png" />
           <Container marginBottom={4} justifyContent="space-between">
             <Span color="#C00000" marginTop={0}>
               Note: To see the detailed steps, check out the Post-processing Dashboard.
@@ -228,7 +226,7 @@ const BinderJettingPanel = ({
           </Container>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory/bjt/Slide_2_Table_Processoverview_BJT.png" flexGrow={1} />
+          <Image src="/bjt/Slide_2_Table_Processoverview_BJT.png" flexGrow={1} />
           <Container
             flexDirection="row"
             gap={4}
@@ -239,10 +237,10 @@ const BinderJettingPanel = ({
             <RoundedButton outline={component === 1} onClick={() => displayPart()}>
               Display Part
             </RoundedButton>
-            <Image src="/vr-laboratory/bjt/Slide_12_Table_BJT_Takeaways.png" width={132} />
+            <Image src="/bjt/Slide_12_Table_BJT_Takeaways.png" width={132} />
           </Container>
           <Information flexDirection="column" gap={8} height={140} positionTop={-2}>
-            <Image src="/vr-laboratory/bjt/Slide_13_AM_studio_Table.png" />
+            <Image src="/bjt/Slide_13_AM_studio_Table.png" />
             <Container flexDirection="column" gap={2}>
               <Span>Congratulations!</Span>
               <Span>

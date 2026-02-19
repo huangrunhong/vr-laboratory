@@ -1,36 +1,37 @@
-import { Container, Image } from '@react-three/uikit';
-import Panel from '../ui/Panel';
-
 import { useEffect, useState } from 'react';
+import { Container } from '@react-three/uikit';
+
+import Panel from '../ui/Panel';
 import Slides, { Slide } from '../ui/Slides';
 import Span from '../ui/Span';
 import RoundedButton from '../ui/RoundedButton';
 import Information from '../ui/Information';
+import Image from '../ui/Image';
 
 const slides: Slide[] = [
   {
     page: [1],
-    icon: '/vr-laboratory/bjt/00_Icon_Printer_Components.png',
+    icon: '/bjt/00_Icon_Printer_Components.png',
     label: 'Printer Components',
   },
   {
     page: [2],
-    icon: '/vr-laboratory/bjt/01_Icon_Pre-processing.png',
+    icon: '/bjt/01_Icon_Pre-processing.png',
     label: 'Pre-processing',
   },
   {
     page: [3],
-    icon: '/vr-laboratory/bjt/02_Icon_Printing.png',
+    icon: '/bjt/02_Icon_Printing.png',
     label: 'Printing',
   },
   {
     page: [4],
-    icon: '/vr-laboratory/bjt/03_Icon_Post-processing.png',
+    icon: '/bjt/03_Icon_Post-processing.png',
     label: 'Post-processing',
   },
   {
     page: [5],
-    icon: '/vr-laboratory/bjt/04_Icon_Take_Aways.png',
+    icon: '/bjt/04_Icon_Take_Aways.png',
     label: 'Takeaways',
   },
 ];
@@ -56,7 +57,7 @@ const VatPhotopolymerizationPanel = ({
 
   return (
     <Panel
-      cooperator="/vr-laboratory/vpp/Slide_1_microfactory_logo.png"
+      cooperator="/vpp/Slide_1_microfactory_logo.png"
       onClick={() => setPage(1)}
       title="Vat Photopolymerization"
       showWelcome={page === 0}
@@ -68,11 +69,7 @@ const VatPhotopolymerizationPanel = ({
     >
       <Slides slides={slides} count={5} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8} width={204}>
-          <Image
-            src="/vr-laboratory/vpp/Slide_2_Table_Processoverview_VPP.png"
-            flexGrow={1}
-            width={196}
-          />
+          <Image src="/vpp/Slide_2_Table_Processoverview_VPP.png" flexGrow={1} width={196} />
           <Span fontWeight={700} width={200}>
             Click on the buttons below to locate the respective parts inside the printer!
           </Span>
@@ -156,7 +153,7 @@ const VatPhotopolymerizationPanel = ({
           </Container>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory/vpp/Slide_9_Table_Pre-processing_Parameters.png" />
+          <Image src="/vpp/Slide_9_Table_Pre-processing_Parameters.png" />
           <Span width={200}>
             Earlier in the Pre-processing dashboard, you have optimized all the printing parameters
             and have successfully set up the printer. These optimized parameters have been uploaded
@@ -187,11 +184,7 @@ const VatPhotopolymerizationPanel = ({
           <Span width={200} fontSize={6}>
             Only the supports of the model must be removed using scissors/cutters.
           </Span>
-          <Image
-            alignSelf="center"
-            src="/vr-laboratory/vpp/Slide_11_Post-processing.png"
-            width={200}
-          />
+          <Image alignSelf="center" src="/vpp/Slide_11_Post-processing.png" width={200} />
           <Container marginBottom={4} justifyContent="space-between">
             <Span color="#C00000" width={180} marginTop={0} fontSize={6}>
               Note: To see the detailed steps, check out the Post-processing Dashboard.
@@ -228,7 +221,7 @@ const VatPhotopolymerizationPanel = ({
           </Container>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory/vpp/Slide_2_Table_Processoverview_VPP.png" flexGrow={1} />
+          <Image src="/vpp/Slide_2_Table_Processoverview_VPP.png" flexGrow={1} />
           <Container
             flexDirection="row"
             gap={4}
@@ -239,10 +232,10 @@ const VatPhotopolymerizationPanel = ({
             <RoundedButton outline={component === 1} onClick={() => displayPart()}>
               Display Part
             </RoundedButton>
-            <Image src="/vr-laboratory/vpp/Slide_13_Takeaways.png" width={132} />
+            <Image src="/vpp/Slide_13_Takeaways.png" width={132} />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>
-            <Image src="/vr-laboratory/vpp/Slide_13_AM-Studio.png" />
+            <Image src="/vpp/Slide_13_AM-Studio.png" />
             <Container flexDirection="column" gap={2}>
               <Span>Congratulations!</Span>
               <Span>

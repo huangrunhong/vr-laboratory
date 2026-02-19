@@ -8,7 +8,7 @@ import TutorialPanel from './tutorial/TutorialPanel';
 import AirButton from './AirButton';
 import LobbyBox from './LobbyBox';
 
-const path = '/vr-laboratory/room.glb';
+const path = import.meta.env.BASE_URL + '/room.glb';
 
 const Room = () => {
   const room = useGLTF(path);
@@ -44,7 +44,7 @@ const Room = () => {
       <mesh rotation-y={Math.PI * 2}>
         <CircleButton size={0.07} position={[9.35, 1, 3.25]} onClick={openSocialSpace} />
       </mesh>
-      {showBox && <LobbyBox />}
+      <LobbyBox visible={showBox} />
       <AirButton
         position={[8.048, 1.63, 9.08]}
         rotation={[0, 0.5, 0.5]}

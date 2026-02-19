@@ -7,7 +7,12 @@ const meshes = ['BuildPlatform', 'BuildPlate', 'Extruder', 'PrinitingMaterial_01
 console.log();
 
 const MaterialExtrusionPrinter = () => (
-  <Printer name="mex" position={[1560, -130, 56]} rotation={57 * Math.PI}>
+  <Printer
+    name="mex"
+    initialAction="Automatic Bed"
+    position={[1560, -130, 56]}
+    rotation={57 * Math.PI}
+  >
     {({ gltf, playOnce }) => (
       <MaterialExtrusionPanel
         automaticBedLeveling={() => playOnce('Automatic Bed', 1.5)}

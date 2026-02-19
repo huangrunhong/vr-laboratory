@@ -1,23 +1,24 @@
 import { useState } from 'react';
-import { Image } from '@react-three/uikit';
 
 import Panel from '../ui/Panel';
 import Slides, { Slide } from '../ui/Slides';
+import Image from '../ui/Image';
+
 const slides: Slide[] = [
   {
     page: [1],
-    icon: '/vr-laboratory/icon/shake-hands-line.png',
+    icon: '/icon/shake-hands-line.png',
     label: 'Welcome',
   },
   {
     page: [2],
-    icon: '/vr-laboratory/icon/footprint-line.png',
+    icon: '/icon/footprint-line.png',
     label: 'Movement',
   },
-  { page: [3], icon: '/vr-laboratory/icon/cursor-line.png', label: 'Clicking' },
+  { page: [3], icon: '/icon/cursor-line.png', label: 'Clicking' },
   {
     page: [4],
-    icon: '/vr-laboratory/icon/search-line.png',
+    icon: '/icon/search-line.png',
     label: 'Inspection',
   },
 ];
@@ -41,10 +42,10 @@ const TutorialPanel = ({ onClick }: TutorialPanelProps) => {
       transformTranslateZ={315}
     >
       <Slides slides={slides} count={4} step={page} setStep={setPage}>
-        <Image src="/vr-laboratory/tutorials/Lobby_Page1.png" marginLeft={7} />
-        <Image src="/vr-laboratory/tutorials/Lobby_Page2.png" marginLeft={7} />
-        <Image src="/vr-laboratory/tutorials/Lobby_Page3.png" marginLeft={7} />
-        <Image src="/vr-laboratory/tutorials/Lobby_Page4.png" marginLeft={7} />
+        <Image src="/tutorials/Lobby_Page1.png" marginLeft={7} />
+        <Image src="/tutorials/Lobby_Page2.png" marginLeft={7} />
+        <Image src="/tutorials/Lobby_Page3.png" marginLeft={7} />
+        <Image src="/tutorials/Lobby_Page4.png" marginLeft={7} />
       </Slides>
     </Panel>
   );

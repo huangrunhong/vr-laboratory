@@ -1,36 +1,37 @@
 import { useEffect, useState } from 'react';
-import { Container, Image } from '@react-three/uikit';
+import { Container } from '@react-three/uikit';
 
 import Slides, { Slide } from '../ui/Slides';
 import Span from '../ui/Span';
 import RoundedButton from '../ui/RoundedButton';
 import Panel from '../ui/Panel';
 import Information from '../ui/Information';
+import Image from '../ui/Image';
 
 const slides: Slide[] = [
   {
     page: [1],
-    icon: '/vr-laboratory/bjt/00_Icon_Printer_Components.png',
+    icon: '/bjt/00_Icon_Printer_Components.png',
     label: 'Printer Components',
   },
   {
     page: [2],
-    icon: '/vr-laboratory/bjt/01_Icon_Pre-processing.png',
+    icon: '/bjt/01_Icon_Pre-processing.png',
     label: 'Pre-processing',
   },
   {
     page: [3],
-    icon: '/vr-laboratory/bjt/02_Icon_Printing.png',
+    icon: '/bjt/02_Icon_Printing.png',
     label: 'Printing',
   },
   {
     page: [4],
-    icon: '/vr-laboratory/bjt/03_Icon_Post-processing.png',
+    icon: '/bjt/03_Icon_Post-processing.png',
     label: 'Post-processing',
   },
   {
     page: [5],
-    icon: '/vr-laboratory/bjt/04_Icon_Take_Aways.png',
+    icon: '/bjt/04_Icon_Take_Aways.png',
     label: 'Takeaways',
   },
 ];
@@ -62,7 +63,7 @@ const MaterialExtrusionPanel = ({
 
   return (
     <Panel
-      cooperator="/vr-laboratory/mex/Slide_1_Snapmaker_Logo_White.png"
+      cooperator="/mex/Slide_1_Snapmaker_Logo_White.png"
       onClick={() => setPage(1)}
       title="Material Extrusion"
       showWelcome={page === 0}
@@ -74,7 +75,7 @@ const MaterialExtrusionPanel = ({
     >
       <Slides slides={slides} count={5} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory/mex/Slide_2_Table_Processoverview_MEX.png" flexGrow={1} />
+          <Image src="/mex/Slide_2_Table_Processoverview_MEX.png" flexGrow={1} />
           <Span fontWeight={700} width={200}>
             Click on the buttons below to locate the respective parts inside the printer!
           </Span>
@@ -141,7 +142,7 @@ const MaterialExtrusionPanel = ({
           </Container>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory/mex/Slide_7_Table_Printing_Parameters_MEX.png" />
+          <Image src="/mex/Slide_7_Table_Printing_Parameters_MEX.png" />
           <Container alignItems="center" justifyContent="space-between">
             <Span width={120} fontWeight={700}>
               Level the Build Platform using the Automatic Bed Leveling function!
@@ -209,7 +210,7 @@ const MaterialExtrusionPanel = ({
         <Container flexDirection="column" gap={8}>
           <Image
             alignSelf="center"
-            src="/vr-laboratory/mex/Slide_10_Image_Post-processing_Steps_MEX.png"
+            src="/mex/Slide_10_Image_Post-processing_Steps_MEX.png"
             width={200}
           />
           <Container marginTop={8} justifyContent="space-between">
@@ -255,7 +256,7 @@ const MaterialExtrusionPanel = ({
           </Container>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory/mex/Slide_2_Table_Processoverview_MEX.png" flexGrow={1} />
+          <Image src="/mex/Slide_2_Table_Processoverview_MEX.png" flexGrow={1} />
           <Container
             flexDirection="row"
             gap={4}
@@ -266,10 +267,10 @@ const MaterialExtrusionPanel = ({
             <RoundedButton outline={component === 1} onClick={() => displayPart()}>
               Display Part
             </RoundedButton>
-            <Image src="/vr-laboratory/mex/Slide_12_Takeaways_MEX.png" width={129.5} />
+            <Image src="/mex/Slide_12_Takeaways_MEX.png" width={129.5} />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>
-            <Image src="/vr-laboratory/mex/Slide_13_AM_studio_Overview.png" />
+            <Image src="/mex/Slide_13_AM_studio_Overview.png" />
             <Container flexDirection="column" gap={2}>
               <Span>Congratulations!</Span>
               <Span>

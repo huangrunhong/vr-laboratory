@@ -1,7 +1,9 @@
-import { Container, ContainerProperties, Image } from '@react-three/uikit';
+import { Container, ContainerProperties } from '@react-three/uikit';
 import { useState } from 'react';
 
 import colors from '../../shared/colors';
+
+import Image from './Image';
 
 const Information = (props: ContainerProperties) => {
   const [active, setActive] = useState(false);
@@ -9,7 +11,7 @@ const Information = (props: ContainerProperties) => {
   return (
     <>
       <Image
-        src="/vr-laboratory/bjt/information-line.png"
+        src="/bjt/information-line.png"
         width={12}
         cursor="pointer"
         onClick={() => setActive(!active)}

@@ -1,9 +1,10 @@
 import React, { Children } from 'react';
-import { Container, Image, Svg, Text } from '@react-three/uikit';
+import { Container, Svg, Text } from '@react-three/uikit';
 
 import colors from '../../shared/colors';
 
 import RoundedButton from './RoundedButton';
+import Image from './Image';
 
 export interface Slide {
   page: number[];
@@ -95,7 +96,7 @@ const Slides = ({ children, count, slides, showPageNumber, step, setStep }: Slid
             <Svg
               width={10}
               color={step === 1 ? colors.foregroundMuted : colors.foreground}
-              src="/vr-laboratory/svg/arrow-left-circle-line.svg"
+              src={import.meta.env.BASE_URL + '/svg/arrow-left-circle-line.svg'}
               cursor="pointer"
               hover={{ color: step === 1 ? undefined : colors.primary }}
               onClick={() => setStep(Math.max(1, step - 1))}
@@ -103,7 +104,7 @@ const Slides = ({ children, count, slides, showPageNumber, step, setStep }: Slid
             <Svg
               width={10}
               color={step === count ? colors.foregroundMuted : colors.foreground}
-              src="/vr-laboratory/svg/arrow-right-circle-line.svg"
+              src={import.meta.env.BASE_URL + '/svg/arrow-right-circle-line.svg'}
               cursor="pointer"
               hover={{ color: step === count ? undefined : colors.primary }}
               onClick={() => setStep(Math.min(count, step + 1))}

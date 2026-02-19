@@ -9,7 +9,7 @@ import PowderBedFusionPrinter from '../components/pbf/PowderBedFusionPrinter';
 import MaterialExtrusionPrinter from '../components/mex/MaterialExtrusionPrinter';
 import Room from '../components/Room';
 
-const logoPath = '/vr-laboratory/logo.glb';
+const logoPath = import.meta.env.BASE_URL + '/logo.glb';
 
 const HomePage = () => {
   const logo = useGLTF(logoPath);
