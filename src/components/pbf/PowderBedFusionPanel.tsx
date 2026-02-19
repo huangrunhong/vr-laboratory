@@ -1,35 +1,37 @@
 import { useEffect, useState } from 'react';
-import { Container, Image } from '@react-three/uikit';
+import { Container } from '@react-three/uikit';
+
 import Panel from '../ui/Panel';
 import Slides, { Slide } from '../ui/Slides';
 import Span from '../ui/Span';
 import RoundedButton from '../ui/RoundedButton';
 import Information from '../ui/Information';
+import Image from '../ui/Image';
 
 const slides: Slide[] = [
   {
     page: [1],
-    icon: '/vr-laboratory/bjt/00_Icon_Printer_Components.png',
+    icon: '/bjt/00_Icon_Printer_Components.png',
     label: 'Printer Components',
   },
   {
     page: [2],
-    icon: '/vr-laboratory/bjt/01_Icon_Pre-processing.png',
+    icon: '/bjt/01_Icon_Pre-processing.png',
     label: 'Pre-processing',
   },
   {
     page: [3],
-    icon: '/vr-laboratory/bjt/02_Icon_Printing.png',
+    icon: '/bjt/02_Icon_Printing.png',
     label: 'Printing',
   },
   {
     page: [4],
-    icon: '/vr-laboratory/bjt/03_Icon_Post-processing.png',
+    icon: '/bjt/03_Icon_Post-processing.png',
     label: 'Post-processing',
   },
   {
     page: [5],
-    icon: '/vr-laboratory/bjt/04_Icon_Take_Aways.png',
+    icon: '/bjt/04_Icon_Take_Aways.png',
     label: 'Takeaways',
   },
 ];
@@ -56,7 +58,7 @@ const PowderBedFusionPanel = ({
 
   return (
     <Panel
-      cooperator="/vr-laboratory/pbf/Slide_1_EOS_logo_white.png"
+      cooperator="/pbf/Slide_1_EOS_logo_white.png"
       onClick={() => setPage(1)}
       title="Powder Bed Fusion"
       showWelcome={page === 0}
@@ -68,7 +70,7 @@ const PowderBedFusionPanel = ({
     >
       <Slides slides={slides} count={5} step={page} setStep={setPage}>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory/pbf/Slide_2_11_Process_Overview_Table.png" flexGrow={1} />
+          <Image src="/pbf/Slide_2_11_Process_Overview_Table.png" flexGrow={1} />
           <Span fontWeight={700} width={200}>
             Click on the buttons below to locate the respective parts inside the printer!
           </Span>
@@ -130,7 +132,7 @@ const PowderBedFusionPanel = ({
           </Container>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory/pbf/Slide_7_Printing Parameters Table.png" />
+          <Image src="/pbf/Slide_7_Printing Parameters Table.png" />
           <Span width={200}>
             Earlier in the Pre-processing dashboard, you have optimized all the printing parameters
             and have successfully set-up the printer. These optimized parameters have been uploaded
@@ -156,11 +158,7 @@ const PowderBedFusionPanel = ({
           <Span width={200} fontSize={6}>
             Printing is followed by multiple Post-processing steps.
           </Span>
-          <Image
-            alignSelf="center"
-            src="/vr-laboratory/pbf/Slide_9_Post-processing_steps.png"
-            width={200}
-          />
+          <Image alignSelf="center" src="/pbf/Slide_9_Post-processing_steps.png" width={200} />
           <Container marginTop={8} justifyContent="space-between">
             <Span color="#C00000" width={180} marginTop={0}>
               Note: To see the detailed steps, check out the Post-processing Dashboard.
@@ -189,7 +187,7 @@ const PowderBedFusionPanel = ({
           </Container>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Image src="/vr-laboratory//pbf/Slide_2_11_Process_Overview_Table.png" flexGrow={1} />
+          <Image src="//pbf/Slide_2_11_Process_Overview_Table.png" flexGrow={1} />
           <Container
             flexDirection="row"
             gap={4}
@@ -200,10 +198,10 @@ const PowderBedFusionPanel = ({
             <RoundedButton outline={component === 1} onClick={() => displayPart()}>
               Display Part
             </RoundedButton>
-            <Image src="/vr-laboratory/pbf/Slide_11_Takeaways_Table.png" width={132} />
+            <Image src="/pbf/Slide_11_Takeaways_Table.png" width={132} />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>
-            <Image src="/vr-laboratory/pbf/Slide_12_AM-Studio.png" />
+            <Image src="/pbf/Slide_12_AM-Studio.png" />
             <Container flexDirection="column" gap={2}>
               <Span>Congratulations!</Span>
               <Span>

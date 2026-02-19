@@ -1,5 +1,6 @@
-import { Container, Text, Image } from '@react-three/uikit';
+import { Container, Text } from '@react-three/uikit';
 
+import Image from './Image';
 import RoundedButton from './RoundedButton';
 
 interface WelcomeProps {

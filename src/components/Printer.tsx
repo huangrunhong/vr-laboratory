@@ -1,4 +1,4 @@
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useEffect } from 'react';
 import { GLTF } from 'three-stdlib';
 import { ObjectMap } from '@react-three/fiber';
 import { useAnimations, useGLTF } from '@react-three/drei';
@@ -8,7 +8,7 @@ import SelectionContext from '../contexts/SelectionContext';
 import ActiveButton from './ActiveButton';
 import usePlayOnce from '../hooks/usePlayOnce';
 
-interface Printer {
+interface PrinterObject {
   gltf: GLTF & ObjectMap;
   playOnce: ReturnType<typeof usePlayOnce>;
   animations: ReturnType<typeof useAnimations>;
@@ -18,15 +18,26 @@ interface PrinterProps {
   name: string;
   rotation: number;
   position: [number, number, number];
-  children: (printer: Printer) => React.ReactNode;
+  initialAction?: string;
+  children: (printer: PrinterObject) => React.ReactNode;
 }
 
-const Printer = ({ children, name, position, rotation }: PrinterProps) => {
-  const gltf = useGLTF(`/vr-laboratory/${name}.glb`);
-  const skin = useGLTF(`/vr-laboratory/${name}Skin.glb`);
+const Printer = ({ children, name, initialAction = '', position, rotation }: PrinterProps) => {
+  const gltf = useGLTF(`${import.meta.env.BASE_URL}/${name}.glb`);
+  const skin = useGLTF(`${import.meta.env.BASE_URL}/${name}Skin.glb`);
   const animations = useAnimations(gltf.animations, gltf.scene);
   const playOnce = usePlayOnce(animations.actions);
   const [selected, setSelected] = useContext(SelectionContext);
+
+  useEffect(() => {
+    const action = animations.actions[initialAction];
+
+    if (!action) {
+      return;
+    }
+
+    action.play().paused = true;
+  }, [animations.actions, initialAction]);
 
   return (
     <Fragment>

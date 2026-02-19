@@ -22,7 +22,7 @@ const StepContainer = ({ children, step, setStep }: StepContainerProps) => (
       <Svg
         width={10}
         color="#374151"
-        src="/vr-laboratory/svg/arrow-left-circle-line.svg"
+        src={import.meta.env.BASE_URL + '/svg/arrow-left-circle-line.svg'}
         cursor="pointer"
         hover={{ color: '#0064c0' }}
         onClick={() => setStep(Math.max(0, step - 1))}
@@ -30,7 +30,7 @@ const StepContainer = ({ children, step, setStep }: StepContainerProps) => (
       <Svg
         width={10}
         color="#374151"
-        src="/vr-laboratory/svg/arrow-right-circle-line.svg"
+        src={import.meta.env.BASE_URL + '/svg/arrow-right-circle-line.svg'}
         cursor="pointer"
         hover={{ color: '#0064c0' }}
         onClick={() => setStep((step + 1) % 5)}
