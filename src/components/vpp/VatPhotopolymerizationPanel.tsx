@@ -43,7 +43,6 @@ interface VatPhotopolymerizationPanelProps {
 }
 
 const VatPhotopolymerizationPanel = ({
-  displayPart,
   play,
   onSelectComponent,
 }: VatPhotopolymerizationPanelProps) => {
@@ -229,9 +228,10 @@ const VatPhotopolymerizationPanel = ({
             marginBottom={16}
             justifyContent="space-between"
           >
-            <RoundedButton outline={component === 1} onClick={() => displayPart()}>
+            {/* <RoundedButton outline={component === 1} onClick={() => displayPart()}>
               Display Part
-            </RoundedButton>
+            </RoundedButton> */}
+            <Image src="/image/TUM_Additive_VR_Print_completed.png" width={63} />
             <Image src="/vpp/Slide_13_Takeaways.png" width={132} />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>

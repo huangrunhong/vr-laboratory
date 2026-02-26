@@ -6,7 +6,7 @@ import PowderBedFusionPanel from './PowderBedFusionPanel';
 const meshes = ['BuildPlatform', 'LaserScanning', 'RecoatingUnit', 'Recirculating'];
 
 const PowderBedFusionPrinter = () => (
-  <Printer name="pbf" position={[1260, -130, -770]} rotation={0}>
+  <Printer initialAction="Start Printing" name="pbf" position={[1260, -130, -770]} rotation={0}>
     {({ gltf, playOnce }) => (
       <PowderBedFusionPanel
         onSelectComponent={highlightSelection(gltf, meshes)}

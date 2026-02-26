@@ -40,9 +40,7 @@ const slides: Slide[] = [
 interface BinderJettingPanelProps {
   cleanPrintHead: () => void;
   printTestPatterns: () => void;
-  coatInitialLayers: () => void;
   startPrinting: () => void;
-  displayPart: () => void;
   onSelectComponent: (index: number) => void;
 }
 
@@ -50,7 +48,6 @@ const BinderJettingPanel = ({
   cleanPrintHead,
   printTestPatterns,
   startPrinting,
-  displayPart,
   onSelectComponent,
 }: BinderJettingPanelProps) => {
   const [page, setPage] = useState(0);
@@ -135,7 +132,11 @@ const BinderJettingPanel = ({
           </Container>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Image src="/bjt/Slide_7_Table_Pre-processing_Parameters_New.png" flexGrow={1} />
+          <Image
+            src="/bjt/Slide_7_Table_Pre-processing_Parameters_New.png"
+            flexGrow={1}
+            width={235}
+          />
           <Container flexDirection="column" gap={4} alignItems="flex-start">
             <Span fontWeight={700}>Clean the Print Head before you start printing!</Span>
             <RoundedButton onClick={() => cleanPrintHead()}>Clean Print Head</RoundedButton>
@@ -155,7 +156,7 @@ const BinderJettingPanel = ({
               <Image src="/bjt/Slide_7_BJT_Test_Patterns.png" width={70} />
             </Container>
           </Container>
-          <Information flexDirection="column" height={146} positionTop={-2} alignSelf="flex-end">
+          <Information flexDirection="column" height={146} positionTop={-2}>
             <Heading>Importance of Print Head cleaning:</Heading>
             <Span paddingTop={4} paddingBottom={8}>
               Print Head cleaning helps to keep the nozzles in the print head open. The nozzle plate
@@ -177,7 +178,6 @@ const BinderJettingPanel = ({
             To create an interface between the build platform and the part, few layers need to be
             coated without any part printing on it.
           </Span>
-
           <Container flexDirection="column" gap={4} alignItems="flex-start">
             <Span fontWeight={700}>
               Coat the Initial Layers, and obserce the layer-by-layer build-up of the part!
@@ -230,13 +230,11 @@ const BinderJettingPanel = ({
           <Container
             flexDirection="row"
             gap={4}
-            alignItems="flex-end"
+            alignItems="flex-start"
             marginBottom={18}
             justifyContent="space-between"
           >
-            <RoundedButton outline={component === 1} onClick={() => displayPart()}>
-              Display Part
-            </RoundedButton>
+            <Image src="/image/TUM_Additive_VR_Print_completed.png" width={63} />
             <Image src="/bjt/Slide_12_Table_BJT_Takeaways.png" width={132} />
           </Container>
           <Information flexDirection="column" gap={8} height={140} positionTop={-2}>

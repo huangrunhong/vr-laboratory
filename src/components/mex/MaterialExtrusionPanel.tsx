@@ -49,7 +49,6 @@ const MaterialExtrusionPanel = ({
   automaticBedLeveling,
   filamentLoading,
   preheating,
-  displayPart,
   play,
   onSelectComponent,
 }: MaterialExtrusionPanelProps) => {
@@ -264,9 +263,10 @@ const MaterialExtrusionPanel = ({
             marginBottom={18.5}
             justifyContent="space-between"
           >
-            <RoundedButton outline={component === 1} onClick={() => displayPart()}>
+            {/* <RoundedButton outline={component === 1} onClick={() => displayPart()}>
               Display Part
-            </RoundedButton>
+            </RoundedButton> */}
+            <Image src="/image/TUM_Additive_VR_Print_completed.png" width={63} />
             <Image src="/mex/Slide_12_Takeaways_MEX.png" width={129.5} />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>

@@ -18,7 +18,12 @@ const usePlayOnce = <T extends string>(
       action.crossFadeFrom(ref.current, 0.5, true);
     }
 
-    action.reset().setEffectiveTimeScale(endTimeScale).setLoop(LoopOnce, 1).play();
+    action
+      .reset()
+      .setEffectiveTimeScale(endTimeScale)
+      .setEffectiveWeight(1)
+      .setLoop(LoopOnce, 1)
+      .play();
 
     ref.current = action;
   };

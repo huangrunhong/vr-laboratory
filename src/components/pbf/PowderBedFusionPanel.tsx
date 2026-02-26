@@ -42,11 +42,7 @@ interface PowderBedFusionPanelProps {
   onSelectComponent: (index: number) => void;
 }
 
-const PowderBedFusionPanel = ({
-  play,
-  onSelectComponent,
-  displayPart,
-}: PowderBedFusionPanelProps) => {
+const PowderBedFusionPanel = ({ play, onSelectComponent }: PowderBedFusionPanelProps) => {
   const [page, setPage] = useState(0);
 
   const [component, setComponent] = useState<number>();
@@ -195,9 +191,10 @@ const PowderBedFusionPanel = ({
             marginBottom={18}
             justifyContent="space-between"
           >
-            <RoundedButton outline={component === 1} onClick={() => displayPart()}>
+            {/* <RoundedButton outline={component === 1} onClick={() => displayPart()}>
               Display Part
-            </RoundedButton>
+            </RoundedButton> */}
+            <Image src="/image/TUM_Additive_VR_Print_completed.png" width={63} />
             <Image src="/pbf/Slide_11_Takeaways_Table.png" width={132} />
           </Container>
           <Information flexDirection="column" gap={8} height={144}>

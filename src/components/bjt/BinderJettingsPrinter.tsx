@@ -15,11 +15,9 @@ const BinderJettingsPrinter = () => (
   >
     {({ gltf, playOnce }) => (
       <BinderJettingPanel
-        cleanPrintHead={() => playOnce('CleanPrintHead', 2)}
-        printTestPatterns={() => playOnce('PrintTestPatterns', 2)}
-        coatInitialLayers={() => playOnce('CoatlnitialLayers', 2)}
-        startPrinting={() => playOnce('Printing', 2)}
-        displayPart={() => playOnce('DisplayPart', 1)}
+        cleanPrintHead={() => playOnce('CleanPrintHead', 1)}
+        printTestPatterns={() => playOnce('PrintTestPatterns', 1)}
+        startPrinting={() => playOnce('Printing', 1)}
         onSelectComponent={highlightSelection(gltf, meshes)}
       />
     )}
