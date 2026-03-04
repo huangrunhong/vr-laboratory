@@ -131,20 +131,18 @@ const BinderJettingPanel = ({
             )}
           </Container>
         </Container>
-        <Container flexDirection="column" gap={8}>
-          <Image
-            src="/bjt/Slide_7_Table_Pre-processing_Parameters_New.png"
-            flexGrow={1}
-            width={235}
-          />
-          <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span fontWeight={700}>Clean the Print Head before you start printing!</Span>
+        <Container flexDirection="column" gap={4}>
+          <Image src="/bjt/Slide_7_Table_Pre-processing_Parameters_New.png" flexGrow={1} />
+          <Container flexDirection="column" gap={2} alignItems="flex-start">
+            <Span fontWeight={700} fontSize={6.5}>
+              Step 1:Clean the Print Head before you start printing!
+            </Span>
             <RoundedButton onClick={() => cleanPrintHead()}>Clean Print Head</RoundedButton>
           </Container>
-          <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span fontWeight={700}>
-              Print the Test Patterns, to ensure the Print Head is cleaned and all the nozzles are
-              working!
+          <Container flexDirection="column" gap={2} alignItems="flex-start">
+            <Span fontWeight={700} fontSize={6.5}>
+              Step 2:Print the Test Patterns, to ensure the Print Head is cleaned and all the
+              nozzles are working!
             </Span>
             <Container
               flexDirection="row"
@@ -174,13 +172,13 @@ const BinderJettingPanel = ({
           </Information>
         </Container>
         <Container flexDirection="column" gap={8}>
-          <Span>
+          <Span fontSize={6.5}>
             To create an interface between the build platform and the part, few layers need to be
             coated without any part printing on it.
           </Span>
           <Container flexDirection="column" gap={4} alignItems="flex-start">
-            <Span fontWeight={700}>
-              Coat the Initial Layers, and obserce the layer-by-layer build-up of the part!
+            <Span fontWeight={700} fontSize={6.5}>
+              Step 3:Coat the Initial Layers, and observe the layer-by-layer build-up of the part!
             </Span>
             <RoundedButton onClick={() => startPrinting()}>
               Coat Initial Layers and Start Printing

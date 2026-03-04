@@ -12,6 +12,7 @@ const MaterialExtrusionPrinter = () => (
     initialAction="Automatic Bed"
     position={[1560, -130, 56]}
     rotation={57 * Math.PI}
+    machinePosition={0}
   >
     {({ gltf, playOnce }) => (
       <MaterialExtrusionPanel

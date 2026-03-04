@@ -18,11 +18,19 @@ interface PrinterProps {
   name: string;
   rotation: number;
   position: [number, number, number];
+  machinePosition: number;
   initialAction?: string;
   children: (printer: PrinterObject) => React.ReactNode;
 }
 
-const Printer = ({ children, name, initialAction = '', position, rotation }: PrinterProps) => {
+const Printer = ({
+  children,
+  name,
+  initialAction = '',
+  position,
+  rotation,
+  machinePosition,
+}: PrinterProps) => {
   const gltf = useGLTF(`${import.meta.env.BASE_URL}/${name}.glb`);
   const skin = useGLTF(`${import.meta.env.BASE_URL}/${name}Skin.glb`);
   const animations = useAnimations(gltf.animations, gltf.scene);
@@ -41,7 +49,7 @@ const Printer = ({ children, name, initialAction = '', position, rotation }: Pri
 
   return (
     <Fragment>
-      <group position={[0, 0.00001, 0]}>
+      <group position={[0, machinePosition, 0]}>
         <group visible={selected === name}>
           <primitive object={gltf.scene} />
           {children({ animations, playOnce, gltf })}

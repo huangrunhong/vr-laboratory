@@ -12,6 +12,7 @@ const BinderJettingsPrinter = () => (
     initialAction="CleanPrintHead"
     position={[300, -130, 70]}
     rotation={57 * Math.PI}
+    machinePosition={0.00001}
   >
     {({ gltf, playOnce }) => (
       <BinderJettingPanel
